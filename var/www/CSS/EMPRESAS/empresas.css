@@ -17,11 +17,11 @@ header{
     padding:5px;
 }
 #barra-abajo a{
-    color:#000000;
+    color:#1a1a1a;
 
 }
 #barra-abajo a:hover{
-    color:#8a3e3e;
+    color:#940f0f;
     text-decoration: none;
 }
 
@@ -43,4 +43,7 @@ header{
 }
 .register-boton:hover{
     transform: scale(1.1);
+}
+.banner{
+    width: 100%;
 }
