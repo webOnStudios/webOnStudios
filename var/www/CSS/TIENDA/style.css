@@ -199,11 +199,9 @@ footer{
 #producto button:hover{
     transform: scale(1.1);
 }
-
-.btn btn-primary btn-block {
-    background-color: rgb(199, 103, 103);
-}   
-
+#producto button #comprar-boton{
+    background-color: red;
+}
 
 
 @keyframes slide {
