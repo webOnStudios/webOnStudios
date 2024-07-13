@@ -174,13 +174,38 @@ footer{
     
 }
 .banner {
-    padding: 10px; /* Opcional: espacio alrededor de la imagen */
+    padding: 10px; 
   }
   
-  .banner img {
-    width: 70%; /* Asegura que la imagen ocupe el 100% del contenedor */
+.banner img {
+    width: 70%; 
     max-width: 170%;
-  }
+}
+#producto{
+    background-color: white;
+    padding: 4%;
+    border-radius: 1rem;
+}
+
+#producto img{
+    border-radius: 1rem;
+}
+#producto button{
+    background-color: #1c4172;
+    padding: 4%;
+    border-radius: 1rem;
+    transition:transform 0.3s ease; 
+}
+#producto button:hover{
+    transform: scale(1.1);
+}
+
+.btn btn-primary btn-block {
+    background-color: rgb(199, 103, 103);
+}   
+
+
+
 @keyframes slide {
     0% {margin-left: 0;}
     20% {margin-left: 0;}
