@@ -32,21 +32,21 @@
     </header>   
     <main class="container-fluid" id="barra-abajo">
         <section class="row justify-content-between align-items-center">
-            <article class="col-md-1 mt-2 mt-md-0 col-1 d-flex justify-content-start">
+            <article class="col-md-1 mt-2 mt-md-0  d-flex justify-content-start">
             </article>
-            <article class="col-md-1 mt-2 mt-md-0 col-4 d-flex justify-content-center">
+            <article class="col-md-1 mt-2 mt-md-0 col-3 d-flex justify-content-center">
                 <a href="/var/www/HTML/EMPRESAS/empresas-inicio.html" class="segunda-linea"><b>Inicio</b></a>
             </article>
-            <article class="col-md-2 mt-2 mt-md-0 col-4 d-flex justify-content-center">
+            <article class="col-md-2 mt-2 mt-md-0 col-3 d-flex justify-content-center">
                 <a href="/var/www/HTML/TIENDA/index.html" class="segunda-linea"><b>Cómo funciona</b></a>
             </article>
             <article class="col-md-1 mt-2 mt-md-0 col-3 d-flex justify-content-center">
                 <a href="/var/www/HTML/TIENDA/index.html" class="segunda-linea"><b>Beneficios</b></a>
             </article>
-            <article class="col-md-1 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-
+            <article class="col-md-6 mt-2 mt-md-0 col-2 d-flex justify-content-end">
+                <a href="/var/www/HTML/EMPRESAS/cuenta-empresa.html"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAb5JREFUSEuNVeG5wjAIPDapkzxH0UmencS+SXQTuwmvJKSBkNjmR/1MCAfHQQiDRQDYnqUN3bU/uk/grj3Ze8mf91EhLGJA369VF8aPnh54COgdlA4bYrWvM1dGNoEJ9ZoB8q0XgKsL4isVhMR7qEfysAC4F9fFp6npmVwO5JHw5VPXAMCDfaPCqS7zogDZR3OOC4AVwGdLeco0BrCVIXY0ASx2VYYRgDgpv/q4g7CA6QnwbSDfwrXUTmrYasZSRFyLllAeIMxgmgj8YsnCL8lOspT1u30eYwBLkadC0l8JPDHhKWAAC10LGLNS2ES/U2BqkKENw7sEV3CS2zvKN9lcmfDqzAih2qhIM6j0+67eMliY8AfGSoAU9gbQj61NDaDJwLiKs20kdVWLbbQhQL8PrJjOTLYon9Rj40b7GnrnsNv5gyIHWy34gdv+NUJ+D4KKDjKwA25kmuPyALbTg6I6IdY3zyOafwqQm+uTGuosw8WuP/1WEC5l8hTJSEc+ty6d/Ehqx0uZV6FXCtXSlDMI71ZFMXbvo5mFaq4Z1EffiyJJKU7KMJY1Osv1qD8sgFdRDqkraUf4Hvqok+3+P4p52CD1H2RBAAAAAElFTkSuQmCC" title="Tienda de la empresa" class="cuenta-empresa"></a>
             </article>
-            <article class="col-md-6 mt-2 mt-md-0 col-12 d-flex justify-content-start">
+            <article class="col-md-1 mt-2 mt-md-0 col-1 d-flex justify-content-start">
 
             </article>
         </section>
@@ -55,15 +55,15 @@
     <main class="container mt-5">
         <h1 class="text-center mb-4">Publicar Nuevo Producto</h1>
         <form>
-            <div class="form-group row">
+            <article class="form-group row">
                 <label for="productName" class="col-sm-2 col-form-label">Nombre del Producto *</label>
                 <div class="col-sm-10">
                     <input type="text" class="form-control" id="productName" placeholder="Nombre del Producto">
                 </div>
-            </div>
-            <div class="form-group row">
+            </article>
+            <section class="form-group row">
                 <label for="productCategory" class="col-sm-2 col-form-label">Categoría *</label>
-                <div class="col-sm-10">
+                <article class="col-sm-10">
                     <select class="form-control" id="productCategory">
                         <option>Escoge una categoría</option>
                         <option>Electrónica</option>
@@ -78,37 +78,37 @@
                         <option>Alimentos y bebidas</option>
                         <option>Otros</option>
                     </select>
-                </div>
-            </div>
-            <div class="form-group row">
+                </article>
+            </section>
+            <section class="form-group row">
                 <label for="productPrice" class="col-sm-2 col-form-label">Precio *</label>
-                <div class="col-sm-10">
+                <article class="col-sm-10">
                     <input type="number" class="form-control" id="productPrice" placeholder="Precio">
-                </div>
-            </div>
-            <div class="form-group row">
+                </article>
+            </section>
+            <section class="form-group row">
                 <label for="productStock" class="col-sm-2 col-form-label">Stock *</label>
-                <div class="col-sm-10">
+                <article class="col-sm-10">
                     <input type="number" class="form-control" id="productStock" placeholder="Stock disponible">
-                </div>
-            </div>
-            <div class="form-group row">
+                </article>
+            </section>
+            <section class="form-group row">
                 <label for="productDescription" class="col-sm-2 col-form-label">Descripción *</label>
-                <div class="col-sm-10">
+                <article class="col-sm-10">
                     <textarea class="form-control" id="productDescription" rows="4" placeholder="Descripción del producto" maxlength="150"></textarea>
-                </div>
-            </div>
-            <div class="form-group row">
+                </article>
+            </section>
+            <section class="form-group row">
                 <label for="productImages" class="col-sm-2 col-form-label">Imágenes *</label>
-                <div class="col-sm-10">
+                <article class="col-sm-10">
                     <input type="file" class="form-control-file" id="productImages" multiple>
-                </div>
-            </div>
-            <div class="form-group row">
-                <div class="col-sm-10 offset-sm-2">
+                </article>
+            </section>
+            <section class="form-group row">
+                <article class="col-sm-10 offset-sm-2">
                     <button type="submit" class="btn btn-primary btn-block" id="publicar">Publicar Producto</button>
-                </div>
-            </div>
+                </article>
+            </section>
         </form>
     </main>
     <script src="/var/www/JS/jquery-3.7.1.min.js"></script>

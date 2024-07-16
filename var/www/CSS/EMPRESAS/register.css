@@ -131,3 +131,18 @@ header{
     text-align: left;
     font-size: 13px;
 }
+
+#publicar{
+    background-color: #940f0f;
+    border-bottom: #940f0f;
+}
+
+.cuenta-empresa{
+    transition: transform 0.3s ease;
+}
+
+.cuenta-empresa:hover{
+    transform: scale(1.2);
+    cursor: pointer;
+    
+}
