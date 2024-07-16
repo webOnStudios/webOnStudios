@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Administrador</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<main class="container mt-5">
+    <h1 class="text-center">Panel de Administrador</h1>
+    <section class="row">
+        <article class="col-md-3">
+            <h5>Menú</h5>
+            <ul class="list-group">
+                <li class="list-group-item"><a href="#usuarios">Usuarios</a></li>
+                <li class="list-group-item"><a href="#productos">Productos</a></li>
+                <li class="list-group-item"><a href="#empresas">Empresas</a></li>
+                <li class="list-group-item"><a href="#publicidad">Publicidad</a></li>
+            </ul>
+        </article>
+        <article class="col-md-9">
+            <section id="usuarios" class="mb-4">
+                <h3>Gestión de Usuarios</h3>
+                <p>Aquí puedes gestionar los usuarios de la tienda.</p>
+                <p>Busque el usuario aqui por su email:</p>
+                <input type="email">
+                <button class="btn btn-danger mb-2">Eliminar Usuario</button>
+                <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal" role="dialog">Editar Usuario</button>
+                <article class="modal fade" id="myModal" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Editar Usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                          <label>Nombre: </label><input type="text"> <br>
+                          <label>Apellido: </label><input type="text"><br>
+                          <label>Nickname: </label><input type="text"><br>
+                          <label>Emai: </label><input type="email"><br>
+                          <label>Contraseña: </label><input type="password"><br>
+                          <label>Cédula: </label><input type="number"><br>
+                          <label>Fecha de Nacimiento: </label><input type="date"><br>
+                          <button>Editar usuario</button>
+                          <p id="editar"></p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </article>  
+            </section>
+            <article id="productos" class="mb-4">
+                <h3>Gestión de Productos</h3>
+                <p>Aquí puedes gestionar los productos de la tienda.</p>
+                <p>Busque el producto aqui por su ID:</p>
+                <input type="number">
+                <button class="btn btn-danger mb-2">Eliminar Producto</button>
+                <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal2" role="dialog">Editar Producto</button>
+                <article class="modal fade" id="myModal2" role="dialog">
+                    <div class="modal-dialog">
+                    
+                      <div class="modal-content">
+                        <div class="modal-header">
+                          <button type="button" class="close" data-dismiss="modal">&times;</button>
+                          <h4 class="modal-title">Editar Usuario</h4>
+                        </div>
+                        <div class="modal-body">
+                          <label>Nombre: </label><input type="text"> <br>
+                          <label>Precio: </label><input type="number"><br>
+                          <label>Descripcion: </label><input type="number"><br>
+                          <label>Categoria: </label><input type="date"><br>
+                          <button>Editar usuario</button>
+                          <p id="editar"></p>
+                        </div>
+                        <div class="modal-footer">
+                          <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
+                        </div>
+                      </div>
+                      
+                    </div>
+                  </div>
+                </article>  
+            </article>
+            <article id="empresas" class="mb-4">
+                <h3>Gestión de Empresas</h3>
+                <button class="btn btn-danger mb-2">Eliminar Empresa</button>
+                <p>Aquí puedes gestionar las empresas asociadas.</p>
+            </article>
+            <article id="publicidad" class="mb-4">
+                <h3>Publicidad</h3>
+                <p>Aquí puedes gestionar las imágenes de publicidad.</p>
+                <div class="form-group">
+                    <label for="publicidadImg">Subir imagen de publicidad</label>
+                    <input type="file" class="form-control-file" id="publicidadImg">
+                </div>
+                <button class="btn btn-primary mb-2">Subir</button>
+                <h5>Banner de la página principal</h5>
+                <img src="banner.jpg" alt="Banner" class="img-fluid">
+            </article>
+        </article>
+    </section>
+</main>
+
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+</html>
