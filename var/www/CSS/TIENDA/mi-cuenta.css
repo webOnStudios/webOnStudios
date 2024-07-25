@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
 body{
     background-color: #e6e6e6;
     font-family: 'Poppins', sans-serif;
@@ -104,25 +106,29 @@ header{
 .menu:hover .user-menu-content {
     display: block;
 }
-.submenu-content {
-    display: none;
-    position: absolute;
-    left: 100%;
-    top: 0;
-    background-color: #e1eaf7;
-    min-width: 160px;
-    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    z-index: 1;
-    border-radius: 1rem;
-}
-
-.menu-content .submenu:hover .submenu-content {
-    display: block;
-}
-.submenu {
-    position: relative;
-}
 
 #barra-costado{
     background-color: #c8dcf7;
+}
+
+footer{
+    background-color:#2a2f4e;
+    color:rgb(148, 146, 146) !important;
+    font-size: small;
+    padding: 15px;
+    margin-top: 70px;
+}
+
+footer a{
+    color:#b0caec;
+}
+footer a:hover{
+    color:#77879c;
+    text-decoration: none;
+}
+
+#producto{
+    background-color: white;
+    padding: 20px;
+    border-radius: 1rem;
 }

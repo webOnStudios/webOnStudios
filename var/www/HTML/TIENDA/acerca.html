@@ -5,9 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
-    <link rel="stylesheet" href="/var/www/CSS/TIENDA/register.css">
+    <link rel="stylesheet" href="/var/www/CSS//TIENDA/privacidad-terminos.css">
     <link rel="icon" href="/imagenes/icono-blanco.ico" type="image/x-icon">
-    <title>Registrarse</title>
+    <title>Acerca de</title>
 </head>
 
 <body>
@@ -87,91 +87,87 @@
             </article>
         </section>
     </main>
-    <main class="container-fluid" id="register">
+    <h1>Acerca de Nosotros</h1>
+    <div id="terminos">
+        <p>
+Bienvenidos a Tiendas Webon <br>
+<br>
+En Tiendas Webon, creemos que la compra y venta de productos debería ser una experiencia sencilla y accesible para todos. Nuestra plataforma conecta a usuarios que desean adquirir productos de calidad con empresas que buscan expandir su mercado y aumentar sus ventas. Nos apasiona facilitar esta conexión y crear un ecosistema digital vibrante y eficiente.
+<br>
+<br>
+Nuestra Historia
+<br>
+<br>
+Tiendas Webon nació en 2024 con el objetivo de democratizar el comercio electrónico. Desde el principio, nos comprometimos a ofrecer un espacio donde tanto pequeños emprendedores como grandes empresas puedan exhibir sus productos y llegar a un público amplio. A lo largo de los años, hemos crecido y evolucionado, convirtiéndonos en una de las plataformas de comercio electrónico más confiables del sector.
+<br>
+<br>
+¿Qué Hacemos?
+<br>
 
-        <section class="row justify-content-between">
-            <article class="col-md-12 col-12 d-flex justify-content-center">
-                <h2 class="titulo-registro">REGISTRARSE</h2>
-            </article>
-            <article class="col-md-6 mt-2 mt-md-0 col-6 d-flex justify-content-center">
-                <input id="nombre" type="text" placeholder="Nombre">
-            </article>
-            <article class="col-md-6 mt-2 mt-md-0 col-6 d-flex justify-content-center">
-                <input id="apellido" type="text" placeholder="Apellido">
-            </article>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="nickname" type="text" placeholder="Nickname">
-            </article>
-            <article class="col-md-10 mt-2 mt-md-0 col-10 d-flex justify-content-start">
-                <input id="contrasena" type="password" placeholder="Contraseña">
-            </article>
-            <article class="col-md-2 mt-2 mt-md-0 col-2 d-flex justify-content-start">
-                <button class="contra" id="mostrartexto"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAmVJREFUSEuFVYtx6jAQ3HMlUEmgkjwqwakEqARSCa5EG1Z3ss9EztOMx7Y+99nbWxn+OwwAgXj92v7nstVjncNra/mv/73l3U3PDgp5NuBmNkw16k64BnZX+kCkDFh4fm0aAcj40Z34WOLrRNqBKO/3DIQyuQNwB7GDyQmOZjY7cS/Z2vq7n9lbDQq5MzkB5Kw6AXAg8GHEAVbnNR7xvul7G1LAcmBLJrwDFsZUiznRFdR1xZdHArehZqyoW51aBglrZQHgosgDPBA2GvEt6MKd9nzEntjXYF0TJIVmKCyCqBkP/OXQJhAPWDglJhhOiriQcnAhoLO/arfKnaSKLKw19pWPFjVJeETCJzO7Np4Vlqc5Qa5mdsoMDBaV88uaaNqGoj6Gs2DXqh57/TnuiYVOkNl5pukz2DMC/BdFbkySjTtQ4WrErumZiSdOWVK9xJGwaTDbe8Gjk1jKM4wqPdEw6EoxQ3SVkcSuOjHZYBVKGSpqVuOomvn8ZidX/kfU2FGGak9UiFozan18ZfAl82QRNEIhzb9pEckG04PCMYqcGRK1vkfTBYR1NtjHx2DDsSlZj6YN6zf8VbyAy700uLRPzwF0yLpalAolQ37YM1A99Kj4mmhRf9YG9NrU+VaPxMS1BmTZIHmJnmj6s5zrq0eltQ0hkEkLI/isIYtEk0WU/XQKV8shhHy82PUd8n5J88fBhsmFt6NFTZGXcNeO39OXS2fQzC6XC2US9M1n4ruj+61hNm66oGmT+pMNdl0cbF+pfbMbF1so8SFrVF/oV5reuTK3b86MbKpB515dQl8v9m/O7T0/SV1IM2xkZVsAAAAASUVORK5CYII=" ></button>
-            </article>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="email" type="email" placeholder="Email">
-            </article>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="CI" type="number" maxlength="8" placeholder="CI" oninput="limitarCaracteres(event)">
-                <p id="mensaje"></p>
-            </article>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <p>Fecha de nacimiento: </p>
-                <input id="fechaNac" type="date">
-            </article>
-        </section>
-        <section>
-            <article class="col-md-2 mt-2 mt-md-0 col-2 d-flex justify-content-start">
-                <input type="checkbox" id="terminos">
-            </article>
-            <article class="col-md-11 mt-2 mt-md-0 col-11 d-flex justify-content-end">
-                <p> He leido y acepto los <a href="terminos.html" class="terminos">terminos y condiciones</a> y las <a href="privacidad.html" class="terminos">politicas de privacidad</a></p>
-            </article>
-        </section>
-        <section>
-        <section>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <button id="registerbuton"> Registrarse </button>
-            </article>
-        </section>
-        <section>
-            <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <p>¿Ya tienes una cuenta con nosotros? <a href="login.html">Inicia sesión</a></p>
-            </article>
-        </section>
-        <p id="mensajeerror"></p>
-    </main> 
-    <script src="/var/www/JS/TIENDA/register-usuario.js"></script>
-    <script src="/var/www/JS/jquery-3.7.1.min.js"></script>    
+En Tiendas Webon, ofrecemos un espacio integral para:
+<br>
+
+<ul>
+<li>Compradores: Encuentra una amplia variedad de productos de diversas categorías, desde tecnología hasta moda, todo en un solo lugar.</li>
+<li>Vendedores: Ofrecemos a las empresas una plataforma fácil de usar para listar sus productos, gestionar ventas y alcanzar nuevos clientes.</li>
+</ul>
+<br>
+Nuestro Enfoque
+<br>
+<br>
+Nos enfocamos en crear una experiencia de usuario excepcional. Desde la navegación intuitiva hasta el proceso de compra simplificado, cada aspecto de Tiendas Webon está diseñado pensando en nuestros usuarios. Creemos en la transparencia y en construir relaciones duraderas tanto con los compradores como con los vendedores.
+<br>
+<br>
+Nuestro Equipo
+<br>
+<br>
+El equipo de Tiendas Webon está compuesto por profesionales apasionados por el comercio electrónico, la tecnología y la atención al cliente. Trabajamos juntos para garantizar que nuestra plataforma sea segura, eficiente y siempre esté en evolución, adaptándose a las necesidades de nuestros usuarios.
+<br>
+<br>
+¿Por Qué Elegir Tiendas Webon?
+<br>
+<ul></ul>
+<li>Variedad: Una amplia gama de productos para satisfacer todas tus necesidades.</li>
+<li>Facilidad de uso: Una plataforma intuitiva que simplifica la compra y venta de productos.</li>
+<li>Soporte: Un equipo dedicado a ofrecer asistencia y resolver cualquier consulta que puedas tener.</li>
+<li>Confianza: Comprometidos con la seguridad y la satisfacción del cliente, garantizando transacciones seguras.</li>
+</ul>
+<br>
+Contáctanos
+<br>
+<br>
+Si eres un comprador en busca de productos de calidad o una empresa que quiere expandir su presencia en línea, ¡Tiendas Webon es el lugar para ti! Contáctanos hoy mismo para comenzar tu viaje con nosotros y descubrir todas las oportunidades que ofrecemos.
+</p>
+    </div>
+    <footer>
+        <main class="container-fluid" id="footer">
+            <section class="row justify-content-center align-items-center">
+                <article class="col-sm-4 text-center">
+                  <p><a href="/var/www/HTML/TIENDA/terminos.html" class="footera">Terminos y condiciones</a></p>
+                </article>
+                <article class="col-sm-4 text-center"> 
+                  <p><a href="/var/www/HTML/TIENDA/privacidad.html" class="footera">Politica de privacidad</a></p>
+                </article>
+                <article class="col-sm-4 text-center">
+                  <p><a href="/var/www/HTML/TIENDA/acerca.html" class="footera">Acerca de nosotros</a></p>
+                </article>
+            </section>
+            <section class="row justify-content-center align-items-center">
+                <article class="col-sm-4 text-center">
+                    <p>Copyright <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAvNJREFUSEt9Vn1+mzAMldztHCMnKTnJklMMSFoMbYCeIuwk0JOUgyzWkGwT85HyR/KLsC3pvafnIAQPAgDJRxgF+Dbulm5skzf4aLN9u042T721Zr6Jf00HbZ2nzy8xmtszEsWEKgaggQB6BBhIqU99ee+XHS9RWRXFAZ0kkQK8ksL4vmCzpYGM2eumGXzHd1RQQtPjX5Tp6WCAru7lAAAtPalP/XbpdfInUk8qJoJfBHBAhAgIuKtWV1WxPMxyECQps+xAAFcOuU3HFR9uU5EkESj1e8RYExATqvNLVYRnzjhgWFCpLyaFFO71+3u/oaeNjl1RCAPdaF809WDVOIMIoUyTjjEnwlZXF1s583E+x+rfLSelYgIanPR4TeG7L7Is56VIpn+tm73X9tRBmWYHA8C4D3lV7XybZXY6EJBANi9dxHd8rarWiwKV6ka+GLZ97rqfOPAVcBW5I4srR2M6rnJMKHGGkX8oVLE/3CcuTlk+EqfDM6YEOsu4+sOsKhcbE2hdV4XFlOlcd+OhREOdwNTUe144QVSk2Re3R8bsdPMxsIaKjGMYkbnt9EczfDdQAUx8jsDMsQcJGta+S+CT2thKsi4gnSFAkWbS4AinnD15UZmkHSHG4/hP8ixTGxNMBaLQnpwMgq/ilB2I8EpAra6ro0Dq1TInuS4YIksydew/Ms2G/sr4/fwR4c08ezEsSRbOnFDuJDvFhPgxgGPLou+ZZ09DRMfXumo9N5YziBTA8UXk6wfNbZBBY5isr9wHzVpCjgCB8UEbdvCWpp1BjFeDFvqGWMWT+uKK7tLcwH02dTzpLzGYWydniQoDZ/3O7OzA1EWo/bkVE2gZLtRcUigQL7e1XVt5WtztIxeMAvg0hvqQ5MCuZQyWpN/nYNEygyK+j3h1Mp1WiG0EbY83XW+IjgLLxrO6D5a3kj6dY2VMZACePclINIyJe7kyxdQeX96z+2CrAt+m9/fVX45Hm4Kh35h/Z2obhS1vq8U/nFW6/++5yTB0vL7/AAAAAElFTkSuQmCC"/> WebOnStudios</p>
+                </article>
+                <article class="col-sm-4 text-center">
+                    <p></p>
+                </article>
+                <article class="col-sm-4 text-right">
+                    <p id="contacto">Contacto <br> +598 99 123 456</p>
+                    <a href="/var/www/HTML/TIENDA/ayuda-usuario.html"><p>Ayuda</p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAvdJREFUSEt9VVtyqkAQPQ3u4+JKgiuJfibCpMwGQjYQKwNJPuNOJCuRhah96XkxIAlVFjgw/TiPHkK4CADP/Buvmw9mluL1+LU8z2z4LcJQzmxd08hsQ7trPmhd1zkBd2DOAciv6+8tEXVX4Kcsy3Zco4sT3cYduBdf+312WaTfYMoJ7MAbl+jWu/RyWT3udh2PYxtoIoiGzR91/cLMlW2NOiIcfLWS+JqmOYj+MfMaQGa6IjoUZfkaqvXJzD0qLA7e56+2SjZNgIy6vKaL+14alXQDompbqlcjFhc44gBwsJzkPROtLL6Ez/2bVP0CUO6UJrBsHna7TgLVus4T5iMTOgZtPC+em0Byo9+PjshDqdRGROsgOQ0CDqoz2JskAKLOu0KppZdy6OBD6zUD34Kn+cCl/9CBj5YJrwxCwmy6IUK1dbh/7d+yS5rK/vxKtFKRukwsX4HH3dPSaH2S58RU+9wJRAJJL90jwG2h1MpD0ThxkOHCctcXYVFttJbsayJstqU63PgjUoPxBrPAOXQLwK8T0G6jxIbx5l2fRHLp5bL0uM5ZcAhOsq+y0rSXEUm6OBG42z6ppcgzcOCgyJLzZfnw/NwN5gqKw9eb8YAjnNpClQae2KmNrkWDKJ4UDQlsB8e+NUNQkFnsTPNN/Q0Ycx0K9bSZDsem1mtmI5RDodTGONlzICTDuFfM5cwymW2N1kattrrJyyAUVDF0YVTUWufEOILQFaVaxg4fnv+e043W3kebQlmhBA4sQVbHocVgdzvsBF8pve/Q7IvTeRX2/hhxMxp2ziyiJrlCFR6MWYjMqNB5wjhKEcOIGegPo0JIixyN2DAjtcTDUZzuh53jzyjw9jywK2b2LNL7HpPK8egOGPwk57MZfud0kSXEd2CsmZAZ/IiqQiavJ3/uwImJ/bRz33Mylsz4YBkNven5OxrXcRR5IUnOi0WWMGcsx6YVgMToCNQOR+bv6ooS/PXRGFOLwriNW1fckDyDwm85p61OcI/z/weWWckvd2zamAAAAABJRU5ErkJggg=="/></a> 
+                </article>
+            </section>
+        </main>
+        
+    </footer>
+    <script src="/JS/jquery-3.7.1.min.js"></script>
+    <script src="/JS/terminos.js"></script>
 </body>
-
-<footer>
-    <main class="container-fluid" id="footer">
-        <section class="row justify-content-center align-items-center">
-            <article class="col-sm-4 text-center">
-              <p><a href="/var/www/HTML/TIENDA/terminos.html" class="footera">Terminos y condiciones</a></p>
-            </article>
-            <article class="col-sm-4 text-center"> 
-              <p><a href="/var/www/HTML/TIENDA/privacidad.html" class="footera">Politica de privacidad</a></p>
-            </article>
-            <article class="col-sm-4 text-center">
-              <p><a href="/var/www/HTML/TIENDA/acerca.html" class="footera">Acerca de nosotros</a></p>
-            </article>
-        </section>
-        <section class="row justify-content-center align-items-center">
-            <article class="col-sm-4 text-center">
-                <p>Copyright <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAvNJREFUSEt9Vn1+mzAMldztHCMnKTnJklMMSFoMbYCeIuwk0JOUgyzWkGwT85HyR/KLsC3pvafnIAQPAgDJRxgF+Dbulm5skzf4aLN9u042T721Zr6Jf00HbZ2nzy8xmtszEsWEKgaggQB6BBhIqU99ee+XHS9RWRXFAZ0kkQK8ksL4vmCzpYGM2eumGXzHd1RQQtPjX5Tp6WCAru7lAAAtPalP/XbpdfInUk8qJoJfBHBAhAgIuKtWV1WxPMxyECQps+xAAFcOuU3HFR9uU5EkESj1e8RYExATqvNLVYRnzjhgWFCpLyaFFO71+3u/oaeNjl1RCAPdaF809WDVOIMIoUyTjjEnwlZXF1s583E+x+rfLSelYgIanPR4TeG7L7Is56VIpn+tm73X9tRBmWYHA8C4D3lV7XybZXY6EJBANi9dxHd8rarWiwKV6ka+GLZ97rqfOPAVcBW5I4srR2M6rnJMKHGGkX8oVLE/3CcuTlk+EqfDM6YEOsu4+sOsKhcbE2hdV4XFlOlcd+OhREOdwNTUe144QVSk2Re3R8bsdPMxsIaKjGMYkbnt9EczfDdQAUx8jsDMsQcJGta+S+CT2thKsi4gnSFAkWbS4AinnD15UZmkHSHG4/hP8ixTGxNMBaLQnpwMgq/ilB2I8EpAra6ro0Dq1TInuS4YIksydew/Ms2G/sr4/fwR4c08ezEsSRbOnFDuJDvFhPgxgGPLou+ZZ09DRMfXumo9N5YziBTA8UXk6wfNbZBBY5isr9wHzVpCjgCB8UEbdvCWpp1BjFeDFvqGWMWT+uKK7tLcwH02dTzpLzGYWydniQoDZ/3O7OzA1EWo/bkVE2gZLtRcUigQL7e1XVt5WtztIxeMAvg0hvqQ5MCuZQyWpN/nYNEygyK+j3h1Mp1WiG0EbY83XW+IjgLLxrO6D5a3kj6dY2VMZACePclINIyJe7kyxdQeX96z+2CrAt+m9/fVX45Hm4Kh35h/Z2obhS1vq8U/nFW6/++5yTB0vL7/AAAAAElFTkSuQmCC"/> WebOnStudios</p>
-            </article>
-            <article class="col-sm-4 text-center">
-                <p></p>
-            </article>
-            <article class="col-sm-4 text-right">
-                <p id="contacto">Contacto <br> +598 99 123 456</p>
-                <a href="/var/www/HTML/TIENDA/ayuda-usuario.html"><p>Ayuda</p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAvdJREFUSEt9VVtyqkAQPQ3u4+JKgiuJfibCpMwGQjYQKwNJPuNOJCuRhah96XkxIAlVFjgw/TiPHkK4CADP/Buvmw9mluL1+LU8z2z4LcJQzmxd08hsQ7trPmhd1zkBd2DOAciv6+8tEXVX4Kcsy3Zco4sT3cYduBdf+312WaTfYMoJ7MAbl+jWu/RyWT3udh2PYxtoIoiGzR91/cLMlW2NOiIcfLWS+JqmOYj+MfMaQGa6IjoUZfkaqvXJzD0qLA7e56+2SjZNgIy6vKaL+14alXQDompbqlcjFhc44gBwsJzkPROtLL6Ez/2bVP0CUO6UJrBsHna7TgLVus4T5iMTOgZtPC+em0Byo9+PjshDqdRGROsgOQ0CDqoz2JskAKLOu0KppZdy6OBD6zUD34Kn+cCl/9CBj5YJrwxCwmy6IUK1dbh/7d+yS5rK/vxKtFKRukwsX4HH3dPSaH2S58RU+9wJRAJJL90jwG2h1MpD0ThxkOHCctcXYVFttJbsayJstqU63PgjUoPxBrPAOXQLwK8T0G6jxIbx5l2fRHLp5bL0uM5ZcAhOsq+y0rSXEUm6OBG42z6ppcgzcOCgyJLzZfnw/NwN5gqKw9eb8YAjnNpClQae2KmNrkWDKJ4UDQlsB8e+NUNQkFnsTPNN/Q0Ycx0K9bSZDsem1mtmI5RDodTGONlzICTDuFfM5cwymW2N1kattrrJyyAUVDF0YVTUWufEOILQFaVaxg4fnv+e043W3kebQlmhBA4sQVbHocVgdzvsBF8pve/Q7IvTeRX2/hhxMxp2ziyiJrlCFR6MWYjMqNB5wjhKEcOIGegPo0JIixyN2DAjtcTDUZzuh53jzyjw9jywK2b2LNL7HpPK8egOGPwk57MZfud0kSXEd2CsmZAZ/IiqQiavJ3/uwImJ/bRz33Mylsz4YBkNven5OxrXcRR5IUnOi0WWMGcsx6YVgMToCNQOR+bv6ooS/PXRGFOLwriNW1fckDyDwm85p61OcI/z/weWWckvd2zamAAAAABJRU5ErkJggg=="/></a> 
-            </article>
-        </section>
-    </main>
-    
-</footer>
-
 </html>

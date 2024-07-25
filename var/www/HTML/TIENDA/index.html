@@ -11,8 +11,6 @@
 </head>
 
 <body>
-    
-    <body>
         <header class="container-fluid">
     
             <section class="row row justify-content-between align-items-center">
@@ -49,7 +47,7 @@
                 </article>
                 <article class="col-md-2 mt-2 mt-md-0 col-3 d-flex justify-content-center">
                     <div class="menu">
-                        <button>Categorias <span class="caret"></span></button>
+                        <a href="#categorias"><button>Categorias <span class="caret"></span></button></a>
                         <section class="menu-content">    
                             <a href="#opcion1">Electrónica ></a>
                             <a href="#opcion2">Hogar y cocina ></a>
@@ -78,9 +76,9 @@
                     <div class="input-group">
                         <input type="text" class="form-control form-control-sm" placeholder="Buscar..." name="search">
                         <div class="input-group-btn">
-                            <button class="btn btn-default btn-sm" type="submit">
+                            <a href="/var/www/HTML/TIENDA/busqueda.html" class="btn btn-default btn-sm" type="submit">
                                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAs1JREFUSEudVluSmlAQPQ26juAGfHxHSvyNWpkdBFcisxLNCpKU+i1T+D/oBmQfg3boywUuiE4qfIhX+nn69EHC/1wEgP/FkSCmUJ8sB5bbE+dHD7VvFUzHzG/lwaxp5L041zT9QQSPAY+YExCHzFZidTo/4/B38rQHXct9BwD648WKiIO2AIIMgRNma3M+bl9r3WsHDYhCIk+g2xCI+u78AJAnT5kRWKC3+LgNh96Lg+vVuzF/yZwC7Rmeot20hocOWkBtJABG7sK/gdcAJ8S0jI+70BhRORtJxtcPKcSRIs7H3evj6egIw4k4pRd1ZEwluA60AuCBKZGqye4sBf/heO4x4dAspgkrFZn74/kqOwQAb07RfimGfXe+UnA0LrI7PUnSd2drAvnMFFTzqBuXQx6MZ2sG+ZaCZrspzIbuwocwKGey6qaApeqCwnO0nbathpHg24VhOZaq7k9SUsAY2vBrAQtwivY08r47tzS9gDg5RfterfZyt/QMBuPZhUFOxvFefDA53rKABsczGFXhp2inCWMunUHTgbs4MNiz1ID3YbXOJj+MyEwYufOCdfnczMfGTqivbUOuNqQ93cCdrTN2+SBNDHPDigRFfTkl00u+fTSV5brHtCrLnAfZ3V4c/tLSUd+IkqbiKoxhvWjCpne9aHrRy7kPyh1QPwXnaPf6SJdqmyxGqm1YvnJl3hBZb7DtvJs0dRiYZFgHlUJyQnZ3WolfnRR5B43hiNhl6xwUHGawKVp5biAgYh9MjtDUsrvTd6WwDYgetSZyzderx7hNlFSoy0qYORTtkZPY3NKPA4gcJRm1TnL+30HUKKD9ZWFUZQpfLUmBSguzmsqTv+nMSTcszCQELONop6Wm0UGVrEV8H+mxTiyyIZDGUaVjCqQ7v5ZtvCv+k2RVx20JdDTT6I4ILepR2dT/ANSG/OytVEjxJ7ErzuuMfwGtUpQtBKPTQQAAAABJRU5ErkJggg=="/>
-                            </button>
+                            </a>
                         </div>
                     </div>
                 </article>
@@ -123,14 +121,14 @@
         </section>
     </main>
 
-    <main class="container col-9">
+    <main class="container col-l-7 col-12">
         <section class="row justify-content-between align-items-center">
             <article class="col-md-12 mt-md-2  d-flex justify-content-center">
                     <img src="/var/www/Imagenes/bannerr.png" width="100%">
             </article>
         </section>
     </main>
-    <main class="container col-8 mt-4" id="help-var">
+    <main class="container col-l-8 col-12 mt-4" id="help-var">
         <section class="row justify-content-between align-items-center">
             <article class="col-2 col-md-3 mt-4">
                 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAgVJREFUSEuFVst1wkAMlJxGwhHDY5MOSAGGlBAqo4QEU0AoAfPA5OhK2DzJWq/2Y+NT4pUsaTQzCyIAWIgfBAQLlg/zEZThjyVGx6tXyefDFzp5LFQ3pGMQcKrJ5fvn+vGwewD76tImJ7bQFcXL7nr+Pun40QnmpvpFwHXYk4NUupZDVbi7N/Wsh51iJp5ytbEUcW9qHN2H+nIQrwrLtlLk51wAoW0O2UZieEuz4ca5oWcF6NwltE3NBYb/LzWRbPxc4h3TUhQZOwtz7shPEBdcmI2lTsMGwon70TNUold9Af+BqX1xfAKpo2km0xeQjsb1NmS7JbuJuHedt3wj3j/2gDDwPqrdFVjsrucf5rmH7IgeUj1xRFPN+6RhAqsHtGsv9YwspDRVAGG8o0QHSUBkMeVqa0lmGgI9YVoggkgH+An8X6UZKxCy7t4cRJhBAYSFqSzxriWeDxgjcMKULpxOMsIMFJoISxJ8gXACjpeGPE1DWo8UOCJbWuTUsZJjIvQ0jYSmLw3NivwORHhsFek98ZRFLH21g1h/tGTi+028KD1X1iKdK6sQ4XABgUi7FAIQBJRwU2amLxZnFW5nrAMNhYOoFwjvL/940WXPWScKwSFoYbZ7C/Yre0FMOZ3zS/4BYU9/zfEjex8k9pAxOP0qR4TBnIMLRzx7Ehbv61nv9bmhv/wDBT1ZMY3ufc0AAAAASUVORK5CYII="> <p>Tiendas WebOn</p>
@@ -147,7 +145,7 @@
 
         </section>
     </main>
-    <main class="container col-10">
+    <main class="container col-l-10 col-12">
         <section class="col justify-content-between align-items-center">
             <article class="col-md-12 d-flex justify-content-center">
                 <h2>Productos que te pueden interesar</h2>
@@ -182,20 +180,122 @@
             </article>
         </section>
     </main>
-    <main class="container" id="Como-comprar">
+    <br>
+    <main class="container col-10" id="publicidad4">
         <section class="row">
-            <article class="col-12">
-                <p>caca</p>
+            <article class="col-md-6 article-with-image">
+                <div class="content">
+                    <p>Electrónica</p>
+                    <h4>Disfruta del los mejores descuentos en estos productos</h4>
+                    <button class="btn btn-primary">Ver más</button>
+                </div>
+                <div class="image">
+                    <img src="/var/www/Imagenes/Electronica.jpeg">
+                </div>
+            </article>
+            <article class="col-md-6 article-with-image">
+                <div class="content">
+                    <p>Moda y ropa</p>
+                    <h4>Encontrá tu outifit prefierido para este invierno</h4>
+                    <button class="btn btn-primary">Ver más</button>
+                </div>
+                <div class="image">
+                    <img src="/var/www/Imagenes/Ropa.jpeg" alt="Moda y ropa">
+                </div>
             </article>
         </section>
     </main>
-    <main class="container" id="Como-comprar">
+    <main class="container mt-4" id="categorias">
+        <h2>Categorías</h2>
         <section class="row">
-            <article class="col-12">
-                <p>caca</p>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Hogar y cocina</span>
+                    <img src="/var/www/Imagenes/cat-hogar.jpeg" alt="Hogar y cocina">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Moda y ropa</span>
+                    <img src="/var/www/Imagenes/cat-ropa.jpeg" alt="Moda y ropa">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Juguetes y Juegos</span>
+                    <img src="/var/www/Imagenes/cat-juguete.jpeg" alt="Juguetes y Juegos">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Deportes</span>
+                    <img src="/var/www/Imagenes/cat-deportes.jpeg" alt="Deportes">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Salud y Belleza</span>
+                    <img src="/var/www/Imagenes/cat-salud.jpeg" alt="Salud y Belleza">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Libros y medios</span>
+                    <img src="/var/www/Imagenes/cat-libros.jpeg" alt="Libros y medios">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Automóviles</span>
+                    <img src="/var/www/Imagenes/cat-autos.jpeg" alt="Automóviles">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Mascotas</span>
+                    <img src="/var/www/Imagenes/cat-mascotas.jpeg" alt="Mascotas">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Alimentos y bebidas</span>
+                    <img src="/var/www/Imagenes/cat-alimentos.jpeg" alt="Alimentos y bebidas">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Electrocnica</span>
+                    <img src="/var/www/Imagenes/cat-electronica.jpeg" alt="electronica">
+                </div>
+            </article>
+            <article class="col-md-4">
+                <div class="category-card">
+                    <span>Otros</span>
+                    <img src="/var/www/Imagenes/otros.jpeg" alt="Otros">
+                </div>
             </article>
         </section>
     </main>
+    <div class="container mt-4" id="Como-comprar">
+        <h2 class="text-center">Cómo Comprar</h2>
+        <div class="row justify-content-center">
+            <div class="col-md-3 step">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAetJREFUSEuNVu256yAIfpnkJpu0o2SSpJt0k95NzCYcFVRUkrY/zpOjBHg/oCWYDwHg/EcP9YDA9cjG52cbP13Kdf+ZCjhv/XxEWuC2C728LXydQBD4OT4MPGqz91T8B7ABOPv4gmAmc4/5DpHiC2dNuFTgneKzZqZpq2h5DgAv+k/q6lm6c4DsMe7Q+xzXavoI8gsEnGqmVGgD4Z3a8h1FpSFFUYjqClQyAkBL9Oqh7JRiFYWcd1gmFK1EbzkbuMoVBQIvLCK+W/ikTYgoFzBtMf5d9OvmgIDAQKIkcfrSZCI44QQ3LUa3ALxHZAc4O6lpZgTZI7/JOSlAu69pQuxetKgoXG8HMC0E3mKjGa2ZA/oQ+BGh2e5LBaXuy15otk5z8RTLNqydE1qq/PS1wBB/grCmBWY1kCQ+10XAI9qnaONtpEJlZYGGyppIuZZLx1lzbgJ2pddoOMxBTFeTEfBUwU1X9JoGrXU4dT+I7DrmX2TxIHCa6vVmL1l613lV9I5rq0IiZarbXHgLNhCQhjHHjSN490K6E06vHdo0UufYJWxEtkuVdu16UNOp0o6SA1/jQpQC/sr/gPAoXu6+pucFL4PlDbe1qXXIzzNrMWq3Yx5PA12k5heGN1bj2QWDFfDVz5Nf0Ng1bvP8ASDZ6SEgbKYHAAAAAElFTkSuQmCC"/>
+                <h5>1. Selecciona tu producto</h5>
+                <p>Busca y selecciona los productos que deseas comprar.</p>
+            </div>
+            <div class="col-md-3 step">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAcxJREFUSEuNltF5wjAMhH9tApuUTZpXGAIYAl5hk2aTZhMXO3Ys2TI0D3wQ2ZZOujsjtI8AIX3kiCCE/Et/38JpabethEeBFLd5as6uKrtUh+MR26PPc85IGSsafeh4pygEpScLyPPVp2tJ8haIE6yvYkG1/tBUdwgwj8FbjPpQPZQVQW54SiB8E+QBYQYObv/04JzutOF2mDsCv/ngA8jcTddhWq26QeazKCH47gedh5w3dQOvaBZgX4jo8X0HoaBQbP0Pi1KWBWFf9OEzEn6AL5AJwnOoJMvzB4GI/PLi9HWltSuoVEVc+AA2uCPeKCIUye8RlsiYd0LbgR72R8rmgpKGptLXT0o+Z7ixRZP1nDzROtjcUiaB5+ZkH+yhoDCsqDZofDG/jtIqK1YFbDoYWMJamXAhyHXA94qUhKB6sa8ZzffIpMQonw/aBVblz22hY3LUNp9fV8RFIe+cNR5srKUk7ryoq9O5THz5u3ryzM5r8w04AneBk7nwIMUE7kE4WZTNkEeSVjNr7CXtKBdmvo96O3Etv6HvDeFIkDuEUzPwBoHdaYRmbaUx6U4w46vsPYss7d50bRTSCm+8qBKoh1m1WRvk/50xGuIP9sveHwAx0LYAAAAASUVORK5CYII="/>
+                <h5>2. Agrega al carrito</h5>
+                <p>Añade los productos seleccionados a tu carrito de compras.</p>
+            </div>
+            <div class="col-md-3 step">
+                <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAXxJREFUSEuNVclhwzAMgzZpN0lHySQZpaPUo2QTtzoJiqDdPOxYlnmAAFRQfwXA2S7tsS4UnONJ/OetYf8IN9fD3pHCbmKHr6XVJZZGoSuSD8RN3RexGjcQaCnUvCAakQWCG6QixILO3j0AfAP48Nuz+lPo3gV4nsAxxzsB/AHwcGCKefDwmRQbNm8Any0B1TEptM3X42QJPFvCpPtrkSCjoFiXE7UyQ4JsUlMaosj5CWtl0wHj0dpnREyFnuhcSqBY1MR15VPonIxpn4luJG44TavgAeqsob1EpgydbTkZIm0VuV8JypYmWIKQaOqHlvmSpfOGONhQ6/U01R9IJ9EG5xFMdGCkVMxxYtQmMrppt3pZQ3YnQl+PdDwv7GEfeO+AE2hGSXxvRDzPLN9BYnZ5AqGxyfkDBV825A5mtetXc9SIjTyymBTUUnXS51+co58rUip+fNmJkFmAY2Nmkro6Yd032WMHPsbFgZ4Z0oXZ2dBEFja7f1TdXbngFwA0yiUvOg4qAAAAAElFTkSuQmCC"/>
+                <h5>3. Realiza tu pago</h5>
+                <p>Procede con tu tarjeta de debito/credito y completa tu compra realizando el pago.</p>
+            </div>
+        </div>
+    </div>
 </body>
 <footer>
     <main class="container-fluid" id="footer">
@@ -207,7 +307,7 @@
               <p><a href="/var/www/HTML/TIENDA/privacidad.html" class="footera">Politica de privacidad</a></p>
             </article>
             <article class="col-sm-4 text-center">
-              <p><a href="/var/www/HTML/TIENDA/Acerca de nosotros.html" class="footera">Acerca de nosotros</a></p>
+              <p><a href="/var/www/HTML/TIENDA/acerca.html" class="footera">Acerca de nosotros</a></p>
             </article>
         </section>
         <section class="row justify-content-center align-items-center">
@@ -219,11 +319,13 @@
             </article>
             <article class="col-sm-4 text-right">
                 <p id="contacto">Contacto <br> +598 99 123 456</p>
+                <a href="/var/www/HTML/TIENDA/ayuda-usuario.html"><p>Ayuda</p><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAvdJREFUSEt9VVtyqkAQPQ3u4+JKgiuJfibCpMwGQjYQKwNJPuNOJCuRhah96XkxIAlVFjgw/TiPHkK4CADP/Buvmw9mluL1+LU8z2z4LcJQzmxd08hsQ7trPmhd1zkBd2DOAciv6+8tEXVX4Kcsy3Zco4sT3cYduBdf+312WaTfYMoJ7MAbl+jWu/RyWT3udh2PYxtoIoiGzR91/cLMlW2NOiIcfLWS+JqmOYj+MfMaQGa6IjoUZfkaqvXJzD0qLA7e56+2SjZNgIy6vKaL+14alXQDompbqlcjFhc44gBwsJzkPROtLL6Ez/2bVP0CUO6UJrBsHna7TgLVus4T5iMTOgZtPC+em0Byo9+PjshDqdRGROsgOQ0CDqoz2JskAKLOu0KppZdy6OBD6zUD34Kn+cCl/9CBj5YJrwxCwmy6IUK1dbh/7d+yS5rK/vxKtFKRukwsX4HH3dPSaH2S58RU+9wJRAJJL90jwG2h1MpD0ThxkOHCctcXYVFttJbsayJstqU63PgjUoPxBrPAOXQLwK8T0G6jxIbx5l2fRHLp5bL0uM5ZcAhOsq+y0rSXEUm6OBG42z6ppcgzcOCgyJLzZfnw/NwN5gqKw9eb8YAjnNpClQae2KmNrkWDKJ4UDQlsB8e+NUNQkFnsTPNN/Q0Ycx0K9bSZDsem1mtmI5RDodTGONlzICTDuFfM5cwymW2N1kattrrJyyAUVDF0YVTUWufEOILQFaVaxg4fnv+e043W3kebQlmhBA4sQVbHocVgdzvsBF8pve/Q7IvTeRX2/hhxMxp2ziyiJrlCFR6MWYjMqNB5wjhKEcOIGegPo0JIixyN2DAjtcTDUZzuh53jzyjw9jywK2b2LNL7HpPK8egOGPwk57MZfud0kSXEd2CsmZAZ/IiqQiavJ3/uwImJ/bRz33Mylsz4YBkNven5OxrXcRR5IUnOi0WWMGcsx6YVgMToCNQOR+bv6ooS/PXRGFOLwriNW1fckDyDwm85p61OcI/z/weWWckvd2zamAAAAABJRU5ErkJggg=="/></a> 
             </article>
         </section>
     </main>
+    
 </footer>
-<script src="index.js"></script>
+
 <script src="/var/www/JS/jquery-3.7.1.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </html>

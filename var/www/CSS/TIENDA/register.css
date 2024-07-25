@@ -187,18 +187,17 @@ header{
 }
 
 footer{
-    background-color: #2a2f4e;
+    background-color:#2a2f4e;
+    color:rgb(148, 146, 146) !important;
     font-size: small;
-    font-family: Arial, Helvetica, sans-serif;
     padding: 15px;
     margin-top: 70px;
-    font-family:'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
 }
 
-.footer-a{
-    color:white;
+footer a{
+    color:#b0caec;
 }
-.footer-a:hover{
-    color:white;
+footer a:hover{
+    color:#77879c;
     text-decoration: none;
 }

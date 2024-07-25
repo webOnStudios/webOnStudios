@@ -51,67 +51,31 @@
             </article>
         </section>
     </main> 
-
     <main class="container mt-4">
-        <h2 class="text-center">Cuenta de la Empresa</h2>
-        <section class="mb-4">
-            <h3>Datos de la Empresa</h3>
-            <form id="empresaForm">
-                <article class="form-group">
-                    <label for="nombreEmpresa">Nombre de la Empresa:</label>
-                    <input type="text" class="form-control" id="nombreEmpresa" value="Ejemplo S.A." required>
-                </article>
-                <article class="form-group">
-                    <label for="emailEmpresa">Correo Electrónico:</label>
-                    <input type="email" class="form-control" id="emailEmpresa" value="contacto@ejemplo.com" required>
-                </article>
-                <article class="form-group">
-                    <label for="telefonoEmpresa">Teléfono:</label>
-                    <input type="tel" class="form-control" id="telefonoEmpresa" value="+123456789" required>
-                </article>
-                <button type="submit" class="btn btn-danger" id="actualizar">Actualizar Datos</button>
-                <p id="mensajeerror"></p>
-            </form>
-            <p id="mensajeErrorEmpresa" class="mt-2"></p>
+        <h2 class="text-center">Sección de Ayuda</h2>
+        <p class="text-center">Nos comunicaremos contigo via email para solucionar tu problema</p>
+        <section class="row justify-content-center">
+            <article class="col-md-6 help-section">
+                <form id="helpForm">
+                    <div class="form-group">
+                        <label for="name">Nombre:</label>
+                        <input type="text" class="form-control" id="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Correo Electrónico:</label>
+                        <input type="email" class="form-control" id="email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="issue">Descripción del Problema:</label>
+                        <textarea class="form-control" id="issue" rows="5" required></textarea>
+                    </div>
+                    <button type="submit" class="btn btn-danger" id="guardar">Enviar</button>
+                </form>
+            </article>
         </section>
     </main>
-    <main class="container mt4">
-    <section>
-        <h3>Productos</h3>
-        <p class="mb-2">Para registrar un nuevo producto <a href="/var/www/HTML/EMPRESAS/agregar-productos.html" class="btn btn-primary">haz clic aquí</a></p>
-        <p class="mb-2">Para editar un producto ya existente buscalo <input type="text" placeholder="por su nombre aqui"><a data-toggle="modal" data-target="#myModal2" role="dialog" class="btn btn-info"> y luego haz clic aquí</a></p>
-        <article class="modal fade" id="myModal2" role="dialog">
-            <div class="modal-dialog">
-            
-              <div class="modal-content">
-                <div class="modal-header">
-                  <button type="button" class="close" data-dismiss="modal">&times;</button>
-                  <h4 class="modal-title">Editar Usuario</h4>
-                </div>
-                <div class="modal-body">
-                  <label>Nombre: </label><input type="text" id="nombre"> <br>
-                  <label>Precio: </label><input type="number" id="precio"><br>
-                  <label>Descripcion: </label><input type="text" id="descripcion"><br>
-                  <label>Categoria: </label><input type="text" id="categoria"><br>
-                  <button id="guardar">Editar producto</button>
-                  <p id="editar"></p>
-                </div>
-                <div class="modal-footer">
-                  <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
-                </div>
-              </div>
-              <p id="mensajeerror-p"></p>
-            </div>
-          </div>
-        </article>  
-        <p class="mb-2">Para eliminar un producto ya existente buscalo <input type="text" placeholder="por su nombre aqui"><button class="btn btn-danger"> y luego haz clic aquí</button></p>
-        <p id="mensajeerror"></p>
-    </section>
-</main>
-<script src="/var/www/JS/jquery-3.7.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.0.7/dist/umd/popper.min.js"></script>
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
-    </body>
-
+    <script src="/var/www/JS/jquery-3.7.1.min.js"></script>
+    <script src="/var/www/JS/EMPRESAS/ayuda-empresa.js"></script>
+    
+ </body>
 </html>
-
