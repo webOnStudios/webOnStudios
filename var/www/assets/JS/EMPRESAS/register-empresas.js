@@ -8,28 +8,35 @@ function validarFormulario() {
     let CI = $("#CI").val();
     let terminos = $("#terminos").is(":checked");
 
+    $("#mensajeerrorN").html(" ");
+    $("#mensajeerrorP").html(" ");
+    $("#mensajeerrorT").html(" ");
+    $("#mensajeerrorE").html(" ");
+    $("#mensajeerrorC").html(" ");
+    $("#mensajeerrorCheck").html(" ");
+    
     if (!nombre) {
         $("#mensajeerrorN").html("Por favor ingresa el nombre de la empresa.");
         return;
     }
     if (!contrasena) {
-        $("#mensajeerror").html("Por favor ingresa una contraseña.");
+        $("#mensajeerrorP").html("Por favor ingresa una contraseña.");
         return;
     }
     if (!telefono) {
-        $("#mensajeerror").html("Por favor ingresa tu teléfono.");
+        $("#mensajeerrorT").html("Por favor ingresa tu teléfono.");
         return;
     }
     if (!email) {
-        $("#mensajeerror").html("Por favor ingresa tu email empresarial.");
+        $("#mensajeerrorE").html("Por favor ingresa tu email empresarial.");
         return;
     }
     if (!CI) {
-        $("#mensajeerror").html("Por favor ingresa la cédula de la empresa.");
+        $("#mensajeerrorC").html("Por favor ingresa la cédula de la empresa.");
         return;
     }
     if (!terminos) {
-        $("#mensajeerror").html("Debes aceptar los términos y condiciones.");
+        $("#mensajeerrorCheck").html("Debes aceptar los términos y condiciones.");
         return;
     }
 }
