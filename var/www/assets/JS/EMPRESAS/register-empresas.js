@@ -8,10 +8,8 @@ function validarFormulario() {
     let CI = $("#CI").val();
     let terminos = $("#terminos").is(":checked");
 
-    $("#mensajeerror").html(""); 
-
     if (!nombre) {
-        $("#mensajeerror").html("Por favor ingresa el nombre de la empresa.");
+        $("#mensajeerrorN").html("Por favor ingresa el nombre de la empresa.");
         return;
     }
     if (!contrasena) {
