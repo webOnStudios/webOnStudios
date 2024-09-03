@@ -13,7 +13,7 @@ class Usuario {
     private $emailUsuario;
     private $nombreUsuario;
     private $apellidoUsuario;
-    private $telefonoUsuario;
+    private $fechaNacUsuario;
     private $contraseñaUsuario;
 
     // Constructor para inicializar la conexión a la base de datos.
@@ -69,12 +69,21 @@ class Usuario {
     public function setApellidoUsuario($apellidoUsuario) {
         $this->apellidoUsuario = $apellidoUsuario; 
     }
-    public function getTelefonoUsuario() {
-        return $this->telefonoUsuario; 
+    public function getFechaNacUsuario() {
+        return $this->fechaNacUsuario; 
     }
 
-    public function setTelefonoUsuario($telefonoUsuario) {
-        $this->telefonoUsuario = $telefonoUsuario; 
+    public function setFechaNacUsuario($fechaNacUsuario) {
+        if (!$this->validarFormatoFecha($fechaNacUsuario)) {
+            throw new Exception("El formato de la fecha es inválido.");
+        }
+        $this->fechaNacUsuario = $fechaNacUsuario; 
+    }
+    private function validarFormatoFecha($fecha) {
+        // Asegurarse de que la fecha esté en el formato correcto (YYYY-MM-DD)
+        $formato = 'Y-m-d';
+        $d = DateTime::createFromFormat($formato, $fecha);
+        return $d && $d->format($formato) === $fecha;
     }
 
     public function getCarrito() {
@@ -86,16 +95,16 @@ class Usuario {
     // Método para crear un nuevo usuario.
     public function create() {
         // Creamos una consulta SQL para insertar un nuevo registro en la tabla de usuarios.
-        $query = "INSERT INTO " . $this->table_name . " SET email=?, nombreUsuario=?, celular=?, contraseña=?";
+        $query = "INSERT INTO " . $this->table_name . " SET emailUsuario=?, nombreUsuario=?, cedulaUsuario=?, contraseñaUuario=?, apellidoUsuario=?, fechaNacUsuario, nickcnameUsuario=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
         
         // Aplicamos un hash a la contraseña para almacenarla de manera segura.
-        $hashedPassword = password_hash($this->contraseña, PASSWORD_DEFAULT);
+        $hashedPassword = password_hash($this->contraseñaUsuario, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL.
-        $stmt->bind_param("ssss", $this->email, $this->nombreUsuario, $this->celular, $hashedPassword);
+        $stmt->bind_param("ssss", $this->emailUsuario, $this->nombreUsuario, $this->cedulaUsuario, $this->apellidoUsuario, $this->fechaNacUsario, $this->nicknameUsuario, $hashedPassword);
         
         // Ejecutamos la consulta y verificamos si se ejecutó correctamente.
         if ($stmt->execute()) {
@@ -117,10 +126,10 @@ class Usuario {
         return $result; // Retornamos el resultado de la consulta.
     }
 
-    // Método para leer un usuario específico por su ID.
+    // Método para leer un usuario específico por su ci.
     public function readOne() {
-        // Consulta SQL para seleccionar un registro específico por ID.
-        $query = "SELECT * FROM " . $this->table_name . " WHERE id = ? LIMIT 0,1";
+        // Consulta SQL para seleccionar un registro específico por ci.
+        $query = "SELECT * FROM " . $this->table_name . " WHERE cedulaUsuario = ? LIMIT 0,1";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -139,7 +148,7 @@ class Usuario {
     // Método para actualizar un usuario existente.
     public function update() {
         // Consulta SQL para actualizar un registro en la tabla de usuarios.
-        $query = "UPDATE " . $this->table_name . " SET email=?, nombreUsuario=?, celular=?, contraseña=? WHERE id=?";
+        $query = "UPDATE " . $this->table_name . " SET emailUsuario=?, nombreUsuario=?, cedulaUsuario=?, contraseñaUuario=?, apellidoUsuario=?, fechaNacUsuario=?, nickcnameUsuario=?, WHERE cedulaUsuario=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -157,7 +166,7 @@ class Usuario {
     // Método para eliminar un usuario por su ID.
     public function delete() {
         // Consulta SQL para eliminar un registro específico por ID.
-        $query = "DELETE FROM " . $this->table_name . " WHERE id = ?";
+        $query = "DELETE FROM " . $this->table_name . " WHERE cedulaUsuario = ?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);

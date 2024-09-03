@@ -144,7 +144,7 @@ CREATE TABLE `usuario` (
   `emailUsuario` varchar(255) NOT NULL,
   `nombreUsuario` varchar(255) NOT NULL,
   `apellidoUsuario` varchar(255) NOT NULL,
-  `telefonoUsuario` int(9) DEFAULT NULL,
+  `fechaNacUsuario` DATE DEFAULT NULL,
   `contraseñaUsuario` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
