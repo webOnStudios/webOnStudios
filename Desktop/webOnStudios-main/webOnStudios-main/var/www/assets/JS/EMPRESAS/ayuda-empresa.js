@@ -1,22 +1,26 @@
 $("#guardar").click(validarFormularioAyuda);
+
 function validarFormularioAyuda() {
 
-    let name = $("#name").val();
+    let nombre = $("#name").val();
     let email = $("#email").val();
     let issue = $("#issue").val();
 
-    $("#mensajeError").html(""); 
+    $("#mensajeErrorN").html(""); 
+    $("#mensajeErrorE").html(""); 
+    $("#mensajeErrorI").html(""); 
 
-    if (!name) {
-        $("#mensajeError").html("Por favor ingresa tu nombre.");
+    if (!nombre) {
+        $("#mensajeErrorN").html("Por favor ingresa tu nombre.");
         return;
     }
     if (!email) {
-        $("#mensajeError").html("Por favor ingresa tu correo electrónico.");
+        $("#mensajeerrorE").html("Por favor ingresa tu email empresarial.");
         return;
     }
+
     if (!issue) {
-        $("#mensajeError").html("Por favor describe tu problema.");
+        $("#mensajeErrorI").html("Por favor describe tu problema.");
         return;
     }
 

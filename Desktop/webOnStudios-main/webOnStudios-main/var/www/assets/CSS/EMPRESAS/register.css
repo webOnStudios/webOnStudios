@@ -1,9 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
 body{
-    background-color: #e6e6e6;
+    background-color: white;
     font-family: 'Poppins', sans-serif;
     position: relative;
+    background-image: url(/var/www/assets/Imagenes/register-empresa.jpg);
+    background-repeat: no-repeat; /* Evita que la imagen se repita */
+    background-size: contain; /* Escala la imagen para ajustarse al área visible */
 }
 header{
     background-color: #1a1a1a;
@@ -29,6 +32,7 @@ header{
     font-size: 12px;
     text-align: right;
 }
+
 .register-boton{
     background-color: #1a1a1a;
     border-radius: 1rem;
@@ -45,6 +49,7 @@ header{
     transform: scale(1.1);
 }
 #register {
+    
     background-color: #1a1a1a;
     border-radius: 10px;
     box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
@@ -150,4 +155,23 @@ header{
     text-align: center;
     color: red;
     font-size: 12px;
+}
+h6{
+    color:white;
+}
+
+footer{
+    background-color: #1a1a1a;
+    color: rgb(153, 153, 153);
+    padding: 50px;
+    font-size: 12px;
+}
+footer a{
+    color:#7c1d1d;
+}
+
+footer a:hover{
+    color:#631414;
+    text-decoration:none;
+
 }

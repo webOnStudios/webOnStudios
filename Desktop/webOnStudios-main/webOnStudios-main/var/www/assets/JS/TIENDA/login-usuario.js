@@ -1,28 +1,33 @@
-$("#mostrartexto").click(CambiarTexto);
 $("#registerbuton").click(validarFormulario);
 
+function validarFormulario() {
+    let email = $("#nickname").val();
+    let contrasena = $("#contrasena").val();
+
+    $("#mensajeerrorN").html(""); 
+    $("#mensajeerrorC").html(""); 
+
+
+    if (!email) {
+        $("#mensajeerrorN").html("Por favor ingresa tu nickname o email.");
+        return;
+    }
+    if (!contrasena) {
+        $("#mensajeerrorC").html("Por favor ingresa tu contraseña.");
+        return;
+    }
+
+}
+
+$("#mostrartexto").click(CambiarTexto);
 
 function CambiarTexto() {
-var passwordField = $("#contrasena");
-var fieldType = passwordField.attr("type");
+    var passwordField = $("#contrasena");
+    var fieldType = passwordField.attr("type");
 
-if (fieldType === "password") {
-    passwordField.attr("type", "text");
-} else {
-    passwordField.attr("type", "password");
-}
-}
-
-function validarFormulario() {
-let nickname = $("#nickname").val();
-let contrasena = $("#contrasena").val();
-
-if (!nickname) {
-    $("#mensajeerror").html("Por favor ingresa tu nickname o email.");
-    return;
-}
-if (!contrasena) {
-    $("#mensajeerror").html("Por favor ingresa tu contraseña.");
-    return;
-}
+    if (fieldType === "password") {
+        passwordField.attr("type", "text");
+    } else {
+        passwordField.attr("type", "password");
+    }
 }

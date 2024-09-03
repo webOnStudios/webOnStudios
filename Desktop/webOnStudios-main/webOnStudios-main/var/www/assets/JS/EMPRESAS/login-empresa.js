@@ -1,21 +1,30 @@
 $("#registerbuton").click(validarFormulario);
 
 function validarFormulario() {
-    let nickname = $("#nickname").val();
+    let email = $("#email").val();
     let contrasena = $("#contraseña").val();
 
-    $("#mensajeerror").html(""); 
+    $("#mensajeerrorE").html(""); 
+    $("#mensajeerrorC").html(""); 
 
-    if (!nickname) {
-        $("#mensajeerror").html("Por favor ingresa tu email empresarial.");
+
+    if (!email) {
+        $("#mensajeerrorE").html("Por favor ingresa tu email empresarial.");
         return;
     }
+    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+
+    if (!emailRegex.test(email)) {
+        $("#mensajeerrorE").html("Por favor ingresa un email válido.");
+        return;
+    }
+    
     if (!contrasena) {
-        $("#mensajeerror").html("Por favor ingresa tu contraseña.");
+        $("#mensajeerrorC").html("Por favor ingresa tu contraseña.");
         return;
     }
-}
 
+}
 
 $("#mostrartexto").click(CambiarTexto);
 

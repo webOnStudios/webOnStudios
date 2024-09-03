@@ -92,28 +92,33 @@
         <main class="container mt-4">
             <h2 class="text-center">Sección de Ayuda</h2>
             <section class="row justify-content-center">
-                <article class="col-md-6 help-section">
-                    <form id="helpForm">
-                        <div class="form-group">
+                <article class="col-md-6">
+                        <div>
                             <label for="name">Nombre:</label>
-                            <input type="text" class="form-control" id="name" required>
+                            <input type="text" class="form-control" id="name">
                         </div>
-                        <div class="form-group">
+                        <p id="mensajeErrorN"></p>
+                        <div>
                             <label for="email">Correo Electrónico:</label>
-                            <input type="email" class="form-control" id="email" required>
+                            <input type="email" class="form-control" id="email">
                         </div>
-                        <div class="form-group">
+                        <p id="mensajeerrorE"></p>
+                        <div>
                             <label for="issue">Descripción del Problema:</label>
-                            <textarea class="form-control" id="issue" rows="5" required></textarea>
+                            <textarea class="form-control" id="issue" rows="5"></textarea>
+                            
                         </div>
+                        <p id="mensajeerrorI"></p>
+                        <div>
                         <button id="guardar" type="submit" class="btn btn-primary">Enviar</button>
-                    </form>
+                        </div>  
                 </article>
             </section>
-            <p id="mensajeerror"></p>
+            
         </main>
+        <script src="/var/www/assets/JS/jquery-3.7.1.min.js"></script>
         <script src="/var/www/assets/JS/TIENDA/ayuda-usuario.js"></script>
-<script src="/var/www/assets/JS/jquery-3.7.1.min.js"></script>
+
         <footer>
             <main class="container-fluid" id="footer">
                 <section class="row justify-content-center align-items-center">
