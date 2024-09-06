@@ -95,7 +95,7 @@ class Usuario {
     // Método para crear un nuevo usuario.
     public function create() {
         // Creamos una consulta SQL para insertar un nuevo registro en la tabla de usuarios.
-        $query = "INSERT INTO " . $this->table_name . " SET emailUsuario=?, nombreUsuario=?, cedulaUsuario=?, contraseñaUuario=?, apellidoUsuario=?, fechaNacUsuario, nickcnameUsuario=?";
+        $query = "INSERT INTO " . $this->table_name . " SET emailUsuario=?, nombreUsuario=?, cedulaUsuario=?, contraseñaUsuario=?, apellidoUsuario=?, fechaNacUsuario=?, nicknameUsuario=?";
         
         // Preparamos la consulta SQL.
         $stmt = $this->conn->prepare($query);
@@ -104,7 +104,7 @@ class Usuario {
         $hashedPassword = password_hash($this->contraseñaUsuario, PASSWORD_DEFAULT);
         
         // Unimos los valores a los parámetros de la consulta SQL.
-        $stmt->bind_param("ssss", $this->emailUsuario, $this->nombreUsuario, $this->cedulaUsuario, $this->apellidoUsuario, $this->fechaNacUsario, $this->nicknameUsuario, $hashedPassword);
+        $stmt->bind_param("sssssss", $this->emailUsuario, $this->nombreUsuario, $this->cedulaUsuario, $hashedPassword, $this->apellidoUsuario, $this->fechaNacUsuario, $this->nicknameUsuario);
         
         // Ejecutamos la consulta y verificamos si se ejecutó correctamente.
         if ($stmt->execute()) {
@@ -115,6 +115,7 @@ class Usuario {
             return false;
         }
     }
+    
     
     // Método para leer todos los usuarios.
     public function readAll() {

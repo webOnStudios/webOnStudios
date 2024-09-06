@@ -25,7 +25,19 @@
                 <h3>Gestión de Usuarios</h3>
                 <p>Aquí puedes gestionar los usuarios de la tienda</p>
                 <p>Busque el usuario aqui por su email:</p>
+                <button id="listarUsuarios">Listar Usuarios</button>
+                <table id="usuariosTable">
+                <tr>
+                  <th>Cédula</th>
+                  <th>Nickname</th>
+                  <th>Email</th>
+                  <th>Nombre</th>
+                  <th>Apellido</th>
+                  <th>Fecha de Nacimiento</th>
+                </tr>
+                </table>
                 <input type="email">
+                <ul id="listaUsuarios"></ul>
                 <button class="btn btn-danger mb-2">Eliminar Usuario</button>
                 <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal">Editar Usuario</button>
                 <article class="modal fade" id="myModal">
@@ -60,6 +72,7 @@
                 <p>Aquí puedes gestionar los productos de la tienda</p>
                 <p>Busque el producto aqui por su ID:</p>
                 <input type="number">
+                <ul id="listaProductos"></ul>
                 <button class="btn btn-danger mb-2">Eliminar Producto</button>
                 <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal2">Editar Producto</button>
                 <article class="modal fade" id="myModal2">
@@ -89,8 +102,9 @@
             <article id="empresas" class="mb-4">
                 <h3>Gestión de Empresas</h3>
                 <p>Aquí puedes gestionar las empresas asociadas</p>
-                <p>Busque la empresa aqui por su cedula/root:</p>
-                <input type="number">
+                <p>Busque la empresa aqui por su nombre/email/cédula Empresarial:</p>
+                <input type="text">
+
                 <button class="btn btn-danger mb-2" >Eliminar Empresa</button>
                 <button class="btn btn-primary mb-2" data-toggle="modal" data-target="#myModal3">Editar Empresa</button>
                 <article class="modal fade" id="myModal3">

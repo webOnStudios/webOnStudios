@@ -1,5 +1,38 @@
 $("#guardar-u").click(validarUsuario);
 
+$("#listarUsuarios").click(listarUsuarios);
+
+function listarUsuarios() {
+    $.ajax({
+        url: '/controlador/usuarioController.php', // Ruta accesible desde el navegador
+        type: 'POST',
+        data: { accion: 'listar' },
+        dataType: 'json',
+        success: function(response) {
+            if (Array.isArray(response)) {
+                let usuariosHtml = '';
+                response.forEach(usuario => {
+                    usuariosHtml += `
+                        <tr>
+                            <td>${usuario.cedulaUsuario}</td>
+                            <td>${usuario.nicknameUsuario}</td>
+                            <td>${usuario.emailUsuario}</td>
+                            <td>${usuario.nombreUsuario}</td>
+                            <td>${usuario.apellidoUsuario}</td>
+                            <td>${usuario.fechaNacUsuario}</td>
+                        </tr>
+                    `;
+                });
+                $("#usuariosTable tbody").html(usuariosHtml);
+            } else {
+                console.error("Error al listar los usuarios: " + response.mensaje);
+            }
+        },
+        error: function(xhr, status, error) {
+            console.error("Error en la solicitud AJAX: " + error);
+        }
+    });
+}
 function validarUsuario() {
     let nombre = $("#nombre-u").val();
     let apellido = $("#apellido-u").val();
