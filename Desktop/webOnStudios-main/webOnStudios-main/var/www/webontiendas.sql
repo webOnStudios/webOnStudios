@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 03-09-2024 a las 04:16:46
+-- Tiempo de generación: 09-09-2024 a las 04:09:32
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -11,7 +11,6 @@ SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
 
-GRANT SELECT, INSERT, UPDATE ON webontiendas.* TO 'root'@'localhost' IDENTIFIED BY '';
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -145,8 +144,19 @@ CREATE TABLE `usuario` (
   `emailUsuario` varchar(255) NOT NULL,
   `nombreUsuario` varchar(255) NOT NULL,
   `apellidoUsuario` varchar(255) NOT NULL,
-  `fechaNacUsuario` DATE DEFAULT NULL,
+  `telefonoUsuario` int(9) DEFAULT NULL,
   `contraseñaUsuario` varchar(255) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `venden`
+--
+
+CREATE TABLE `venden` (
+  `idEmpresa` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
@@ -217,6 +227,13 @@ ALTER TABLE `usuario`
   ADD UNIQUE KEY `emailUsuario` (`emailUsuario`);
 
 --
+-- Indices de la tabla `venden`
+--
+ALTER TABLE `venden`
+  ADD PRIMARY KEY (`idEmpresa`,`idProducto`),
+  ADD KEY `idProducto` (`idProducto`);
+
+--
 -- AUTO_INCREMENT de las tablas volcadas
 --
 
@@ -281,6 +298,13 @@ ALTER TABLE `genera`
 --
 ALTER TABLE `tarjeta`
   ADD CONSTRAINT `tarjeta_ibfk_1` FOREIGN KEY (`cedulaUsuario`) REFERENCES `usuario` (`cedulaUsuario`);
+
+--
+-- Filtros para la tabla `venden`
+--
+ALTER TABLE `venden`
+  ADD CONSTRAINT `venden_ibfk_1` FOREIGN KEY (`idEmpresa`) REFERENCES `empresa` (`idEmpresa`),
+  ADD CONSTRAINT `venden_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

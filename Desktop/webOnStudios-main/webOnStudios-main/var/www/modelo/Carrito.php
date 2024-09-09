@@ -47,4 +47,23 @@ class Usuario {
     public function setEstadoCarrito($estadoCarrito) {
        $this->estadoCarrito = $estadoCarrito;
     }
+    public function agregarProductoAlCarrito($idProducto, $cantidad) {
+        $sql = "INSERT INTO Contiene (idCarrito, cedulaUsuario, idProducto, cantProducto) VALUES (?, ?, ?, ?)
+                ON DUPLICATE KEY UPDATE cantProducto = cantProducto + VALUES(cantProducto)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('iiid', $this->idCarrito, $this->cedulaUsuario, $idProducto, $cantidad);
+        return $stmt->execute();
+    }
+
+    public function verCarrito() {
+        $sql = "SELECT p.nombreProducto, c.cantProducto, p.precioProducto 
+                FROM Contiene c 
+                JOIN Producto p ON c.idProducto = p.idProducto 
+                WHERE c.idCarrito = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('i', $this->idCarrito);
+        $stmt->execute();
+        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+    }
 }
+?>

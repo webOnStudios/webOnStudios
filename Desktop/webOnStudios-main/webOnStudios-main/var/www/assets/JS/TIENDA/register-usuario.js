@@ -115,33 +115,7 @@ function validarFormulario() {
         return;
     }
 
-    let formData = {
-        accion: 'registrar',
-        nombreUsuario: nombre,
-        apellidoUsuario: apellido,
-        nicknameUsuario: nickname,
-        contraseñaUsuario: contrasena,
-        emailUsuario: email,
-        cedulaUsuario: CI,
-        fechaNacUsuario: fechaNac
-    };
-
-    $.ajax({
-        url: '../controlador/usuarioController.php', // Ruta accesible desde el navegador
-        type: 'POST',
-        data: formData,
-        dataType: 'json',
-        success: function(response) {
-            if (response.mensaje === "Usuario registrado con éxito") {
-                window.location.href = "../../vista/TIENDA/index.html"; // Ruta relativa
-            }
-        },
-        error: function(xhr, status, error) {
-            console.error("Error al registrar el usuario.");
-        }
-    });
 }
-
 function limitarCaracteres(event) {
     const input = event.target;
     if (input.value.length > 8) {
