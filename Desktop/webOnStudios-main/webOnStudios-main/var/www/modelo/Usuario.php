@@ -79,20 +79,6 @@ class Usuario {
         }
         $this->fechaNacUsuario = $fechaNacUsuario; 
     }
-    private function validarFormatoFecha($fecha) {
-        // Asegurarse de que la fecha esté en el formato correcto (YYYY-MM-DD)
-        $formato = 'Y-m-d';
-        $d = DateTime::createFromFormat($formato, $fecha);
-        return $d && $d->format($formato) === $fecha;
-    }
-
-    public function getCarrito() {
-        // Aquí podrías cargar el carrito asociado a este usuario
-        return Carrito::findByCedulaUsuario($this->cedulaUsuario);
-    }
-
-
-    // Método para crear un nuevo usuario.
     public function create() {
         // Creamos una consulta SQL para insertar un nuevo registro en la tabla de usuarios.
         $query = "INSERT INTO " . $this->table_name . " SET emailUsuario=?, nombreUsuario=?, cedulaUsuario=?, contraseñaUsuario=?, apellidoUsuario=?, fechaNacUsuario=?, nicknameUsuario=?";

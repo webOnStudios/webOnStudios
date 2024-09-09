@@ -14,9 +14,9 @@ class Tarjeta {
     private $tipoTarjeta;
     private $nombrePropietario;
     private $cedulaUsuario;
-
-    public function __construct($conexion) {
-        $this->db = $conexion;
+    public function __construct() {
+        $database = new Database(); // Creamos una instancia de la clase Database.
+        $this->conn = $database->getConnection(); // Obtenemos la conexión a la base de datos.
     }
 
     // Getters
@@ -84,24 +84,6 @@ class Tarjeta {
         $stmt->bind_param("sssssi", $this->NroTarjeta, $this->fechaVencimiento, $this->CVV, $this->tipoTarjeta, $this->nombrePropietario, $this->cedulaUsuario);
         return $stmt->execute();
     }
-
-    // Editar una tarjeta existente
-    public function editarTarjeta($NroTarjeta, $fechaVencimiento, $CVV, $tipoTarjeta, $nombrePropietario, $cedulaUsuario) {
-        $this->setNroTarjeta($NroTarjeta);
-        $this->setFechaVencimiento($fechaVencimiento);
-        $this->setCVV($CVV);
-        $this->setTipoTarjeta($tipoTarjeta);
-        $this->setNombrePropietario($nombrePropietario);
-        $this->setCedulaUsuario($cedulaUsuario);
-
-        $sql = "UPDATE Tarjeta 
-                SET fechaVencimiento = ?, CVV = ?, tipoTarjeta = ?, nombrePropietario = ?, cedulaUsuario = ? 
-                WHERE NroTarjeta = ?";
-        $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("sssssi", $this->fechaVencimiento, $this->CVV, $this->tipoTarjeta, $this->nombrePropietario, $this->cedulaUsuario, $this->NroTarjeta);
-        return $stmt->execute();
-    }
-
     // Ver los detalles de una tarjeta específica
     public function verTarjeta($NroTarjeta) {
         $sql = "SELECT * FROM Tarjeta WHERE NroTarjeta = ?";
@@ -111,13 +93,12 @@ class Tarjeta {
         return $stmt->get_result()->fetch_assoc();
     }
 
-    // Ver todas las tarjetas de un usuario específico
-    public function verTarjetasPorUsuario($cedulaUsuario) {
-        $sql = "SELECT * FROM Tarjeta WHERE cedulaUsuario = ?";
+    public function eliminarTarjeta($NroTarjeta) {
+        $sql = "DELETE FROM Tarjeta WHERE NroTarjeta = ?";
         $stmt = $this->db->prepare($sql);
-        $stmt->bind_param("i", $cedulaUsuario);
-        $stmt->execute();
-        return $stmt->get_result()->fetch_all(MYSQLI_ASSOC);
+        $stmt->bind_param("s", $NroTarjeta);
+        return $stmt->execute();
     }
+
 }
 ?>
