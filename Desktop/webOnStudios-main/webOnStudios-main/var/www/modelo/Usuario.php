@@ -164,5 +164,14 @@ class Usuario {
         // Ejecutamos la consulta y retornamos el resultado (true si fue exitoso, false si no lo fue).
         return $stmt->execute();
     }
+    public function comprarProductos($productos, $direccionEnvio, $medioPago, $estadoTicket) {
+        $compra = new Compra();
+        $nroCompra = $compra->realizarCompra($productos, $direccionEnvio, $medioPago, $estadoTicket, $this->cedulaUsuario);
+    }
+    public function devolverProducto($nroCompra, $idProducto, $motivoDevolucion) {
+        $compra = new Compra();
+        $resultado = $compra->devolverProducto($nroCompra, $idProducto, $this->cedulaUsuario, $motivoDevolucion);
+
+    }
 }
 ?>

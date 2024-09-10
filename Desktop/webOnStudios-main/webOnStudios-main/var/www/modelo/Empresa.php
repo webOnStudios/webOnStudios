@@ -2,7 +2,7 @@
 // Incluimos el archivo de configuración de la base de datos.
 require '/var/www/config/Database.php';
 
-class Usuario {
+class Empresa {
     // Conexión a la base de datos y nombre de la tabla.
     private $conn;
     private $table_name = "empresa";
