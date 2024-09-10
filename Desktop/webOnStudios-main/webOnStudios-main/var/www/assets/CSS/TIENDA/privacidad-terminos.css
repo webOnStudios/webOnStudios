@@ -124,12 +124,17 @@ footer{
     padding: 15px;
     margin-top: 70px;
 }
-
-.footera{
-    color:rgb(172, 164, 164);
+footer h5{
+    color:rgb(182, 182, 182);
 }
-.footera:hover{
-    color:white;
+footer ul{
+    color: rgb(102, 102, 102);
+}
+footer a{
+    color:rgb(102, 102, 102);
+}
+footer a:hover{
+    color:rgb(131, 126, 126);
     text-decoration: none;
 }
 

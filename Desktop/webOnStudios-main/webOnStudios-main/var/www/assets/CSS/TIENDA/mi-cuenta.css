@@ -118,17 +118,26 @@ footer{
     padding: 15px;
     margin-top: 70px;
 }
-
+footer{
+    background-color: #2a2f4e;
+    font-size: small;
+    padding: 15px;
+    margin-top: 70px;
+}
+footer h5{
+    color:rgb(182, 182, 182);
+}
+footer ul{
+    color: rgb(102, 102, 102);
+}
 footer a{
-    color:#b0caec;
+    color:rgb(102, 102, 102);
 }
 footer a:hover{
-    color:#77879c;
+    color:rgb(131, 126, 126);
     text-decoration: none;
 }
 
-#producto{
-    background-color: white;
-    padding: 20px;
-    border-radius: 1rem;
+footer p{
+    color:rgb(102, 102, 102);
 }
