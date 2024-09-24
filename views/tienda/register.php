@@ -120,6 +120,7 @@
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
                 <input id="email" name="emailUsuario" type="email" placeholder="Email" required>
             </article>
+            
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
                 <p id="mensajeerrorE"></p>
             </article>
