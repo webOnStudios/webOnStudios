@@ -50,20 +50,21 @@
         </section>
     </main> 
 <div class="container-fluid" id="register">
+    <form method="POST" action="/WebOnStudios/index.php?action=crearEmpresa">
     <section class="row justify-content-between">
         <article class="col-md-12 col-12 d-flex justify-content-center">
             <h2 class="titulo-registro">REGISTRARSE</h2>
             
         </article>
         <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
-            <input id="nombre" type="text" placeholder="Nombre de la empresa">
+            <input id="nombre" type="text" placeholder="Nombre de la empresa" name="nombreEmpresa">
             
         </article>
         <article class="col-md-12 col-12 d-flex justify-content-center">
         <p id="mensajeerrorN" class="error"></p>
         </article>
         <article class="col-md-10 mt-2 mt-md-0 col-10 d-flex justify-content-center">
-            <input id="contrasena" type="password" placeholder="Contraseña">
+            <input id="contrasena" type="password" placeholder="Contraseña" name="contraseñaEmpresa">
         </article>
         <article class="col-md-2 mt-2 mt-md-0 col-2 d-flex justify-content-center">
             <button class="contra" id="mostrartexto"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAmVJREFUSEuFVYtx6jAQ3HMlUEmgkjwqwakEqARSCa5EG1Z3ss9EztOMx7Y+99nbWxn+OwwAgXj92v7nstVjncNra/mv/73l3U3PDgp5NuBmNkw16k64BnZX+kCkDFh4fm0aAcj40Z34WOLrRNqBKO/3DIQyuQNwB7GDyQmOZjY7cS/Z2vq7n9lbDQq5MzkB5Kw6AXAg8GHEAVbnNR7xvul7G1LAcmBLJrwDFsZUiznRFdR1xZdHArehZqyoW51aBglrZQHgosgDPBA2GvEt6MKd9nzEntjXYF0TJIVmKCyCqBkP/OXQJhAPWDglJhhOiriQcnAhoLO/arfKnaSKLKw19pWPFjVJeETCJzO7Np4Vlqc5Qa5mdsoMDBaV88uaaNqGoj6Gs2DXqh57/TnuiYVOkNl5pukz2DMC/BdFbkySjTtQ4WrErumZiSdOWVK9xJGwaTDbe8Gjk1jKM4wqPdEw6EoxQ3SVkcSuOjHZYBVKGSpqVuOomvn8ZidX/kfU2FGGak9UiFozan18ZfAl82QRNEIhzb9pEckG04PCMYqcGRK1vkfTBYR1NtjHx2DDsSlZj6YN6zf8VbyAy700uLRPzwF0yLpalAolQ37YM1A99Kj4mmhRf9YG9NrU+VaPxMS1BmTZIHmJnmj6s5zrq0eltQ0hkEkLI/isIYtEk0WU/XQKV8shhHy82PUd8n5J88fBhsmFt6NFTZGXcNeO39OXS2fQzC6XC2US9M1n4ruj+61hNm66oGmT+pMNdl0cbF+pfbMbF1so8SFrVF/oV5reuTK3b86MbKpB515dQl8v9m/O7T0/SV1IM2xkZVsAAAAASUVORK5CYII=" alt=""></button>
@@ -72,20 +73,20 @@
         <p id="mensajeerrorP" class="error"></p>
         </article>
         <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-            <input id="nickname" type="number" placeholder="Teléfono">
+            <input id="nickname" type="number" placeholder="Teléfono" name="telefonoEmpresa">
             
         </article>
         <article class="col-md-12 col-12 d-flex justify-content-center">
         <p id="mensajeerrorT" class="error"></p>
         </article>
         <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-            <input id="email" type="email" placeholder="Email empresarial">
+            <input id="email" type="email" placeholder="Email empresarial" name="contactoEmpresa">
         </article>
         <article class="col-md-12 col-12 d-flex justify-content-center">
         <p id="mensajeerrorE" class="error"></p>
         </article>
         <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-            <input id="CI" type="number" placeholder="Cédula de la empresa" oninput="limitarCaracteres(event)"> 
+            <input id="CI" type="number" placeholder="Cédula de la empresa" oninput="limitarCaracteres(event)" name="cedulaEmpresa"> 
         </article>
         <article class="col-md-12 col-12 d-flex justify-content-center">
         <p id="mensajeerrorC" class="error"></p>
@@ -104,7 +105,7 @@
     </section>
     <section>
         <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-            <button id="registerbuton"> Registrarse </button>
+            <button type="submit" id="registerbuton"> Registrarse </button>
         </article>
     </section>
     <section>
@@ -112,6 +113,7 @@
             <h5>¿Ya tienes una empresa registrada con nosotros? <a href="../../vista/EMPRESAS/login-empresas.html">Inicia sesión</a></h5>
         </article>
     </section>  
+</form>
 </div> 
 
 <script src="../../assets/JS/jquery-3.7.1.min.js"></script>

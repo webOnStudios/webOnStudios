@@ -88,7 +88,7 @@
     </main>
     <div class="container-fluid" id="register">
 
-        <form class="row justify-content-between" action="index.php?action=crearUsuario" method="POST" id="registerForm">
+        <form class="row justify-content-between" action="/WebOnStudios/index.php?action=crearUsuario" method="POST" id="registerForm">
             <article class="col-md-12 col-12 d-flex justify-content-center">
                 <h2 class="titulo-registro">REGISTRARSE</h2>
             </article>

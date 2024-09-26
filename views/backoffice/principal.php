@@ -64,7 +64,7 @@
       <th scope="col">Apellido</th>
       <th scope="col">Email</th>
       <th scope="col">Contraseña</th>
-      <th scope="col">Telefono</th>
+      <th scope="col">Fecha de nacimiento</th>
       <th scope="col" colspan="3">Cédula</th>
     </tr>
   </thead>
@@ -79,7 +79,7 @@
             <td><?php echo $datos->apellidoUsuario; ?></td>
             <td><?php echo $datos->emailUsuario; ?></td>
             <td><?php echo $datos->contraseñaUsuario; ?></td>
-            <td><?php echo $datos->telefonoUsuario; ?></td>
+            <td><?php echo $datos->FechaNacUsuario; ?></td>
             <td><?php echo $datos->cedulaUsuario; ?></td>
             <td><button class="btn btn-info"><box-icon name='edit-alt' type='solid' color='#ffffff'></box-icon></button></td>
             <td><button class="btn btn-danger"><box-icon name='trash' type='solid' color='#ffffff'></box-icon></button></td>

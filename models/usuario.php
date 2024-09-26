@@ -1,7 +1,7 @@
 <?php
 
 require_once 'config/database.php';
-class Admin {
+class Usuario {
     private $cedulaUsuario;
     private $nicknameUsuario;
     private $emailUsuario;
@@ -78,7 +78,7 @@ class Admin {
     public function setFechaNacUsuario($FechaNacUsuario) {
         $this->FechaNacUsuario = $FechaNacUsuario;
     }
-    
+
     public function crearUsuario($conexion) {
         $stmt = $conexion->prepare("INSERT INTO usuario (cedulaUsuario, nicknameUsuario, emailUsuario, nombreUsuario, apellidoUsuario, contraseñaUsuario, FechaNacUsuario) VALUES (?, ?, ?, ?, ?, ?, ?)");
         
