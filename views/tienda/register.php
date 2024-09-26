@@ -88,28 +88,28 @@
     </main>
     <div class="container-fluid" id="register">
 
-        <form class="row justify-content-between" action="?action=create" method="POST" id="registerForm">
+        <form class="row justify-content-between" action="index.php?action=crearUsuario" method="POST" id="registerForm">
             <article class="col-md-12 col-12 d-flex justify-content-center">
                 <h2 class="titulo-registro">REGISTRARSE</h2>
             </article>
             
             <article class="col-md-6 mt-2 mt-md-0 col-6 d-flex justify-content-center">
-                <input id="nombre" name="nombreUsuario" type="text" placeholder="Nombre" required>
+                <input id="nombre" class="form-control" name="nombreUsuario" type="text" placeholder="Nombre" required>
             </article>
             <article class="col-md-6 mt-2 mt-md-0 col-6 d-flex justify-content-center">
-                <input id="apellido" name="apellidoUsuario" type="text" placeholder="Apellido" required>
+                <input id="apellido" class="form-control" name="apellidoUsuario" type="text" placeholder="Apellido" required>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
                 <p id="mensajeerrorNA"></p>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="nickname" name="nicknameUsuario" type="text" placeholder="Nickname" required>
+                <input id="nickname" class="form-control" name="nicknameUsuario" type="text" placeholder="Nickname" required>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
                 <p id="mensajeerrorN"></p>
             </article>
             <article class="col-md-10 mt-2 mt-md-0 col-10 d-flex justify-content-center">
-                <input id="contrasena" name="contraseñaUsuario" type="password" placeholder="Contraseña" required>
+                <input id="contrasena" class="form-control" name="contraseñaUsuario" type="password" placeholder="Contraseña" required>
             </article>
             <article class="col-md-2 mt-2 mt-md-0 col-2 d-flex justify-content-center">
                 <button class="contra" id="mostrartexto"><img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABgAAAAYCAYAAADgdz34AAAAAXNSR0IArs4c6QAAAmVJREFUSEuFVYtx6jAQ3HMlUEmgkjwqwakEqARSCa5EG1Z3ss9EztOMx7Y+99nbWxn+OwwAgXj92v7nstVjncNra/mv/73l3U3PDgp5NuBmNkw16k64BnZX+kCkDFh4fm0aAcj40Z34WOLrRNqBKO/3DIQyuQNwB7GDyQmOZjY7cS/Z2vq7n9lbDQq5MzkB5Kw6AXAg8GHEAVbnNR7xvul7G1LAcmBLJrwDFsZUiznRFdR1xZdHArehZqyoW51aBglrZQHgosgDPBA2GvEt6MKd9nzEntjXYF0TJIVmKCyCqBkP/OXQJhAPWDglJhhOiriQcnAhoLO/arfKnaSKLKw19pWPFjVJeETCJzO7Np4Vlqc5Qa5mdsoMDBaV88uaaNqGoj6Gs2DXqh57/TnuiYVOkNl5pukz2DMC/BdFbkySjTtQ4WrErumZiSdOWVK9xJGwaTDbe8Gjk1jKM4wqPdEw6EoxQ3SVkcSuOjHZYBVKGSpqVuOomvn8ZidX/kfU2FGGak9UiFozan18ZfAl82QRNEIhzb9pEckG04PCMYqcGRK1vkfTBYR1NtjHx2DDsSlZj6YN6zf8VbyAy700uLRPzwF0yLpalAolQ37YM1A99Kj4mmhRf9YG9NrU+VaPxMS1BmTZIHmJnmj6s5zrq0eltQ0hkEkLI/isIYtEk0WU/XQKV8shhHy82PUd8n5J88fBhsmFt6NFTZGXcNeO39OXS2fQzC6XC2US9M1n4ruj+61hNm66oGmT+pMNdl0cbF+pfbMbF1so8SFrVF/oV5reuTK3b86MbKpB515dQl8v9m/O7T0/SV1IM2xkZVsAAAAASUVORK5CYII=" alt=""></button>
@@ -118,14 +118,14 @@
                 <p id="mensajeerrorC"></p>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="email" name="emailUsuario" type="email" placeholder="Email" required>
+                <input id="email" class="form-control" name="emailUsuario" type="email" placeholder="Email" required>
             </article>
             
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
                 <p id="mensajeerrorE"></p>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <input id="CI" type="number" name="cedulaUsuario" placeholder="CI" oninput="limitarCaracteres(event)" required>
+                <input id="CI" type="number" class="form-control" name="cedulaUsuario" placeholder="CI" oninput="limitarCaracteres(event)" required>
                 <p id="mensaje"></p>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
@@ -133,12 +133,12 @@
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
                 <p>Fecha de nacimiento: </p>
-                <input id="fechaNac" name="fechaNacUsuario" type="date" required>
+                <input id="fechaNac" class="form-control" name="fechaNacUsuario" type="date" required>
             </article>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-center">
                 <p id="mensajeerrorF"></p>
             </article>
-        </form>
+        
         <section class="row justify-content-between">
             <article class="col-md-2 mt-2 mt-md-0 col-2 d-flex justify-content-end">
                 <input type="checkbox" id="terminos" required>     
@@ -152,7 +152,7 @@
         </section>
         <section>
             <article class="col-md-12 mt-2 mt-md-0 col-12 d-flex justify-content-start">
-                <button type="button"  id="registerbuton"> Registrarse </button>
+                <button type="submit"  id="registerbuton"> Registrarse </button>
             </article>
         </section>
         <section>
@@ -160,7 +160,7 @@
                 <p>¿Ya tienes una cuenta con nosotros? <a href="login.html">Inicia sesión</a></p>
             </article>
         </section>
-        
+        </form>
     </div> 
     <script src="../../assets/JS/jquery-3.7.1.min.js"></script>    
     <script src="../../assets/JS/TIENDA/register-usuario.js"></script>

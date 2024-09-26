@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 19-09-2024 a las 18:50:33
+-- Tiempo de generación: 26-09-2024 a las 02:02:46
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -203,39 +203,39 @@ CREATE TABLE `usuario` (
   `emailUsuario` varchar(255) NOT NULL,
   `nombreUsuario` varchar(255) NOT NULL,
   `apellidoUsuario` varchar(255) NOT NULL,
-  `telefonoUsuario` int(9) DEFAULT NULL,
-  `contraseñaUsuario` varchar(255) NOT NULL
+  `contraseñaUsuario` varchar(255) NOT NULL,
+  `FechaNacUsuario` date DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Volcado de datos para la tabla `usuario`
 --
 
-INSERT INTO `usuario` (`cedulaUsuario`, `nicknameUsuario`, `emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `telefonoUsuario`, `contraseñaUsuario`) VALUES
-(11111111, 'pepe123', 'pepe@gmail.com', 'pepe', 'lorenzo', 92456778, 'Pepito123'),
-(11112111, 'LaPapa', 'lapapa@gmail.com', 'Papa', 'Papita', 99103895, 'Papa10000'),
-(12340123, 'ecortes', 'emilia.cortes@example.com', 'Emilia', 'Cortés', 98123401, 'Emi_Cortes_123'),
-(12345678, 'jperez', 'juan.perez@example.com', 'Juan', 'Pérez', 99123456, 'Contraseña1'),
-(12349012, 'mfarias', 'martin.farias@example.com', 'Martín', 'Farías', 99123490, 'Martin.Farias.22'),
-(23406789, 'mrodriguez', 'maria.rodriguez@example.com', 'María', 'Rodríguez', 99234567, 'PassMaria2023'),
-(23450123, 'grodrigo', 'gabriela.rodrigo@example.com', 'Gabriela', 'Rodrigo', 99234501, 'G4briela_Rod123'),
-(23451234, 'ffranco', 'fabian.franco@example.com', 'Fabián', 'Franco', 98234512, 'Franco_2023#'),
-(23456789, 'Olita de mar', 'olitademar@adinet.com.uy', 'olita', 'olanda', 98123789, 'olitademaR123'),
-(34562345, 'jdominguez', 'julieta.dominguez@example.com', 'Julieta', 'Domínguez', 98345623, 'Juli4Dom1nguez'),
-(34567890, 'ffernandez', 'fernando.fernandez@example.com', 'Fernando', 'Fernández', 99345678, 'Fernando_F123'),
-(45673456, 'mtorres', 'marco.torres@example.com', 'Marco', 'Torres', 98456734, 'Marco.Torres90'),
-(45678901, 'lgarcia', 'lucia.garcia@example.com', 'Lucía', 'García', 99456789, 'Luci4Garcia'),
-(55920178, 'Gramaj0', 'maugematteo@gmail.com', 'Maria', 'Matteo', 92137378, 'majo2006.'),
-(56784567, 'acosta', 'antonio.costa@example.com', 'Antonio', 'Costa', 98567845, 'Costa.Ant0nio'),
-(56789012, 'dlopez', 'diego.lopez@example.com', 'Diego', 'López', 99567890, 'Lopez_1988'),
-(67890123, 'asanchez', 'andrea.sanchez@example.com', 'Andrea', 'Sánchez', 99678901, 'AndreaSnz123'),
-(67895678, 'dsuarez', 'daniela.suarez@example.com', 'Daniela', 'Suárez', 98678956, 'DanielaS23$'),
-(78901234, 'jramirez', 'jose.ramirez@example.com', 'José', 'Ramírez', 99789012, 'JoseR123!'),
-(78906789, 'lmendez', 'laura.mendez@example.com', 'Laura', 'Méndez', 98789067, 'Lauri.Mendez99'),
-(89012345, 'vtorres', 'veronica.torres@example.com', 'Verónica', 'Torres', 99890123, 'VeroniTorres2024'),
-(89017890, 'rcorrea', 'ricardo.correa@example.com', 'Ricardo', 'Correa', 98890178, 'Ric4rdoCor123'),
-(90123456, 'pcastro', 'pablo.castro@example.com', 'Pablo', 'Castro', 99901234, 'Pablo_C4str0'),
-(90128901, 'cmartinez', 'camila.martinez@example.com', 'Camila', 'Martínez', 98901289, 'CamiMart!2024');
+INSERT INTO `usuario` (`cedulaUsuario`, `nicknameUsuario`, `emailUsuario`, `nombreUsuario`, `apellidoUsuario`, `contraseñaUsuario`, `FechaNacUsuario`) VALUES
+(11111111, 'pepe123', 'pepe@gmail.com', 'pepe', 'lorenzo', 'Pepito123', NULL),
+(11112111, 'LaPapa', 'lapapa@gmail.com', 'Papa', 'Papita', 'Papa10000', NULL),
+(12340123, 'ecortes', 'emilia.cortes@example.com', 'Emilia', 'Cortés', 'Emi_Cortes_123', NULL),
+(12345678, 'jperez', 'juan.perez@example.com', 'Juan', 'Pérez', 'Contraseña1', NULL),
+(12349012, 'mfarias', 'martin.farias@example.com', 'Martín', 'Farías', 'Martin.Farias.22', NULL),
+(23406789, 'mrodriguez', 'maria.rodriguez@example.com', 'María', 'Rodríguez', 'PassMaria2023', NULL),
+(23450123, 'grodrigo', 'gabriela.rodrigo@example.com', 'Gabriela', 'Rodrigo', 'G4briela_Rod123', NULL),
+(23451234, 'ffranco', 'fabian.franco@example.com', 'Fabián', 'Franco', 'Franco_2023#', NULL),
+(23456789, 'Olita de mar', 'olitademar@adinet.com.uy', 'olita', 'olanda', 'olitademaR123', NULL),
+(34562345, 'jdominguez', 'julieta.dominguez@example.com', 'Julieta', 'Domínguez', 'Juli4Dom1nguez', NULL),
+(34567890, 'ffernandez', 'fernando.fernandez@example.com', 'Fernando', 'Fernández', 'Fernando_F123', NULL),
+(45673456, 'mtorres', 'marco.torres@example.com', 'Marco', 'Torres', 'Marco.Torres90', NULL),
+(45678901, 'lgarcia', 'lucia.garcia@example.com', 'Lucía', 'García', 'Luci4Garcia', NULL),
+(55920178, 'Gramaj0', 'maugematteo@gmail.com', 'Maria', 'Matteo', 'majo2006.', NULL),
+(56784567, 'acosta', 'antonio.costa@example.com', 'Antonio', 'Costa', 'Costa.Ant0nio', NULL),
+(56789012, 'dlopez', 'diego.lopez@example.com', 'Diego', 'López', 'Lopez_1988', NULL),
+(67890123, 'asanchez', 'andrea.sanchez@example.com', 'Andrea', 'Sánchez', 'AndreaSnz123', NULL),
+(67895678, 'dsuarez', 'daniela.suarez@example.com', 'Daniela', 'Suárez', 'DanielaS23$', NULL),
+(78901234, 'jramirez', 'jose.ramirez@example.com', 'José', 'Ramírez', 'JoseR123!', NULL),
+(78906789, 'lmendez', 'laura.mendez@example.com', 'Laura', 'Méndez', 'Lauri.Mendez99', NULL),
+(89012345, 'vtorres', 'veronica.torres@example.com', 'Verónica', 'Torres', 'VeroniTorres2024', NULL),
+(89017890, 'rcorrea', 'ricardo.correa@example.com', 'Ricardo', 'Correa', 'Ric4rdoCor123', NULL),
+(90123456, 'pcastro', 'pablo.castro@example.com', 'Pablo', 'Castro', 'Pablo_C4str0', NULL),
+(90128901, 'cmartinez', 'camila.martinez@example.com', 'Camila', 'Martínez', 'CamiMart!2024', NULL);
 
 -- --------------------------------------------------------
 

@@ -1,7 +1,7 @@
 <?php
 // Incluir el controlador de Admin
 require_once 'controllers/adminsController.php';
-
+require_once 'controllers/usuarioController.php';
 // Crear una instancia del controlador de Admin
 $controller = new AdminController();
 
@@ -19,9 +19,18 @@ switch ($action) {
             include 'views/backoffice/register.php';
         }
         break;
-    
+    case 'crearUsuario':
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') { // Si el método es POST
+            $response = $controller->crearUsuario($_POST); // Llamar a la función crear del controlador y pasar los datos de POST
+            echo $response; // Mostrar la respuesta del controlador
+        } else {
+            // Incluir la vista para registrar un nuevo admin
+            include 'views/tienda/register.php';
+        }
+        break;
     default: // Si no se especifica una acción válida
         echo "Acción no válida";
         break;
+    
 }
 ?>
