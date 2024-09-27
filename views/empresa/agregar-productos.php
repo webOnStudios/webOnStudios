@@ -54,7 +54,7 @@
 
     <section class="container mt-5">
         <h1 class="text-center mb-4">Publicar Nuevo Producto</h1>
-        <form>
+        <form method="POST" action="/WebOnStudios/index.php?action=crearProducto">
             <article class="form-group row">
                 <label for="productName" class="col-sm-2 col-form-label">Nombre del Producto *</label>
                 <div class="col-sm-10">
