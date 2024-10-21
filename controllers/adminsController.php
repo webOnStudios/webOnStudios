@@ -22,5 +22,8 @@ class AdminController {
         } else {
             return "Error al registrar el admin.";
         }
+
+        
     }
+    
 }

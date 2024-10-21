@@ -64,6 +64,8 @@ class Admin {
             return "Error: " . $stmt->error; // Mostrar el error en caso de fallo
         }
     }
+
+    
     
 }
 ?>

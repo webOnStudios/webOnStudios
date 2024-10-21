@@ -131,7 +131,7 @@
       <th scope="col">Precio</th>
       <th scope="col">Stock</th>
       <th scope="col">Categoria</th>
-      <th scope="col" colspan="2">Fotos</th>
+      <th scope="col" colspan="3">Fotos</th>
     </tr>
   </thead>
   <tbody>
@@ -146,6 +146,15 @@
             <td><?php echo $datos->precioProducto; ?></td>
             <td><?php echo $datos->stockProducto; ?></td>
             <td><?php echo $datos->categoria; ?></td>
+            <td> <?php 
+                // Convertir el BLOB en una imagen en base64
+                if ($datos->fotosProducto) {
+                    echo '<img src="data:image/jpeg;base64,' . base64_encode($datos->fotosProducto) . '" width="100" height="100" />';
+                } else {
+                    echo "Sin imagen";
+                }
+                ?>
+            </td>
             <td><button class="btn btn-info"><box-icon name='edit-alt' type='solid' color='#ffffff'></box-icon></button></td>
             <td><button class="btn btn-danger"><box-icon name='trash' type='solid' color='#ffffff'></box-icon></button></td>
         </tr>

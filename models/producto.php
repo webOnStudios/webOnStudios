@@ -2,7 +2,7 @@
 
 require_once 'config/database.php';
 
-class Empresa {
+class Producto {
     private $idProducto;
     private $nombreProducto;
     private $descripcionProducto;
