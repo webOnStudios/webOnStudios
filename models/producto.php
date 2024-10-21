@@ -94,6 +94,21 @@ class Producto {
             return "Error: " . $stmt->error;
         }
     }
+
+    public function obtenerProductosPorCategoria($categoria) {
+        $categoria = $this->conexion->real_escape_string($categoria);
+        $sql = "SELECT * FROM producto WHERE categoria = '$categoria'";
+        $resultado = $this->conexion->query($sql);
+
+        $productos = [];
+        if ($resultado->num_rows > 0) {
+            while ($fila = $resultado->fetch_assoc()) {
+                $productos[] = $fila;
+            }
+        }
+
+        return $productos;
+    }
 }
     
 ?>

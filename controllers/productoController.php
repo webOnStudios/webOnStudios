@@ -27,4 +27,23 @@ class productoController {
            return "Error al registrar el producto.";
        }
    }
+   public function obtenerProductosPorCategoria() {
+    if (isset($_GET['categoria'])) {
+        $categoria = $_GET['categoria'];
+
+        // Cargar el modelo
+        require_once 'models/Producto.php';
+        $productoModel = new Producto();
+        $productos = $productoModel->obtenerProductosPorCategoria($categoria);
+
+        // Devolver los productos en formato JSON
+        header('Content-Type: application/json');
+        echo json_encode($productos);
+    } else {
+        // Si no se envía categoría, devolver un error
+        http_response_code(400);
+        echo json_encode(['error' => 'Categoría no especificada.']);
+    }
+
+}
 }
