@@ -1,30 +1,27 @@
 <?php
-// Incluir el modelo de Admin
 require_once 'models/usuario.php';
+require_once 'database.php';  // Conexión a la base de datos
 
-class usuarioController {
+class UsuarioController {
+    public function register() {
+        
+        // Obtener los datos enviados desde el formulario
+        $cedula = $_POST['cedulaUsuario'];
+        $nickname = $_POST['nicknameUsuario'];
+        $email = $_POST['emailUsuario'];
+        $nombre = $_POST['nombreUsuario'];
+        $apellido = $_POST['apellidoUsuario'];
+        $contraseña = password_hash($_POST['contraseñaUsuario'], PASSWORD_BCRYPT);  // Encriptar la contraseña
+        $fechaNac = $_POST['fechaNacUsuario'];
 
-    // Método para crear un nuevo admin
-    public function crearUsuario($data) {
-        global $conexion; // Usar la conexión global
-    
-        // Recoger los datos del formulario
-        $cedulaUsuario = $data['cedulaUsuario'];
-        $nicknameUsuario = $data['nicknameUsuario'];
-        $emailUsuario = $data['emailUsuario'];
-        $nombreUsuario = $data['nombreUsuario'];
-        $apellidoUsuario = $data['apellidoUsuario'];
-        $contraseñaUsuario = $data['contraseñaUsuario'];
-        $FechaNacUsuario = $data['FechaNacUsuario'];
-    
         // Crear una instancia del modelo Usuario
-        $usuario = new Usuario($cedulaUsuario, $nicknameUsuario, $emailUsuario, $nombreUsuario, $apellidoUsuario, $contraseñaUsuario, $FechaNacUsuario);
-    
-        // Llamar al método para crear un nuevo usuario, pasando la conexión $conexion
-        if ($usuario->crearUsuario($conexion)) {
-            return "Usuario registrado exitosamente.";
-        } else {
-            return "Error al registrar el usuario.";
-        }
+        $usuario = new Usuario($cedula, $nickname, $email, $nombre, $apellido, $contraseña, $fechaNac);
+
+        // Registrar el usuario en la base de datos
+        $resultado = $usuario->registrarUsuario($conexion);
+
+        // Enviar la respuesta como JSON
+        echo json_encode($resultado);
     }
 }
+?>
