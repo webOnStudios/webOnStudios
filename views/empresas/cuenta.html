@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda</title>
+</head>
+<body>
+    <h1>Bienvenido a tu cuenta de empresa <span id="nombreEmpresa"></span></h1>
+
+    <h3>Aqui puede aministrar y controlar sus productos de forma sencilla y eficaz.</h3>
+
+    <p><b>Información de tu empresa</b></p>
+
+    <div id="empresaData">
+        <p><strong>CI_Root:</strong> <span id="ci"></span></p>
+        <p><strong>Nombre:</strong> <span id="nombre"></span></p>
+        <p><strong>Email:</strong> <span id="email"></span></p>
+        <p><strong>Dirección:</strong> <span id="direccion"></span></p>
+        <p><strong>Contraseña:</strong> **********</p>
+        <img id="empresaLogo" src="../../assets/img/blank-profile.png" alt="Logo de la empresa" style="max-width: 150px; max-height: 150px;"><br>
+        <button onclick="window.location.href='editar_cuenta.html'">Editar</button>
+        <button type="button" id="logoutBtn">Cerrar sesión</button>
+    </div>
+    
+    <button onclick="window.location.href='agregar-producto.html'">Agregar Producto</button>
+    <div id="tablaProductos" style="display: block;">
+
+    </div>
+    
+    <div id="masVistas" style="display: none;">
+
+    </div>
+    <div id="masMegusta" style="display: none;">
+
+    </div>
+
+    <script src="../../assets/js/empresas/cuenta.js"></script>
+</body>
+</html>
