@@ -90,7 +90,7 @@ document.addEventListener('DOMContentLoaded', async function() {
                     <td>$${producto.Precio}</td>
                     <td>${producto.Cantidad}</td>
                     <td>${producto.Categoria}</td>
-                    <td><img src="../../img/producto/${producto.idProducto + 1}" alt="Foto del producto" width="100" /></td> 
+                    <td><img src="../../img/producto/${producto.fotoPath}" alt="Foto del producto" width="100" /></td> 
                 `;
                 tablaCuerpo.appendChild(row);
             });

@@ -45,9 +45,7 @@ class Usuario {
         $stmt->bindParam(':apellido', $this->apellido);
         $stmt->bindParam(':email', $this->email);
         
-        // Asegúrate de encriptar la contraseña antes de almacenarla
-        $hashedPassword = password_hash($this->contrasena, PASSWORD_BCRYPT);
-        $stmt->bindParam(':contrasena', $hashedPassword);
+        $stmt->bindParam(':contrasena', $this->contrasena);
         
         if ($stmt->execute()) {
             return true;
@@ -61,7 +59,7 @@ class Usuario {
         $database = new Database();
         $db = $database->getConnection();
     
-        $query = "SELECT Nombre, Contraseña FROM usuarios  WHERE Email = :email";
+        $query = "SELECT Nombre, Contraseña FROM usuarios WHERE Email = :email";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();

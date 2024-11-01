@@ -38,3 +38,12 @@ document.getElementById('logoutBtn').addEventListener('click', function() {
     localStorage.removeItem('nombreUsuario'); // Elimina el nombre del localStorage, si lo has guardado
     window.location.href = 'login.html'; // Redirige a la página de inicio de sesión
 });
+
+document.getElementById('busqueda-form').addEventListener('submit', function(event) {
+    event.preventDefault(); // Evitar el envío del formulario por defecto
+
+    const nombre = this.buscar.value; // Obtener el valor del campo de búsqueda
+
+    // Redirigir a la página de búsqueda
+    window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
+});
