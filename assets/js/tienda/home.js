@@ -24,3 +24,17 @@ if (nombre) {
         // Redirigir a la página de búsqueda
         window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
     });
+
+// Seleccionar las imágenes usando los id
+const firstImage = document.getElementById('first').previousElementSibling;
+const secondImage = document.getElementById('second');
+
+// Añadir un evento de clic a la segunda imagen
+secondImage.addEventListener('click', () => {
+    // Guardar la ruta de la primera imagen temporalmente
+    const tempSrc = firstImage.src;
+    
+    // Intercambiar las rutas de las imágenes
+    firstImage.src = secondImage.src;
+    secondImage.src = tempSrc;
+});
