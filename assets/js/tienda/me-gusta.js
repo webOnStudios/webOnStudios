@@ -14,6 +14,8 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function mostrarProductosMeGusta(productos) {
+    
+    const email = localStorage.getItem('emailUsuario'); // Asegúrate de que el email se obtiene aquí
 
     const container = document.getElementById("productosMeGusta");
     container.innerHTML = "";

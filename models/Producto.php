@@ -220,11 +220,25 @@ class Producto {
         
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
-    public function eliminarMeGusta($idProducto, $email) {
-        $sql = "DELETE FROM megusta WHERE idProducto = ? AND Email = ?";
+
+    public function existeMeGusta($idProducto, $email) {
+        $sql = "SELECT COUNT(*) FROM megusta WHERE idProducto = :idProducto AND Email = :email";
         $stmt = $this->db->prepare($sql);
-        return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
+        
+        // Usar bindParam() para vincular los parámetros
+        $stmt->bindParam(':idProducto', $idProducto, PDO::PARAM_INT);
+        $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+        
+        $stmt->execute();
+        return $stmt->fetchColumn() > 0; // Devuelve true si existe un registro
     }
+    
+    public function eliminarMeGusta($idProducto, $email) {
+    $sql = "DELETE FROM megusta WHERE idProducto = ? AND Email = ?";
+    $stmt = $this->db->prepare($sql);
+    return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
+    }
+
     
 }
 ?>
