@@ -174,6 +174,58 @@ class Producto {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+
+    public function getProductosPorCategoria($categoria) {
+        // Preparar la consulta SQL para obtener los productos por categoría
+        $query = "SELECT * FROM producto WHERE Categoria = :categoria AND suspendido = 'no'";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':categoria', $categoria, PDO::PARAM_STR);
+
+        if ($stmt->execute()) {
+            // Obtener todos los productos como un arreglo asociativo
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        } else {
+            return []; // Devolver un arreglo vacío si la consulta falla
+        }
+    }
+
+    // En el archivo Producto.php
+      public function registrarMeGusta($idProducto, $email) {
+        $sql = "INSERT INTO megusta (idProducto, Email) VALUES (:idProducto, :Email)";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(":idProducto", $idProducto, PDO::PARAM_INT);
+        $stmt->bindParam(":Email", $email, PDO::PARAM_STR);
+        
+        // Intentar ejecutar la consulta
+        try {
+            $stmt->execute();
+            return true; // Éxito en la inserción
+        } catch (PDOException $e) {
+            if ($e->getCode() == 23000) { // Código de error para violación de clave única
+                return false; // Registro ya existe
+            }
+            throw $e; // O lanzar otros errores
+        }
+    }
+    
+    public function getMeGustaByEmail($email) {
+        $sql = "SELECT p.* 
+                FROM megusta m 
+                JOIN producto p ON m.idProducto = p.idProducto 
+                WHERE m.Email = :email";
+        
+        $stmt = $this->db->prepare($sql);
+        $stmt->bindParam(':email', $email);
+        $stmt->execute();
+        
+        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+    }
+    public function eliminarMeGusta($idProducto, $email) {
+        $sql = "DELETE FROM megusta WHERE idProducto = ? AND Email = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
+    }
+    
 }
 ?>
 

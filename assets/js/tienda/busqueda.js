@@ -1,10 +1,9 @@
 document.addEventListener("DOMContentLoaded", function() {
-    // Obtener el parámetro de búsqueda de la URL
+
     const urlParams = new URLSearchParams(window.location.search);
     const nombre = urlParams.get('nombre');
 
     if (nombre) {
-        // Realizar la búsqueda en el servidor
         fetch('../../index.php?controller=Producto&action=buscarProductoPorNombre', {
             method: 'POST',
             headers: {
@@ -15,7 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
         .then(response => response.json())
         .then(data => {
             if (data.success) {
-                mostrarResultados(data.data); // Mostrar los resultados
+                mostrarResultados(data.data); 
             } else {
                 document.getElementById('resultados').innerText = 'No se encontraron productos';
             }
@@ -25,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function() {
 
     function mostrarResultados(productos) {
         const resultadosDiv = document.getElementById('resultados');
-        resultadosDiv.innerHTML = ''; // Limpiar resultados anteriores
+        resultadosDiv.innerHTML = ''; 
 
         productos.forEach(producto => {
             const productoDiv = document.createElement('section');
-            productoDiv.className = 'product-card d-flex'; // Clases para el diseño
+            productoDiv.className = 'product-card d-flex'; 
             productoDiv.id = 'producto';
 
             productoDiv.innerHTML = `
@@ -56,10 +55,10 @@ document.addEventListener("DOMContentLoaded", function() {
                 const productoId = this.getAttribute('data-id');
 
                 if (email) {
-                    // Aquí puedes manejar el almacenamiento de "Me gusta" en la base de datos si hay un usuario registrado
+
                     console.log(`Producto ${productoId} marcado como Me Gusta por el usuario ${email}`);
                 } else {
-                    // Si no hay usuario registrado, guardar el ID del producto y redirigir a la página de "Me Gusta"
+
                     localStorage.setItem('productoIdMeGusta', productoId);
                     window.location.href = 'me-gusta.html';
                 }
@@ -72,10 +71,9 @@ document.addEventListener("DOMContentLoaded", function() {
 
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); 
 
-    const nombre = this.buscar.value; // Obtener el valor del campo de búsqueda
+    const nombre = this.buscar.value; 
 
-    // Redirigir a la página de búsqueda
     window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
 });

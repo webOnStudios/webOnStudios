@@ -8,19 +8,20 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     formData.append("email", document.getElementById("email").value);
     formData.append("contrasena", document.getElementById("contrasena").value);
 
-    fetch("../../index.php?controller=Usuario&action=registrar", {
+    fetch("../../index.php?controller=Empresa&action=registrar", {
         method: "POST",
         body: formData
     })
     .then(response => response.json())
     .then(data => {
-        console.log('Respuesta del servidor:', data); // Debugging
-        if (data.status === 'success') { // Cambiado de data.success a data.status
+        console.log('Respuesta del servidor:', data);
+        if (data.status === 'success') {
             alert("Registro exitoso");
-            // Iniciar sesión automáticamente después del registro
+            // Guardar el ID, nombre y email en localStorage
+
             iniciarSesion(document.getElementById("email").value, document.getElementById("contrasena").value);
         } else {
-            alert(data.message); // Muestra el mensaje de error del servidor
+            alert(data.message);
         }
     })
     .catch(error => {
@@ -39,10 +40,10 @@ function iniciarSesion(email, contrasena) {
         console.log('Respuesta del servidor:', result);
 
         if (result.status === 'success') {
-            localStorage.setItem('nombreUsuario', result.nombre); 
-            localStorage.setItem('emailUsuario', email); 
-            console.log('Nombre y email guardados en localStorage');
-            window.location.href = 'home.html'; 
+            localStorage.setItem('idUsuario', result.idUsuario); // Guardar el idUsuario
+            localStorage.setItem('emailUsuario', email);
+            console.log('idUsuario y email guardados en localStorage');
+            window.location.href = 'home.html';
         } else {
             alert(result.message); 
         }

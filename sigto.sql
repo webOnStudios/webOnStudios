@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 01-11-2024 a las 22:23:44
+-- Tiempo de generación: 04-11-2024 a las 03:20:23
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -101,7 +101,8 @@ INSERT INTO `fotosproducto` (`idProducto`, `fotoPath`) VALUES
 (13, '131.png'),
 (14, '141.jpeg'),
 (14, '142.jpg'),
-(15, '151.jpg');
+(15, '151.jpg'),
+(16, '161.jpg');
 
 -- --------------------------------------------------------
 
@@ -123,8 +124,9 @@ CREATE TABLE `historial` (
 --
 
 CREATE TABLE `megusta` (
+  `idMeGusta` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
-  `idUsuario` int(11) NOT NULL
+  `Email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -153,7 +155,8 @@ INSERT INTO `producto` (`idProducto`, `Precio`, `Nombre`, `Descripcion`, `Cantid
 (12, 3424, 'Hola SAS', 'safdsad', 3244, 'Juguetes y Juegos', 'no'),
 (13, 6575, 'fhjhg', 'hgjjhg', 6757, 'Moda y ropa', 'no'),
 (14, 3434, 'Camiseta', 'Lala', 78, 'Moda y ropa', 'no'),
-(15, 3, 'Holanda Bandera', 'Bandera holandesa muy elastica y con mucha resistencia muy bonita adorable y perfecta para cualquier holandes', 6, 'Hogar y cocina', 'no');
+(15, 3, 'Holanda Bandera', 'Bandera holandesa muy elastica y con mucha resistencia muy bonita adorable y perfecta para cualquier holandes', 6, 'Hogar y cocina', 'no'),
+(16, 300, 'Juego de cubiertos Intensamente', 'Juego de cubiertos de la película Intensamente de Disney. Cómodos y flexibles. ', 20, 'Hogar y cocina', 'no');
 
 -- --------------------------------------------------------
 
@@ -178,7 +181,10 @@ CREATE TABLE `usuarios` (
 INSERT INTO `usuarios` (`IdUsuario`, `Email`, `CI`, `Nombre`, `Apellido`, `Contraseña`, `suspendido`) VALUES
 (20, 'maugeo@gmail.com', '5436', 'Aida', 'Martinez', '$2y$10$gL7LhoaSQgWofsqvIUCQYu7vTwIO6BGVA.qf5Wbm8jMQYOIeoHbDC', 'no'),
 (21, 'matteo@gmail.com', '654645', 'Aida', 'Martinez', '$2y$10$ylufZJWZB9yqYaPBsV8xn.e1T7r8138LnxhzbleafqbknFJ80oBI2', 'no'),
-(23, 'maugematteo@gmail.com', '11111111', 'Aida', 'Martinez', '$2y$10$kJd8ra06mW06tNrRdSkIluxuZiZfPfSJFBbuqHZICpRGSdhEQLbwu', 'no');
+(23, 'maugematteo@gmail.com', '11111111', 'Aida', 'Martinez', '$2y$10$kJd8ra06mW06tNrRdSkIluxuZiZfPfSJFBbuqHZICpRGSdhEQLbwu', 'no'),
+(24, 'tetaaa@gmail.com', '56464565', 'teta', 'tetarda', '$2y$10$pJoQgbmhFsKknFMbG524Te8QenCLocniQLGvJwbdY0vH9/Sn8qEl6', 'no'),
+(25, 'lola@gmail.com', '5436567', 'Lola', 'Lolita', '$2y$10$06pSF6IV5EIXIORzu2E4L.LVYFZyK4aapLcCdmbgqLtt5D5yJHaC2', 'no'),
+(26, 'mao@gmail.com', '6547477', 'Aida', 'Martinez', '$2y$10$8RmwE0ag6Zvy76YRKeOnt.CAup2N1o85FZlzWz6dawkewecb9bFVa', 'no');
 
 -- --------------------------------------------------------
 
@@ -199,7 +205,8 @@ INSERT INTO `vende` (`idEmpresa`, `idProducto`) VALUES
 (8, 12),
 (8, 13),
 (10, 14),
-(11, 15);
+(11, 15),
+(13, 16);
 
 --
 -- Índices para tablas volcadas
@@ -243,8 +250,9 @@ ALTER TABLE `historial`
 -- Indices de la tabla `megusta`
 --
 ALTER TABLE `megusta`
-  ADD PRIMARY KEY (`idProducto`,`idUsuario`),
-  ADD KEY `idUsuario` (`idUsuario`);
+  ADD PRIMARY KEY (`idMeGusta`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `Email` (`Email`);
 
 --
 -- Indices de la tabla `producto`
@@ -284,16 +292,22 @@ ALTER TABLE `empresa`
   MODIFY `idEmpresa` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
+-- AUTO_INCREMENT de la tabla `megusta`
+--
+ALTER TABLE `megusta`
+  MODIFY `idMeGusta` int(11) NOT NULL AUTO_INCREMENT;
+
+--
 -- AUTO_INCREMENT de la tabla `producto`
 --
 ALTER TABLE `producto`
-  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=16;
+  MODIFY `idProducto` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=17;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=24;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
 
 --
 -- Restricciones para tablas volcadas
@@ -324,7 +338,7 @@ ALTER TABLE `historial`
 --
 ALTER TABLE `megusta`
   ADD CONSTRAINT `megusta_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`),
-  ADD CONSTRAINT `megusta_ibfk_2` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`IdUsuario`);
+  ADD CONSTRAINT `megusta_ibfk_2` FOREIGN KEY (`Email`) REFERENCES `usuarios` (`email`);
 
 --
 -- Filtros para la tabla `vende`

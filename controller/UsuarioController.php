@@ -2,25 +2,34 @@
 require_once dirname(__DIR__) . '/models/Usuario.php';
 
 class UsuarioController {
+
+    private $usuario;
+
+
+    public function __construct() { // Asegúrate de que el constructor reciba $db
+        $this->usuario = new Usuario; // Pasa $db al modelo
+    }
+
     public function registrar() {
         header('Content-Type: application/json');
-
+    
         try {
-
             if (!isset($_POST['ci'], $_POST['nombre'], $_POST['apellido'], $_POST['email'], $_POST['contrasena'])) {
                 echo json_encode(['status' => 'error', 'message' => 'Faltan datos en el formulario']);
                 return;
             }
-
+    
             $usuario = new Usuario();
             $usuario->setCI($_POST['ci']);
             $usuario->setNombre($_POST['nombre']);
             $usuario->setApellido($_POST['apellido']);
             $usuario->setEmail($_POST['email']);
             $usuario->setContraseña($_POST['contrasena']);
-
-            if ($usuario->registrar()) {
-                echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
+    
+            $idUsuario = $usuario->registrar(); // Guardamos el ID del usuario
+    
+            if ($idUsuario) {
+                echo json_encode(['status' => 'success', 'message' => 'Registro exitoso', 'id' => $idUsuario]);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'Error al registrar usuario']);
             }
@@ -34,27 +43,34 @@ class UsuarioController {
             echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
         }
     }
+    
     public function login() {
         header('Content-Type: application/json');
-
-
+    
         if (!isset($_POST['email'], $_POST['contrasena'])) {
             echo json_encode(['status' => 'error', 'message' => 'Faltan datos']);
             return;
         }
-
+    
         $email = $_POST['email'];
         $contrasena = $_POST['contrasena'];
-
+    
         $usuario = new Usuario();
         $usuarioData = $usuario->autenticar($email, $contrasena);
-
+    
         if ($usuarioData) {
-            echo json_encode(['status' => 'success', 'message' => 'Login exitoso', 'nombre' => $usuarioData['Nombre']]);
+            // Devolver el idUsuario además del nombre
+            echo json_encode([
+                'status' => 'success',
+                'message' => 'Login exitoso',
+                'idUsuario' => $usuarioData['idUsuario'],
+                'nombre' => $usuarioData['Nombre']
+            ]);
         } else {
             echo json_encode(['status' => 'error', 'message' => 'Credenciales incorrectas']);
         }
     }
+    
     
     
     
@@ -128,7 +144,7 @@ class UsuarioController {
             echo json_encode(['success' => false, 'message' => 'No se encontraron usuarios']);
         }
     }
-    
+
     
 }
 ?>

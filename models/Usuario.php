@@ -7,7 +7,13 @@ class Usuario {
     private $apellido;
     private $email;
     private $contrasena;
+    private $db;
 
+    public function __construct() {
+        // Aquí deberías obtener la conexión a la base de datos
+        $database = new Database();
+        $this->db = $database->getConnection();
+    }
     // Setters
     public function setCI($ci) {
         $this->ci = $ci;
@@ -44,22 +50,20 @@ class Usuario {
         $stmt->bindParam(':nombre', $this->nombre);
         $stmt->bindParam(':apellido', $this->apellido);
         $stmt->bindParam(':email', $this->email);
-        
         $stmt->bindParam(':contrasena', $this->contrasena);
         
         if ($stmt->execute()) {
-            return true;
+            // Obtener el ID del usuario recién creado
+            return $db->lastInsertId(); // Devuelve el ID del usuario
         }
         
         return false;
     }
-    
-
     public function autenticar($email, $contrasena) {
         $database = new Database();
         $db = $database->getConnection();
     
-        $query = "SELECT Nombre, Contraseña FROM usuarios WHERE Email = :email";
+        $query = "SELECT idUsuario, Nombre, Contraseña FROM usuarios WHERE Email = :email";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -67,11 +71,12 @@ class Usuario {
         if ($stmt->rowCount() > 0) {
             $row = $stmt->fetch(PDO::FETCH_ASSOC);
             if (password_verify($contrasena, $row['Contraseña'])) {
-                return ['Nombre' => $row['Nombre']];
+                return ['idUsuario' => $row['idUsuario'], 'Nombre' => $row['Nombre']];
             }
         }
         return false;
     }
+    
     
 
     public function obtenerDatos($email) {
@@ -141,5 +146,21 @@ class Usuario {
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }
     
+
+
+    public function obtenerIdUsuarioPorEmail($email) {
+        $query = "SELECT IdUsuario FROM usuarios WHERE Email = ?";
+        $stmt = $this->db->prepare($query);
+        $stmt->bind_param("s", $email);
+        $stmt->execute();
+        $result = $stmt->get_result();
+        
+        if ($result->num_rows > 0) {
+            $fila = $result->fetch_assoc();
+            return $fila['IdUsuario'];
+        } else {
+            return null;
+        }
+    }
 }
 ?>
