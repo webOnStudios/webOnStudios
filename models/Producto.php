@@ -234,12 +234,12 @@ class Producto {
     }
     
     public function eliminarMeGusta($idProducto, $email) {
-    $sql = "DELETE FROM megusta WHERE idProducto = ? AND Email = ?";
-    $stmt = $this->db->prepare($sql);
-    return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
+        $sql = "DELETE FROM megusta WHERE idProducto = ? AND Email = ?";
+        $stmt = $this->db->prepare($sql);
+        return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
     }
 
-    
+
 }
 ?>
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-11-2024 a las 03:20:23
+-- Tiempo de generación: 04-11-2024 a las 22:51:56
 -- Versión del servidor: 10.4.32-MariaDB
 -- Versión de PHP: 8.2.12
 
@@ -28,9 +28,10 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `carrito` (
-  `idUsuario` int(11) NOT NULL,
+  `idCarrito` int(11) NOT NULL,
   `idProducto` int(11) NOT NULL,
-  `Estado` varchar(50) DEFAULT NULL
+  `Email` varchar(255) NOT NULL,
+  `cantidad` int(11) DEFAULT 1
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -43,7 +44,20 @@ CREATE TABLE `compra` (
   `NroCompra` int(11) NOT NULL,
   `FechaHora` datetime DEFAULT NULL,
   `DireccionEnvio` varchar(255) DEFAULT NULL,
-  `PagoFinal` float DEFAULT NULL
+  `PagoFinal` float DEFAULT NULL,
+  `idUsuario` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+-- --------------------------------------------------------
+
+--
+-- Estructura de tabla para la tabla `compra_producto`
+--
+
+CREATE TABLE `compra_producto` (
+  `NroCompra` int(11) NOT NULL,
+  `idProducto` int(11) NOT NULL,
+  `cantidad` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 -- --------------------------------------------------------
@@ -60,21 +74,9 @@ CREATE TABLE `empresa` (
   `Direccion` varchar(255) DEFAULT NULL,
   `Logo` varchar(255) DEFAULT NULL,
   `Nombre` varchar(100) NOT NULL,
-  `suspendido` enum('si','no') DEFAULT 'no'
+  `suspendido` enum('si','no') DEFAULT 'no',
+  `idPaypal` varchar(255) DEFAULT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `empresa`
---
-
-INSERT INTO `empresa` (`idEmpresa`, `Email`, `Root_CI`, `Contraseña`, `Direccion`, `Logo`, `Nombre`, `suspendido`) VALUES
-(5, 'maugematteo@gmail.com', 5436453, '$2y$10$Pec6/HfjkaI10V9VVHpMAOVnsrGLT1wh.wxRP6wHOWib7AX/3.gAq', 'Casavalle 4409', NULL, 'Aida', 'no'),
-(8, 'hola@gmail.com', 3213232, '$2y$10$z5jXtopr4F1p6kp0oLhwT.o8FZIo4rT2MsMo3TGacv9paLIV9GxwO', 'Casavalle 4409', 'logo_3213232.png', 'Hola', 'no'),
-(9, 'lal@gmail.com', 11111111, '$2y$10$g11dg15cyIK3WivCh9VYIetM7gIgvbtOh.GvBW9gWDX.lseTOIrGu', 'Casavalle 4409', 'logo_11111111.jpg', 'Aida', 'no'),
-(10, 'maria@gmail.com', 55920178, '$2y$10$P6XT8M5FmDi5mVSb.9Vb6u4SQpRnElsmJu7Iu0Xlo3KqrBEu92P92', 'Casavalle 4409', 'logo_55920178.jpg', 'Eugenia', 'no'),
-(11, 'lallll@gmail.com', 73482749, '$2y$10$Mms6ZiN7jOOLWPuwgOYlBuFcv28NQltqD6lrmCe9mG2gSgQ73Oeeu', 'lal', 'logo_73482749.jpg', 'Aida', 'no'),
-(12, 'teta@gmail.com', 55555, '$2y$10$sQIqswHHtFa1tIHQAJX7ge/Hg4kkpV0oAua0gshr7hmzuyzHEJFhu', 'Casavalle 4409', 'logo_55555.jpg', 'teta', 'no'),
-(13, 'LALSAS@gmail.com', 44444, '$2y$10$SeI.QnqCA7XA2wgzbMola.mLXGAPOZ60SFSfB5TgSC4ymMOjMG13K', 'Casavalle 4409', 'logo_44444.jpg', 'LAL', 'no');
 
 -- --------------------------------------------------------
 
@@ -86,23 +88,6 @@ CREATE TABLE `fotosproducto` (
   `idProducto` int(11) NOT NULL,
   `fotoPath` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
-
---
--- Volcado de datos para la tabla `fotosproducto`
---
-
-INSERT INTO `fotosproducto` (`idProducto`, `fotoPath`) VALUES
-(10, '101.png'),
-(10, '102.png'),
-(11, '111.png'),
-(11, '112.jpg'),
-(12, '121.jpg'),
-(12, '122.png'),
-(13, '131.png'),
-(14, '141.jpeg'),
-(14, '142.jpg'),
-(15, '151.jpg'),
-(16, '161.jpg');
 
 -- --------------------------------------------------------
 
@@ -145,19 +130,6 @@ CREATE TABLE `producto` (
   `suspendido` enum('si','no') DEFAULT 'no'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
---
--- Volcado de datos para la tabla `producto`
---
-
-INSERT INTO `producto` (`idProducto`, `Precio`, `Nombre`, `Descripcion`, `Cantidad`, `Categoria`, `suspendido`) VALUES
-(10, 444, 'Aida', 'fdgdfg', 333, 'Hogar y cocina', 'no'),
-(11, 543534, '34432', 'rfef', 4455, 'Hogar y cocina', 'no'),
-(12, 3424, 'Hola SAS', 'safdsad', 3244, 'Juguetes y Juegos', 'no'),
-(13, 6575, 'fhjhg', 'hgjjhg', 6757, 'Moda y ropa', 'no'),
-(14, 3434, 'Camiseta', 'Lala', 78, 'Moda y ropa', 'no'),
-(15, 3, 'Holanda Bandera', 'Bandera holandesa muy elastica y con mucha resistencia muy bonita adorable y perfecta para cualquier holandes', 6, 'Hogar y cocina', 'no'),
-(16, 300, 'Juego de cubiertos Intensamente', 'Juego de cubiertos de la película Intensamente de Disney. Cómodos y flexibles. ', 20, 'Hogar y cocina', 'no');
-
 -- --------------------------------------------------------
 
 --
@@ -179,12 +151,7 @@ CREATE TABLE `usuarios` (
 --
 
 INSERT INTO `usuarios` (`IdUsuario`, `Email`, `CI`, `Nombre`, `Apellido`, `Contraseña`, `suspendido`) VALUES
-(20, 'maugeo@gmail.com', '5436', 'Aida', 'Martinez', '$2y$10$gL7LhoaSQgWofsqvIUCQYu7vTwIO6BGVA.qf5Wbm8jMQYOIeoHbDC', 'no'),
-(21, 'matteo@gmail.com', '654645', 'Aida', 'Martinez', '$2y$10$ylufZJWZB9yqYaPBsV8xn.e1T7r8138LnxhzbleafqbknFJ80oBI2', 'no'),
-(23, 'maugematteo@gmail.com', '11111111', 'Aida', 'Martinez', '$2y$10$kJd8ra06mW06tNrRdSkIluxuZiZfPfSJFBbuqHZICpRGSdhEQLbwu', 'no'),
-(24, 'tetaaa@gmail.com', '56464565', 'teta', 'tetarda', '$2y$10$pJoQgbmhFsKknFMbG524Te8QenCLocniQLGvJwbdY0vH9/Sn8qEl6', 'no'),
-(25, 'lola@gmail.com', '5436567', 'Lola', 'Lolita', '$2y$10$06pSF6IV5EIXIORzu2E4L.LVYFZyK4aapLcCdmbgqLtt5D5yJHaC2', 'no'),
-(26, 'mao@gmail.com', '6547477', 'Aida', 'Martinez', '$2y$10$8RmwE0ag6Zvy76YRKeOnt.CAup2N1o85FZlzWz6dawkewecb9bFVa', 'no');
+(27, 'maugematteo@gmail.com', '5436453', 'Aida', 'Martinez', '$2y$10$hDjIX.SlY8g8mJK8fLR6vOXEOmdSHgdBA9cw0J92Vm6ok0360Ipo6', 'no');
 
 -- --------------------------------------------------------
 
@@ -198,17 +165,6 @@ CREATE TABLE `vende` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
--- Volcado de datos para la tabla `vende`
---
-
-INSERT INTO `vende` (`idEmpresa`, `idProducto`) VALUES
-(8, 12),
-(8, 13),
-(10, 14),
-(11, 15),
-(13, 16);
-
---
 -- Índices para tablas volcadas
 --
 
@@ -216,14 +172,23 @@ INSERT INTO `vende` (`idEmpresa`, `idProducto`) VALUES
 -- Indices de la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD PRIMARY KEY (`idUsuario`,`idProducto`),
-  ADD KEY `idProducto` (`idProducto`);
+  ADD PRIMARY KEY (`idCarrito`),
+  ADD KEY `idProducto` (`idProducto`),
+  ADD KEY `Email` (`Email`);
 
 --
 -- Indices de la tabla `compra`
 --
 ALTER TABLE `compra`
-  ADD PRIMARY KEY (`NroCompra`);
+  ADD PRIMARY KEY (`NroCompra`),
+  ADD KEY `idUsuario` (`idUsuario`);
+
+--
+-- Indices de la tabla `compra_producto`
+--
+ALTER TABLE `compra_producto`
+  ADD PRIMARY KEY (`NroCompra`,`idProducto`),
+  ADD KEY `idProducto` (`idProducto`);
 
 --
 -- Indices de la tabla `empresa`
@@ -231,7 +196,8 @@ ALTER TABLE `compra`
 ALTER TABLE `empresa`
   ADD PRIMARY KEY (`idEmpresa`),
   ADD UNIQUE KEY `email` (`Email`),
-  ADD UNIQUE KEY `CI_Root` (`Root_CI`);
+  ADD UNIQUE KEY `CI_Root` (`Root_CI`),
+  ADD UNIQUE KEY `paypal` (`idPaypal`);
 
 --
 -- Indices de la tabla `fotosproducto`
@@ -251,7 +217,7 @@ ALTER TABLE `historial`
 --
 ALTER TABLE `megusta`
   ADD PRIMARY KEY (`idMeGusta`),
-  ADD KEY `idProducto` (`idProducto`),
+  ADD UNIQUE KEY `unique_producto_email` (`idProducto`,`Email`),
   ADD KEY `Email` (`Email`);
 
 --
@@ -280,6 +246,12 @@ ALTER TABLE `vende`
 --
 
 --
+-- AUTO_INCREMENT de la tabla `carrito`
+--
+ALTER TABLE `carrito`
+  MODIFY `idCarrito` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
 -- AUTO_INCREMENT de la tabla `compra`
 --
 ALTER TABLE `compra`
@@ -295,7 +267,7 @@ ALTER TABLE `empresa`
 -- AUTO_INCREMENT de la tabla `megusta`
 --
 ALTER TABLE `megusta`
-  MODIFY `idMeGusta` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `idMeGusta` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- AUTO_INCREMENT de la tabla `producto`
@@ -307,7 +279,7 @@ ALTER TABLE `producto`
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `IdUsuario` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=28;
 
 --
 -- Restricciones para tablas volcadas
@@ -317,8 +289,21 @@ ALTER TABLE `usuarios`
 -- Filtros para la tabla `carrito`
 --
 ALTER TABLE `carrito`
-  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`IdUsuario`),
-  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
+  ADD CONSTRAINT `carrito_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`),
+  ADD CONSTRAINT `carrito_ibfk_2` FOREIGN KEY (`Email`) REFERENCES `usuarios` (`email`);
+
+--
+-- Filtros para la tabla `compra`
+--
+ALTER TABLE `compra`
+  ADD CONSTRAINT `compra_ibfk_1` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`IdUsuario`);
+
+--
+-- Filtros para la tabla `compra_producto`
+--
+ALTER TABLE `compra_producto`
+  ADD CONSTRAINT `compra_producto_ibfk_1` FOREIGN KEY (`NroCompra`) REFERENCES `compra` (`NroCompra`),
+  ADD CONSTRAINT `compra_producto_ibfk_2` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`);
 
 --
 -- Filtros para la tabla `fotosproducto`
@@ -337,8 +322,8 @@ ALTER TABLE `historial`
 -- Filtros para la tabla `megusta`
 --
 ALTER TABLE `megusta`
-  ADD CONSTRAINT `megusta_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`),
-  ADD CONSTRAINT `megusta_ibfk_2` FOREIGN KEY (`Email`) REFERENCES `usuarios` (`email`);
+  ADD CONSTRAINT `megusta_ibfk_1` FOREIGN KEY (`idProducto`) REFERENCES `producto` (`idProducto`) ON DELETE CASCADE,
+  ADD CONSTRAINT `megusta_ibfk_2` FOREIGN KEY (`Email`) REFERENCES `usuarios` (`email`) ON DELETE CASCADE;
 
 --
 -- Filtros para la tabla `vende`

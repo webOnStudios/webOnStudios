@@ -28,6 +28,110 @@ h2{
     
 }
 
+.producto{
+    background-color: white;
+    padding: 5%;
+    box-shadow:#2F3D4C;
+}
+
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.producto {
+    display: flex;
+    align-items: center; /* Centra la imagen y la info verticalmente */
+    margin-bottom: 20px; /* Espaciado entre productos */
+    border: 1px solid #ddd; /* Borde alrededor de cada producto */
+    padding: 10px; /* Espacio interno */
+}
+
+.producto img {
+    width: 150px; /* Ancho de la imagen */
+    height: auto; /* Mantener proporciones */
+    margin-right: 20px; /* Espacio entre la imagen y el texto */
+    border-radius: 1rem;
+}
+
+.info-producto {
+    flex-grow: 1; /* Hace que la info del producto ocupe el espacio restante */
+}
+
+.subtotal-container {
+    background-color: white;
+    padding: 10px;
+    text-align: right; /* Alinear el subtotal a la derecha */
+    margin-top: 20px; /* Espacio superior para separar del listado de productos */
+
+}
+.carrito-container {
+    display: flex; /* Muestra los productos y el subtotal en fila */
+    justify-content: space-between; /* Espacio entre productos y subtotal */
+    align-items: flex-start; /* Alinear la parte superior */
+}
+
+.carrito-productos {
+    flex-grow: 1; /* Permite que la lista de productos ocupe el espacio restante */
+    margin-right: 20px; /* Espacio entre productos y subtotal */
+}
+
+.subtotal-container {
+    text-align: right; /* Alinear el subtotal a la derecha */
+    font-size: 1.5em; /* Tamaño de fuente para el subtotal */
+    border: 1px solid #ddd; /* Borde izquierdo para separar */
+    padding-left: 20px; /* Espaciado interno */
+}
+
+#boton-comprar {
+    background-color:#2a2f4e;
+    color:white;
+    border: none;
+    border-radius: 1rem;
+    margin-top: 10px; /* Espacio superior para el botón de compra */
+    padding: 10px 20px; /* Espaciado del botón */
+    transition: transform 0.3s ease;
+    width: 100%; /* Hacer que el botón ocupe todo el ancho */
+}
+.btn-eliminar{
+    padding: 7px;
+    border: none;
+    border-radius: 1rem;
+    background-color: #a35552;
+    transition: transform 0.3s ease;
+}
+.btn-aumentar{
+    padding: 7px;
+    border: none;
+    border-radius: 1rem;
+    background-color: #2a2f4e;
+    transition: transform 0.3s ease;
+}
+.btn-aumentar:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+.btn-disminuir{
+    padding: 7px;
+    border: none;
+    border-radius: 1rem;
+    background-color: #2a2f4e;
+    transition: transform 0.3s ease;
+}
+.btn-disminuir:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+#boton-comprar:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
+
+.btn-eliminar:hover{
+    transform: scale(1.1);
+    cursor: pointer;
+}
 .carrito:hover{
     font-size: 10px;
     color:#2F3D4C;

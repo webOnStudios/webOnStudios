@@ -26,15 +26,16 @@ class UsuarioController {
             $usuario->setEmail($_POST['email']);
             $usuario->setContraseña($_POST['contrasena']);
     
-            $idUsuario = $usuario->registrar(); // Guardamos el ID del usuario
+            $result = $usuario->registrar();
     
-            if ($idUsuario) {
-                echo json_encode(['status' => 'success', 'message' => 'Registro exitoso', 'id' => $idUsuario]);
+            if ($result) {
+                echo json_encode(['status' => 'success', 'message' => 'Registro exitoso']);
             } else {
-                echo json_encode(['status' => 'error', 'message' => 'Error al registrar usuario']);
+                // Imprimir el último error de PDO
+                echo json_encode(['status' => 'error', 'message' => 'Error al registrar usuario', 'error' => $this->db->errorInfo()]);
             }
         } catch (PDOException $e) {
-            if ($e->getCode() === '23000') { 
+            if ($e->getCode() === '23000') {
                 echo json_encode(['status' => 'error', 'message' => 'El correo electrónico o la cédula ya han sido registrados']);
             } else {
                 echo json_encode(['status' => 'error', 'message' => 'Mensaje: ' . $e->getMessage()]);

@@ -36,15 +36,11 @@ class Usuario {
     }
 
     // Método para registrar el usuario en la base de datos
+// Método para registrar el usuario en la base de datos
     public function registrar() {
-        $database = new Database();
-        $db = $database->getConnection();
-    
-        // Nota: Asegúrate de que el nombre de las columnas coincida con la base de datos.
         $query = "INSERT INTO usuarios (CI, Nombre, Apellido, Email, Contraseña) VALUES (:ci, :nombre, :apellido, :email, :contrasena)";
-        
-        $stmt = $db->prepare($query);
-        
+        $stmt = $this->db->prepare($query);
+
         // Bind parameters
         $stmt->bindParam(':ci', $this->ci);
         $stmt->bindParam(':nombre', $this->nombre);
@@ -52,12 +48,17 @@ class Usuario {
         $stmt->bindParam(':email', $this->email);
         $stmt->bindParam(':contrasena', $this->contrasena);
         
-        if ($stmt->execute()) {
-            // Obtener el ID del usuario recién creado
-            return $db->lastInsertId(); // Devuelve el ID del usuario
+        try {
+            if ($stmt->execute()) {
+                return true; // Retornar true si la inserción fue exitosa
+            } else {
+                return false; // Retornar false si hubo un problema
+            }
+        } catch (PDOException $e) {
+            // Capturar el error de la consulta
+            error_log("Error de la consulta: " . $e->getMessage()); // Escribe el error en el log
+            return false;
         }
-        
-        return false;
     }
     public function autenticar($email, $contrasena) {
         $database = new Database();

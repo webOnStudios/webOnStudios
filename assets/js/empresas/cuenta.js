@@ -25,12 +25,12 @@ document.addEventListener('DOMContentLoaded', async function() {
         const result = await response.json();
 
         if (result.status === 'success') {
-            const { Root_CI, Nombre, Apellido, Email, Direccion, Logo } = result.data;
+            const { Root_CI, Nombre, Apellido, Email, Direccion, Logo, idPaypal} = result.data;
             document.getElementById('ci').textContent = Root_CI;
             document.getElementById('nombre').textContent = Nombre;
             document.getElementById('direccion').textContent = Direccion;
             document.getElementById('email').textContent = Email;
-
+            document.getElementById('paypal').textContent = idPaypal;
             const logoElement = document.getElementById('empresaLogo');
             if (Logo) {
                 logoElement.src = `../../img/empresa/${Logo}`;

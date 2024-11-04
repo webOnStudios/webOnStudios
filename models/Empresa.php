@@ -10,6 +10,7 @@ class Empresa {
     private $contrasena;
     private $direccion; 
     private $logoPath;
+    private $idPaypal; // Agrega esta propiedad
 
 
     public function setCI($ci) {
@@ -36,14 +37,19 @@ class Empresa {
         $this->logo = $logoPath;
     }
 
+
+    public function setIdPaypal($paypalId) {
+        $this->idPaypal = $paypalId; // Asigna el valor a la propiedad
+    }
+
     public function registrar() {
         $database = new Database();
         $db = $database->getConnection();
     
         $hashedPassword = password_hash($this->contrasena, PASSWORD_DEFAULT);
         
-        $query = "INSERT INTO empresa (Root_CI, Nombre, Email, Contraseña, Direccion, Logo) 
-                  VALUES (:ci, :nombre, :email, :contrasena, :direccion, :logo)";
+        $query = "INSERT INTO empresa (Root_CI, Nombre, Email, Contraseña, Direccion, Logo, idPaypal) 
+                  VALUES (:ci, :nombre, :email, :contrasena, :direccion, :logo, :paypalId)";
         $stmt = $db->prepare($query);
     
         $stmt->bindParam(':ci', $this->ci);
@@ -52,11 +58,11 @@ class Empresa {
         $stmt->bindParam(':contrasena', $hashedPassword);
         $stmt->bindParam(':direccion', $this->direccion);
         $stmt->bindParam(':logo', $this->logo);
+        $stmt->bindParam(':paypalId', $this->idPaypal); // Asegúrate de que se incluya el ID de PayPal
     
         return $stmt->execute();
     }
-    
-    
+       
 
     
     public function autenticar($email, $contrasena) {
@@ -82,7 +88,7 @@ class Empresa {
         $database = new Database();
         $db = $database->getConnection();
     
-        $query = "SELECT Root_CI, Nombre, Email, Direccion, Logo FROM empresa WHERE Email = :email";
+        $query = "SELECT Root_CI, Nombre, Email, Direccion, Logo, idPaypal FROM empresa WHERE Email = :email";
         $stmt = $db->prepare($query);
         $stmt->bindParam(':email', $email);
         $stmt->execute();
@@ -92,9 +98,10 @@ class Empresa {
         }
         return false; 
     }
+    
 
     public function obtenerTodasLasEmpresas() {
-        $stmt = $this->db->prepare("SELECT idEmpresa, emailEmpresa, cedulaEmpresa, contraseñaEmpresa, direccionEmpresa, logo FROM empresa");
+        $stmt = $this->db->prepare("SELECT idEmpresa, Email, Root_CI, Contraseña, direccion, Logo FROM empresa");
         $stmt->execute();
         return $stmt->fetchAll(PDO::FETCH_ASSOC);
     }

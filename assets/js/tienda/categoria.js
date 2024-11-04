@@ -86,6 +86,15 @@ function mostrarProductos(productos) {
     });
 }
 
+function mostrarMensajeNoHayProductos() {
+    const container = document.getElementById("productosContainer");
+    container.innerHTML = ""; // Limpiar el contenido previo
+
+    const mensaje = document.createElement("div");
+    mensaje.className = "alert alert-warning";
+    mensaje.textContent = "No hay productos disponibles en esta categoría.";
+    container.appendChild(mensaje);
+}
 
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {

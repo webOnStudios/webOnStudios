@@ -8,7 +8,7 @@ class EmpresaController {
         header('Content-Type: application/json');
     
         try {
-            if (!isset($_POST['ci'], $_POST['nombre'], $_POST['email'], $_POST['contrasena'], $_POST['direccion'])) {
+            if (!isset($_POST['ci'], $_POST['nombre'], $_POST['email'], $_POST['contrasena'], $_POST['direccion'], $_POST['paypalId'])) {
                 echo json_encode(['status' => 'error', 'message' => 'Faltan datos en el formulario']);
                 return;
             }
@@ -19,6 +19,7 @@ class EmpresaController {
             $empresa->setEmail($_POST['email']);
             $empresa->setContraseña($_POST['contrasena']);
             $empresa->setDireccion($_POST['direccion']);
+            $empresa->setIdPaypal($_POST['paypalId']); // Asegúrate de establecer el ID de PayPal
     
             if (isset($_FILES['logo']) && $_FILES['logo']['error'] == UPLOAD_ERR_OK) {
                 $fileTmpPath = $_FILES['logo']['tmp_name'];
@@ -26,9 +27,8 @@ class EmpresaController {
                 $newFileName = "logo_" . $_POST['ci'] . "." . $fileExtension;
                 $uploadFileDir = $_SERVER['DOCUMENT_ROOT'] . '/SIGTO/img/empresa/'; 
                 $destPath = $uploadFileDir . $newFileName;
-
+    
                 if (move_uploaded_file($fileTmpPath, $destPath)) {
-                    
                     $empresa->setLogo($newFileName); 
                 } else {
                     echo json_encode(['status' => 'error', 'message' => 'Error al mover el archivo de logo']);
@@ -51,6 +51,8 @@ class EmpresaController {
             echo json_encode(['status' => 'error', 'message' => $e->getMessage()]);
         }
     }
+    
+
 
     public function login() {
         header('Content-Type: application/json');

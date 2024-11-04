@@ -8,7 +8,7 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     formData.append("email", document.getElementById("email").value);
     formData.append("contrasena", document.getElementById("contrasena").value);
 
-    fetch("../../index.php?controller=Empresa&action=registrar", {
+    fetch("../../index.php?controller=Usuario&action=registrar", {
         method: "POST",
         body: formData
     })
@@ -17,8 +17,6 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
         console.log('Respuesta del servidor:', data);
         if (data.status === 'success') {
             alert("Registro exitoso");
-            // Guardar el ID, nombre y email en localStorage
-
             iniciarSesion(document.getElementById("email").value, document.getElementById("contrasena").value);
         } else {
             alert(data.message);
@@ -40,7 +38,6 @@ function iniciarSesion(email, contrasena) {
         console.log('Respuesta del servidor:', result);
 
         if (result.status === 'success') {
-            localStorage.setItem('idUsuario', result.idUsuario); // Guardar el idUsuario
             localStorage.setItem('emailUsuario', email);
             console.log('idUsuario y email guardados en localStorage');
             window.location.href = 'home.html';

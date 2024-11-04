@@ -52,21 +52,21 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
 
             resultadosDiv.appendChild(productoDiv);
-
+            
+            // Función para 'Me Gusta'
             const botonMeGusta = productoDiv.querySelector(".btn-megusta");
             botonMeGusta.addEventListener("click", function() {
                 const idProducto = botonMeGusta.getAttribute("data-id");
-    
+
                 const email = localStorage.getItem("emailUsuario");
                 if (!email) {
                     alert("Debes iniciar sesión para dar un me gusta.");
                     window.location.href = "login.html";
                     return;
                 }
-    
+
                 console.log("ID del Producto:", idProducto);
                 console.log("Email del Usuario:", email);
-    
 
                 fetch("../../index.php?controller=Producto&action=registrarMeGusta", {
                     method: "POST",
@@ -86,10 +86,42 @@ document.addEventListener("DOMContentLoaded", function() {
                 })
                 .catch(error => console.error("Error al registrar el me gusta:", error));
             });
+
+            const botonCarrito = productoDiv.querySelector(".btn-carrito");
+            botonCarrito.addEventListener("click", function() {
+                const idProducto = botonCarrito.getAttribute("data-id");
+                const email = localStorage.getItem("emailUsuario");
+                const cantidad = 1; // Asignamos una cantidad predeterminada
+
+                if (!email) {
+                    alert("Debes iniciar sesión para agregar al carrito.");
+                    window.location.href = "login.html";
+                    return;
+                }
+
+                // Realiza la solicitud al servidor
+                fetch("../../index.php?controller=Carrito&action=agregarAlCarrito", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json"
+                    },
+                    body: JSON.stringify({ idProducto, email, cantidad })
+                })
+                .then(response => response.json())
+                .then(data => {
+                    console.log("Respuesta del servidor:", data);
+                    if (data.success) {
+                        alert("Producto agregado al carrito"); // Muestra el mensaje de éxito
+                    } else {
+                        alert(data.message || "Error al agregar el producto al carrito.");
+                    }
+                })
+                .catch(error => console.error("Error al agregar al carrito:", error));
+            });
+
         });
     }
 });
-
 
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {

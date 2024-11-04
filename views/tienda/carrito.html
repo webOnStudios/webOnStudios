@@ -24,10 +24,10 @@
             </article>
             <article class="col-md-1 mt-2 mt-md-0 col-2 d-flex justify-content-end">
                 <div class="menu">
-                    <a>$<span class="caret"></span></a>
+                    <a><box-icon name='dollar-circle' color='#2a2f4e' ></box-icon><span class="caret"></span></a>
                     <section class="menu-content">    
-                        <a href="#opcion1"> U$S </a>
-
+                        <a href="#opcion1" id="opcionDolares">U$S</a>
+                        <a href="#opcion2" id="opcionPesos">UYU</a>
                     </section>
                 </div>
             </article>
@@ -101,11 +101,20 @@
             </article>
         </section>
     </main>
-        <div class="container mt-5">
-            <h1>Carrito de Compras</h1>
-            <div id="carrito-resultados"></div>
+    <div class="container">
+        <h1>Carrito de Compras</h1>
+        <div class="carrito-container col-10">
+            <div id="carrito-resultados" class="carrito-productos"></div>
+            <div class="subtotal-container">
+                <div id="subtotal"></div>
+                <button id="boton-comprar">Comprar</button>
+            </div>
         </div>
+    </div>
     
-        <script src="../../assets/js/tienda/carrito.js"></script>
+
+    
+    <script src="../../assets/js/tienda/carrito.js"></script>
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
 </body>
 </html>

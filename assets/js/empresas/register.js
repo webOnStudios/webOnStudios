@@ -4,15 +4,10 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     const formData = new FormData();
     formData.append("ci", document.getElementById("ci").value);
     formData.append("nombre", document.getElementById("nombre").value);
-    formData.append("direccion", document.getElementById("direccion").value);
     formData.append("email", document.getElementById("email").value);
     formData.append("contrasena", document.getElementById("contrasena").value);
-
-    // Añade el archivo de logo
-    const logoFile = document.getElementById("logo").files[0];
-    if (logoFile) {
-        formData.append("logo", logoFile);
-    }
+    formData.append("direccion", document.getElementById("direccion").value);
+    formData.append("paypalId", document.getElementById("paypalId").value); // Agregado el ID de PayPal
 
     fetch("../../index.php?controller=Empresa&action=registrar", {
         method: "POST",
