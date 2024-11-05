@@ -109,7 +109,7 @@ class ProductoController {
     }
 
     public function buscarPorId() {
-        $id = $_GET['id'];
+        $id = $_GET['idProducto'];
         $producto = new Producto();
         $resultado = $producto->buscarPorId($id);
 

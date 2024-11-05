@@ -52,7 +52,9 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
 
             resultadosDiv.appendChild(productoDiv);
-            
+            productoDiv.addEventListener("click", function() {
+                window.location.href = `producto.html?id=${producto.idProducto}`;
+            });
             // Función para 'Me Gusta'
             const botonMeGusta = productoDiv.querySelector(".btn-megusta");
             botonMeGusta.addEventListener("click", function() {

@@ -43,6 +43,7 @@ function mostrarProductos(productos) {
                     <p class="card-text"><strong>Precio: $${producto.Precio}</strong></p>
                     <p class="card-text">Stock: ${producto.Cantidad}</p>
                     <button class="btn btn-primary btn-megusta" data-idproducto="${producto.idProducto}">Me gusta</button>
+                    <button class="btn btn-primary btn-carrito" data-idproducto="${producto.idProducto}">Agregar al carrito</button>
                 </div>
             </div>
         `;
@@ -82,7 +83,42 @@ function mostrarProductos(productos) {
                 }
             })
             .catch(error => console.error("Error al registrar el me gusta:", error));
+
+            
         });
+
+        const botonCarrito = productoDiv.querySelector(".btn-carrito");
+        botonCarrito.addEventListener("click", function() {
+            const idProducto = botonCarrito.getAttribute("data-id");
+            const email = localStorage.getItem("emailUsuario");
+            const cantidad = 1; // Asignamos una cantidad predeterminada
+
+            if (!email) {
+                alert("Debes iniciar sesión para agregar al carrito.");
+                window.location.href = "login.html";
+                return;
+            }
+
+            // Realiza la solicitud al servidor
+            fetch("../../index.php?controller=Carrito&action=agregarAlCarrito", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify({ idProducto, email, cantidad })
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log("Respuesta del servidor:", data);
+                if (data.success) {
+                    alert("Producto agregado al carrito"); // Muestra el mensaje de éxito
+                } else {
+                    alert(data.message || "Error al agregar el producto al carrito.");
+                }
+            })
+            .catch(error => console.error("Error al agregar al carrito:", error));
+        });
+
     });
 }
 

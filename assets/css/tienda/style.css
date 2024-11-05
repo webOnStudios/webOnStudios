@@ -3,7 +3,8 @@
 body{
     background-color: #f1f1f1;
     font-family: 'Poppins', sans-serif;
-    position: relative;
+    position: relative
+
 }
 header{
     background-color: #b0caec;
@@ -342,7 +343,34 @@ footer p{
     border-radius: 1rem;
 }
 
+#message {
+    text-align: center;
+    font-size: 18px;
+    color: #e74c3c;
+}
 
+#loginPrompt {
+    text-align: center;
+    margin-top: 20px;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+}
+
+#loginPrompt p {
+    font-size: 16px;
+    color: #555;
+}
+
+#userData {
+    background-color: #ffffff;
+    border-radius: 8px;
+    padding: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    margin: 20px auto;
+    max-width: 400px;
+}
 @keyframes slide {
     0% {margin-left: 0;}
     20% {margin-left: 0;}
