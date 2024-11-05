@@ -6,7 +6,6 @@ document.addEventListener('DOMContentLoaded', async function() {
         return;
     }
 
-    // Obtener datos del usuario
     try {
         const response = await fetch('../../index.php?controller=Usuario&action=obtenerDatos', {
             method: 'POST',
@@ -22,15 +21,14 @@ document.addEventListener('DOMContentLoaded', async function() {
             document.getElementById('apellido').value = Apellido;
             document.getElementById('email').value = Email;
         } else {
-            document.getElementById('message').innerText = result.message; // Mostrar mensaje en el DOM
-            window.location.href = 'login.html'; // Redirigir si no se pueden obtener los datos
+            document.getElementById('message').innerText = result.message; 
+            window.location.href = 'login.html';
         }
     } catch (error) {
         console.error('Error en la solicitud:', error);
-        document.getElementById('message').innerText = 'Hubo un error al obtener los datos del usuario'; // Alerta de error
+        document.getElementById('message').innerText = 'Hubo un error al obtener los datos del usuario'; 
     }
 
-    // Manejador para guardar cambios en los datos del usuario
     document.getElementById('editUserDataForm').addEventListener('submit', async function(event) {
         event.preventDefault();
 
@@ -41,7 +39,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const confirmPassword = document.getElementById('confirmPassword').value;
 
         if (newPassword !== confirmPassword) {
-            document.getElementById('message').innerText = 'Las contraseñas no coinciden'; // Mostrar mensaje de error
+            document.getElementById('message').innerText = 'Las contraseñas no coinciden'; 
             return;
         }
 
@@ -59,31 +57,29 @@ document.addEventListener('DOMContentLoaded', async function() {
             });
 
             const result = await response.json();
-            document.getElementById('message').innerText = result.message; // Mostrar mensaje de resultado en el DOM
+            document.getElementById('message').innerText = result.message; 
 
             if (result.status === 'success') {
-                // Redirigir a la página de cuenta
+
                 setTimeout(() => {
                     window.location.href = 'cuenta.html';
-                }, 1000); // Redirigir después de 1 segundo
+                }, 1000); 
             }
         } catch (error) {
             console.error('Error en la solicitud:', error);
-            document.getElementById('message').innerText = 'Hubo un error al actualizar los datos'; // Alerta de error
+            document.getElementById('message').innerText = 'Hubo un error al actualizar los datos'; 
         }
     });
 
-    // Manejador para el botón de cancelar
     document.getElementById('cancelBtn').addEventListener('click', function() {
-        window.location.href = 'cuenta.html'; // Redirigir a la página de cuenta
+        window.location.href = 'cuenta.html'; 
     });
 });
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); 
 
-    const nombre = this.buscar.value; // Obtener el valor del campo de búsqueda
-
-    // Redirigir a la página de búsqueda
+    const nombre = this.buscar.value; 
+    
     window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
 });

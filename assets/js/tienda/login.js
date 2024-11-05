@@ -4,7 +4,6 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     const email = document.getElementById('email').value;
     const contrasena = document.getElementById('contrasena').value;
 
-    // Hacer la solicitud al servidor
     fetch('../../index.php?controller=Usuario&action=login', {
         method: 'POST',
         headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
@@ -14,14 +13,14 @@ document.getElementById('loginForm').addEventListener('submit', function (event)
     .then(result => {
         console.log('Respuesta del servidor:', result);
 
-        if (result.status === 'success' && result.idUsuario) { // Asegúrate de que idUsuario exista
-            // Guardar el idUsuario y el email en localStorage
+        if (result.status === 'success' && result.idUsuario) { 
+
 
             localStorage.setItem('emailUsuario', email);
 
             console.log('ID y email del usuario guardados en localStorage:', result.idUsuario, email);
 
-            // Redirigir al usuario a la página de inicio
+
             window.location.href = 'home.html';
         } else {
             alert('Error en el inicio de sesión: ' + result.message);

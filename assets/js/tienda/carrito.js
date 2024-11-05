@@ -48,31 +48,29 @@ function mostrarProductos(productos) {
         `;
     });
 
-    // Muestra el subtotal
+
     document.getElementById("subtotal").innerText = `Subtotal: $${subtotal.toFixed(2)}`;
 
-    // Agregar eventos a los botones de aumentar, disminuir y eliminar
     agregarEventosBotones();
 }
 
 function agregarEventosBotones() {
-    // Botones de aumentar
+
     document.querySelectorAll(".btn-aumentar").forEach(boton => {
         boton.addEventListener("click", () => {
             const idProducto = boton.getAttribute("data-id");
-            actualizarCantidadProducto(idProducto, 1); // Aumentar en 1
+            actualizarCantidadProducto(idProducto, 1); 
         });
     });
 
-    // Botones de disminuir
+
     document.querySelectorAll(".btn-disminuir").forEach(boton => {
         boton.addEventListener("click", () => {
             const idProducto = boton.getAttribute("data-id");
-            actualizarCantidadProducto(idProducto, -1); // Disminuir en 1
+            actualizarCantidadProducto(idProducto, -1); 
         });
     });
 
-    // Botones de eliminar
     document.querySelectorAll(".btn-eliminar").forEach(boton => {
         boton.addEventListener("click", () => {
             const idProducto = boton.getAttribute("data-id");
@@ -94,7 +92,7 @@ function actualizarCantidadProducto(idProducto, cambio) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Recargar productos después de actualizar la cantidad
+
             cargarProductos();
         } else {
             console.error("Error al actualizar la cantidad:", data.message);
@@ -116,7 +114,6 @@ function eliminarProducto(idProducto) {
     .then(response => response.json())
     .then(data => {
         if (data.success) {
-            // Recargar productos después de eliminar
             cargarProductos();
         } else {
             console.error("Error al eliminar el producto:", data.message);
@@ -126,7 +123,7 @@ function eliminarProducto(idProducto) {
 }
 
 function cargarProductos() {
-    // Reutiliza la lógica para cargar y mostrar productos
+
     const email = localStorage.getItem("emailUsuario");
 
     fetch("../../index.php?controller=Carrito&action=verCarrito&email=" + email)
@@ -136,7 +133,7 @@ function cargarProductos() {
                 mostrarProductos(data);
             } else {
                 document.getElementById("carrito-resultados").innerHTML = "<p>Tu carrito está vacío.</p>";
-                document.getElementById("subtotal").innerText = ""; // Limpiar subtotal si el carrito está vacío
+                document.getElementById("subtotal").innerText = ""; 
 
             }
         })
@@ -144,9 +141,9 @@ function cargarProductos() {
 }
 
 
-// Lógica para el botón de compra
+
 document.getElementById("boton-comprar").addEventListener("click", () => {
-    // Redirige a la página de compra
+
     window.location.href = "compra.html";
 });
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {
@@ -162,22 +159,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const API_URL = "https://api.exchangerate-api.com/v4/latest/USD";
     let exchangeRate = parseFloat(localStorage.getItem("exchangeRate")) || null;
 
-    // Obtener y actualizar la tasa de cambio si no está guardada en localStorage
     if (!exchangeRate) {
         fetch(API_URL)
             .then(response => response.json())
             .then(data => {
-                exchangeRate = data.rates["UYU"]; // Cambia "UYU" por tu moneda local
+                exchangeRate = data.rates["UYU"]; 
                 localStorage.setItem("exchangeRate", exchangeRate);
             })
             .catch(error => console.error("Error al obtener la tasa de cambio:", error));
     }
 
-    // Referencias a las opciones del menú
     const opcionDolares = document.querySelector(".menu-content a[href='#opcion1']");
     const opcionPesos = document.querySelector(".menu-content a[href='#opcion2']");
 
-    // Manejar los clics para cambiar la moneda
+
     opcionDolares.addEventListener("click", () => {
         convertirPrecios("USD");
     });
@@ -186,19 +181,17 @@ document.addEventListener("DOMContentLoaded", () => {
         convertirPrecios("UYU");
     });
 
-    // Función para convertir precios y subtotal
     function convertirPrecios(moneda) {
         const precios = document.querySelectorAll(".info-producto p");
         let subtotalElement = document.getElementById("subtotal");
         let subtotal = parseFloat(subtotalElement.dataset.subtotalOriginal) || 0;
 
-        // Convertir precios individuales
+
         precios.forEach(precio => {
             if (precio.textContent.includes("Precio: $")) {
                 const precioText = precio.textContent;
                 const precioOriginal = parseFloat(precioText.replace(/[^0-9.-]+/g, ""));
 
-                // Guardar el precio original en un atributo data si no se ha guardado antes
                 if (!precio.dataset.precioOriginal) {
                     precio.dataset.precioOriginal = precioOriginal;
                 }
@@ -218,7 +211,7 @@ document.addEventListener("DOMContentLoaded", () => {
             }
         });
 
-        // Convertir subtotal
+
         if (!subtotalElement.dataset.subtotalOriginal) {
             subtotalElement.dataset.subtotalOriginal = subtotal;
         }
@@ -231,11 +224,9 @@ document.addEventListener("DOMContentLoaded", () => {
             subtotalElement.textContent = `Subtotal: $${subtotalBase.toFixed(2)}`;
         }
 
-        // Guardar la última moneda seleccionada en localStorage
         localStorage.setItem("ultimaMoneda", moneda);
     }
 
-    // Comprobar la moneda seleccionada al cargar la página
     const ultimaMoneda = localStorage.getItem("ultimaMoneda") || "UYU";
     convertirPrecios(ultimaMoneda);
 });

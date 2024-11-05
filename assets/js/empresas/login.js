@@ -13,16 +13,16 @@ document.getElementById('loginForm').addEventListener('submit', async function (
 
         const result = await response.json();
         
-        // Debugging: Imprime la respuesta en la consola
+
         console.log('Respuesta del servidor:', result);
 
         if (result.status === 'success') {
-            localStorage.setItem('nombreEmpresa', result.nombre); // Guarda el nombre en localStorage
-            localStorage.setItem('emailEmpresa', email); // Guarda el email en localStorage
-            console.log('Nombre y email guardados en localStorage'); // Mensaje de éxito
-            window.location.href = 'cuenta.html'; // Redirige a la página de inicio
+            localStorage.setItem('nombreEmpresa', result.nombre); 
+            localStorage.setItem('emailEmpresa', email); 
+            console.log('Nombre y email guardados en localStorage'); 
+            window.location.href = 'cuenta.html'; 
         } else {
-            document.getElementById('message').innerText = result.message; // Muestra mensaje de error
+            document.getElementById('message').innerText = result.message; 
         }
     } catch (error) {
         console.error('Error en la solicitud:', error);

@@ -26,10 +26,10 @@ function fetchProductosPorCategoria(categoria) {
 
 function mostrarProductos(productos) {
     const container = document.getElementById("productosContainer");
-    container.innerHTML = ""; // Limpiar el contenido previo
+    container.innerHTML = ""; 
 
     productos.forEach(producto => {
-        // Construir la ruta de la imagen con el formato adecuado
+
         const imagenPath = `../../img/producto/${producto.idProducto}1.jpg`;
 
         const productoCard = document.createElement("div");
@@ -49,23 +49,22 @@ function mostrarProductos(productos) {
         `;
         container.appendChild(productoCard);
 
-        // Agregar el evento "click" al botón "Me gusta" después de crear el elemento
         const botonMeGusta = productoCard.querySelector(".btn-megusta");
         botonMeGusta.addEventListener("click", function() {
             const idProducto = botonMeGusta.getAttribute("data-idproducto");
 
-            // Verificar si el email del usuario está en localStorage
+
             const email = localStorage.getItem("emailUsuario");
             if (!email) {
                 alert("Debes iniciar sesión para dar un me gusta.");
-                window.location.href = "login.html"; // Redirige al usuario a la página de inicio de sesión
+                window.location.href = "login.html"; 
                 return;
             }
 
             console.log("ID del Producto:", idProducto);
             console.log("Email del Usuario:", email);
 
-            // Enviar la solicitud al servidor para registrar el "me gusta"
+
             fetch("../../index.php?controller=Producto&action=registrarMeGusta", {
                 method: "POST",
                 headers: {
@@ -75,7 +74,7 @@ function mostrarProductos(productos) {
             })
             .then(response => response.json())
             .then(data => {
-                console.log("Respuesta del servidor:", data); //
+                console.log("Respuesta del servidor:", data); 
                 if (data.success) {
                     alert("Me gusta registrado correctamente.");
                 } else {
@@ -91,7 +90,7 @@ function mostrarProductos(productos) {
         botonCarrito.addEventListener("click", function() {
             const idProducto = botonCarrito.getAttribute("data-id");
             const email = localStorage.getItem("emailUsuario");
-            const cantidad = 1; // Asignamos una cantidad predeterminada
+            const cantidad = 1; 
 
             if (!email) {
                 alert("Debes iniciar sesión para agregar al carrito.");
@@ -99,7 +98,6 @@ function mostrarProductos(productos) {
                 return;
             }
 
-            // Realiza la solicitud al servidor
             fetch("../../index.php?controller=Carrito&action=agregarAlCarrito", {
                 method: "POST",
                 headers: {
@@ -111,7 +109,7 @@ function mostrarProductos(productos) {
             .then(data => {
                 console.log("Respuesta del servidor:", data);
                 if (data.success) {
-                    alert("Producto agregado al carrito"); // Muestra el mensaje de éxito
+                    alert("Producto agregado al carrito"); 
                 } else {
                     alert(data.message || "Error al agregar el producto al carrito.");
                 }
@@ -124,7 +122,7 @@ function mostrarProductos(productos) {
 
 function mostrarMensajeNoHayProductos() {
     const container = document.getElementById("productosContainer");
-    container.innerHTML = ""; // Limpiar el contenido previo
+    container.innerHTML = ""; 
 
     const mensaje = document.createElement("div");
     mensaje.className = "alert alert-warning";
@@ -134,10 +132,9 @@ function mostrarMensajeNoHayProductos() {
 
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); 
 
-    const nombre = this.buscar.value; // Obtener el valor del campo de búsqueda
+    const nombre = this.buscar.value; 
 
-    // Redirigir a la página de búsqueda
     window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
 });

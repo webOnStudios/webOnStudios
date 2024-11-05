@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', async function() {
         const result = await response.json();
 
         if (result.status === 'success') {
-            const { Root_CI, Nombre, Email, Direccion, Logo, idPaypal} = result.data;
+            const { Root_CI, Nombre, Apellido, Email, Direccion, Logo, idPaypal} = result.data;
             document.getElementById('ci').textContent = Root_CI;
             document.getElementById('nombre').textContent = Nombre;
             document.getElementById('direccion').textContent = Direccion;
@@ -58,7 +58,7 @@ document.addEventListener('DOMContentLoaded', async function() {
             const productos = result.data;
             const tablaProductos = document.getElementById('tablaProductos');
 
-            // Crear cabecera de la tabla
+
             tablaProductos.innerHTML = `
                 <h2>Todos sus productos</h2>
                 <br><br>
@@ -78,10 +78,8 @@ document.addEventListener('DOMContentLoaded', async function() {
                 </table>
             `;
 
-            // Obtener el cuerpo de la tabla
             const tablaCuerpo = document.getElementById('tablaCuerpo');
 
-            // Crear y agregar filas a la tabla
             productos.forEach(producto => {
                 const row = document.createElement('tr');
                 row.innerHTML = `

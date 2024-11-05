@@ -134,18 +134,29 @@ class UsuarioController {
     }
     
     public function obtenerUsuarios() {
-        header('Content-Type: application/json');
-
-        $usuario = new Usuario();
-        $usuarios = $usuario->obtenerTodosLosUsuarios();
-
-        if ($usuarios) {
-            echo json_encode(['success' => true, 'data' => $usuarios]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'No se encontraron usuarios']);
-        }
+        $usuarios = $this->usuario->obtenerUsuarios();
+        echo json_encode(["success" => true, "data" => $usuarios]);
     }
 
+    public function suspenderUsuario() {
+        $data = json_decode(file_get_contents("php://input"));
+        $idUsuario = $data->idUsuario;
+
+        $result = $this->usuario->suspenderUsuario($idUsuario);
+        echo json_encode(["success" => $result]);
+    }
+
+    public function actualizarUsuario() {
+        $data = json_decode(file_get_contents("php://input"));
+        $result = $this->usuario->actualizarUsuario(
+            $data->idUsuario,
+            $data->Email,
+            $data->CI,
+            $data->Nombre,
+            $data->Apellido
+        );
+        echo json_encode(["success" => $result]);
+    }
     
 }
 ?>

@@ -7,7 +7,7 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
     formData.append("email", document.getElementById("email").value);
     formData.append("contrasena", document.getElementById("contrasena").value);
     formData.append("direccion", document.getElementById("direccion").value);
-    formData.append("paypalId", document.getElementById("paypalId").value); // Agregado el ID de PayPal
+    formData.append("paypalId", document.getElementById("paypalId").value); 
 
     fetch("../../index.php?controller=Empresa&action=registrar", {
         method: "POST",
@@ -29,7 +29,6 @@ document.getElementById("formRegistro").addEventListener("submit", function(even
 });
 
 
-// Nueva función para iniciar sesión
 function iniciarSesion(email, contrasena) {
     fetch('../../index.php?controller=Empresa&action=login', {
         method: 'POST',
@@ -38,16 +37,16 @@ function iniciarSesion(email, contrasena) {
     })
     .then(response => response.json())
     .then(result => {
-        // Debugging: Imprime la respuesta en la consola
+
         console.log('Respuesta del servidor:', result);
 
         if (result.status === 'success') {
-            localStorage.setItem('nombreEmpresa', result.nombre); // Guarda el nombre en localStorage
-            localStorage.setItem('emailEmpresa', email); // Guarda el email en localStorage
-            console.log('Nombre y email guardados en localStorage'); // Mensaje de éxito
-            window.location.href = 'cuenta.html'; // Redirige a la página de inicio
+            localStorage.setItem('nombreEmpresa', result.nombre); 
+            localStorage.setItem('emailEmpresa', email); 
+            console.log('Nombre y email guardados en localStorage'); 
+            window.location.href = 'cuenta.html'; 
         } else {
-            alert('Error en el inicio de sesión: ' + result.message); // Mensaje de error
+            alert('Error en el inicio de sesión: ' + result.message); 
         }
     })
     .catch(error => {

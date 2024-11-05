@@ -11,7 +11,12 @@ class Empresa {
     private $direccion; 
     private $logoPath;
     private $idPaypal; // Agrega esta propiedad
+    private $db;
 
+    public function __construct() {
+        $database = new Database();
+        $this->db = $database->getConnection();
+    }
 
     public function setCI($ci) {
         $this->ci = $ci;
@@ -100,12 +105,31 @@ class Empresa {
     }
     
 
-    public function obtenerTodasLasEmpresas() {
-        $stmt = $this->db->prepare("SELECT idEmpresa, Email, Root_CI, Contraseña, direccion, Logo FROM empresa");
+    public function obtenerEmpresas() {
+        $query = "SELECT * FROM empresa";
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Usar fetchAll en lugar de fetch_all
     }
-    
+
+    public function suspenderEmpresa($id) {
+        $query = "UPDATE empresa SET suspendido = 'si' WHERE idEmpresa = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function actualizarEmpresa($id, $email, $direccion, $logo, $nombre, $idPaypal) {
+        $query = "UPDATE empresa SET Email = :email, Direccion = :direccion, Logo = :logo, Nombre = :nombre, idPaypal = :idPaypal WHERE idEmpresa = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':direccion', $direccion);
+        $stmt->bindParam(':logo', $logo);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':idPaypal', $idPaypal);
+        return $stmt->execute();
+    }
 }
 
 ?>

@@ -138,14 +138,13 @@ class Usuario {
         }
     }
     
-
-    public function obtenerTodosLosUsuarios() {
+    public function obtenerUsuarios() {
         $query = "SELECT * FROM usuarios";
-        $stmt = $this->conn->prepare($query); // Asegúrate de que $this->conn no sea null
-
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Usar fetchAll en lugar de fetch_all
     }
+
     
 
 
@@ -162,6 +161,23 @@ class Usuario {
         } else {
             return null;
         }
+    }
+    public function suspenderUsuario($id) {
+        $query = "UPDATE usuarios SET suspendido = 'si' WHERE IdUsuario = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
+
+    public function actualizarUsuario($id, $email, $ci, $nombre, $apellido) {
+        $query = "UPDATE usuarios SET Email = :email, CI = :ci, Nombre = :nombre, Apellido = :apellido WHERE IdUsuario = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':email', $email);
+        $stmt->bindParam(':ci', $ci);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':apellido', $apellido);
+        return $stmt->execute();
     }
 }
 ?>

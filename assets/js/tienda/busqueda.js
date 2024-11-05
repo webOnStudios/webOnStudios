@@ -52,10 +52,11 @@ document.addEventListener("DOMContentLoaded", function() {
             `;
 
             resultadosDiv.appendChild(productoDiv);
+
             productoDiv.addEventListener("click", function() {
                 window.location.href = `producto.html?id=${producto.idProducto}`;
             });
-            // Función para 'Me Gusta'
+
             const botonMeGusta = productoDiv.querySelector(".btn-megusta");
             botonMeGusta.addEventListener("click", function() {
                 const idProducto = botonMeGusta.getAttribute("data-id");
@@ -93,7 +94,7 @@ document.addEventListener("DOMContentLoaded", function() {
             botonCarrito.addEventListener("click", function() {
                 const idProducto = botonCarrito.getAttribute("data-id");
                 const email = localStorage.getItem("emailUsuario");
-                const cantidad = 1; // Asignamos una cantidad predeterminada
+                const cantidad = 1; 
 
                 if (!email) {
                     alert("Debes iniciar sesión para agregar al carrito.");
@@ -101,7 +102,7 @@ document.addEventListener("DOMContentLoaded", function() {
                     return;
                 }
 
-                // Realiza la solicitud al servidor
+
                 fetch("../../index.php?controller=Carrito&action=agregarAlCarrito", {
                     method: "POST",
                     headers: {
@@ -113,7 +114,7 @@ document.addEventListener("DOMContentLoaded", function() {
                 .then(data => {
                     console.log("Respuesta del servidor:", data);
                     if (data.success) {
-                        alert("Producto agregado al carrito"); // Muestra el mensaje de éxito
+                        alert("Producto agregado al carrito"); 
                     } else {
                         alert(data.message || "Error al agregar el producto al carrito.");
                     }

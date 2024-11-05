@@ -4,6 +4,12 @@ require_once dirname(__DIR__) . '/models/Empresa.php';
 
 
 class EmpresaController {
+    private $empresa;
+
+    public function __construct() {
+        $this->empresa = new Empresa(); // Instancia el modelo
+    }
+
     public function registrar() {
         header('Content-Type: application/json');
     
@@ -96,16 +102,32 @@ class EmpresaController {
     }
 
     public function obtenerEmpresas() {
-        header('Content-Type: application/json');
-        
-        $empresa = new Empresa();
-        $empresas = $empresa->obtenerTodasLasEmpresas();
-    
-        if ($empresas) {
-            echo json_encode(['success' => true, 'data' => $empresas]);
+        if ($this->empresa) {
+            $empresas = $this->empresa->obtenerEmpresas();
+            echo json_encode(["success" => true, "data" => $empresas]);
         } else {
-            echo json_encode(['success' => false, 'message' => 'No se encontraron empresas']);
+            echo json_encode(["success" => false, "message" => "Error al instanciar el modelo"]);
         }
+    }
+    public function suspenderEmpresa() {
+        $data = json_decode(file_get_contents("php://input"));
+        $idEmpresa = $data->idEmpresa;
+
+        $result = $this->empresa->suspenderEmpresa($idEmpresa);
+        echo json_encode(["success" => $result]);
+    }
+
+    public function actualizarEmpresa() {
+        $data = json_decode(file_get_contents("php://input"));
+        $result = $this->empresa->actualizarEmpresa(
+            $data->idEmpresa,
+            $data->Email,
+            $data->Direccion,
+            $data->Logo,
+            $data->Nombre,
+            $data->idPaypal
+        );
+        echo json_encode(["success" => $result]);
     }
 
 }

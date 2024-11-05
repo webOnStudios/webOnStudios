@@ -1,107 +1,139 @@
-// Función para obtener empresas
-async function obtenerEmpresas() {
+// Función para cargar los datos de la empresa
+async function cargarDatosEmpresa() {
     try {
-        const response = await fetch('../../index.php?controller=Empresa&action=obtenerEmpresas'); // Ajusta la ruta
-        const data = await response.json();
-        
-        if (data.success) {
-            mostrarEmpresas(data.data);
-        } else {
-            console.error(data.message);
+        const response = await fetch('../../index.php?controller=Empresa&action=obtenerEmpresas');
+        const result = await response.json();
+
+        if (result.success) {
+            const empresas = result.data;
+            const tablaEmpresa = document.querySelector('#tabla-empresa tbody');
+            tablaEmpresa.innerHTML = '';
+
+            empresas.forEach(empresa => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${empresa.idEmpresa}</td>
+                    <td>${empresa.Email}</td>
+                    <td>${empresa.Root_CI}</td>
+                    <td>********</td>
+                    <td>${empresa.Direccion}</td>
+                    <td><img src="../../img/empresa/${empresa.Logo}" alt="Logo" width="50"></td>
+                    <td>${empresa.Nombre}</td>
+                    <td>${empresa.suspendido}</td>
+                    <td>${empresa.idPaypal}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editarEmpresa(${empresa.idEmpresa})">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="suspenderEmpresa(${empresa.idEmpresa})">Suspender</button>
+                    </td>
+                `;
+                tablaEmpresa.appendChild(row);
+            });
         }
     } catch (error) {
-        console.error('Error al obtener empresas:', error);
+        console.error('Error al cargar datos de empresa:', error);
     }
 }
 
-// Función para mostrar empresas en la tabla
-function mostrarEmpresas(empresas) {
-    const tablaEmpresas = document.getElementById('tablaEmpresas'); // Asegúrate de tener esta tabla en tu HTML
-    tablaEmpresas.innerHTML = ''; // Limpiar tabla antes de agregar nuevos datos
-
-    empresas.forEach(empresa => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td>${empresa.idEmpresa}</td>
-            <td>${empresa.emailEmpresa}</td>
-            <td>${empresa.cedulaEmpresa}</td>
-            <td>${empresa.direccionEmpresa}</td>
-            <td>${empresa.logo}</td>
-        `;
-        tablaEmpresas.appendChild(fila);
-    });
-}
-
-// Función para obtener productos
-async function obtenerProductos() {
+// Función para cargar los datos de los productos
+async function cargarDatosProducto() {
     try {
-        const response = await fetch('../../index.php?controller=Producto&action=obtenerProducto'); // Ajusta la ruta
-        const data = await response.json();
-        
-        if (data.success) {
-            mostrarProductos(data.data);
-        } else {
-            console.error(data.message);
+        const response = await fetch('../../index.php?controller=Producto&action=obtenerProductos');
+        const result = await response.json();
+
+        if (result.success) {
+            const productos = result.data;
+            const tablaProducto = document.querySelector('#tabla-producto tbody');
+            tablaProducto.innerHTML = '';
+
+            productos.forEach(producto => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${producto.idProducto}</td>
+                    <td>$${producto.Precio}</td>
+                    <td>${producto.Nombre}</td>
+                    <td>${producto.Descripcion}</td>
+                    <td>${producto.Cantidad}</td>
+                    <td>${producto.Categoria}</td>
+                    <td>${producto.suspendido}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editarProducto(${producto.idProducto})">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="suspenderProducto(${producto.idProducto})">Suspender</button>
+                    </td>
+                `;
+                tablaProducto.appendChild(row);
+            });
         }
     } catch (error) {
-        console.error('Error al obtener productos:', error);
+        console.error('Error al cargar datos de producto:', error);
     }
 }
 
-// Función para mostrar productos en la tabla
-function mostrarProductos(productos) {
-    const tablaProductos = document.getElementById('tablaProductos'); // Asegúrate de tener esta tabla en tu HTML
-    tablaProductos.innerHTML = ''; // Limpiar tabla antes de agregar nuevos datos
-
-    productos.forEach(producto => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td>${producto.idProducto}</td>
-            <td>${producto.Nombre}</td>
-            <td>${producto.Descripcion}</td>
-            <td>${producto.Precio}</td>
-            <td>${producto.Cantidad}</td>
-            <td>${producto.Categoria}</td>
-        `;
-        tablaProductos.appendChild(fila);
-    });
-}
-
-// Función para obtener usuarios
-async function obtenerUsuarios() {
+// Función para cargar los datos de los usuarios
+async function cargarDatosUsuarios() {
     try {
-        const response = await fetch('../../index.php?controller=Usuario&action=obtenerUsuarios'); // Ajusta la ruta
-        const data = await response.json();
-        
-        if (data.success) {
-            mostrarUsuarios(data.data);
-        } else {
-            console.error(data.message);
+        const response = await fetch('../../index.php?controller=Usuario&action=obtenerUsuarios');
+        const result = await response.json();
+
+        if (result.success) {
+            const usuarios = result.data;
+            const tablaUsuarios = document.querySelector('#tabla-usuarios tbody');
+            tablaUsuarios.innerHTML = '';
+
+            usuarios.forEach(usuario => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${usuario.IdUsuario}</td>
+                    <td>${usuario.Email}</td>
+                    <td>${usuario.CI}</td>
+                    <td>${usuario.Nombre}</td>
+                    <td>${usuario.Apellido}</td>
+                    <td>********</td>
+                    <td>${usuario.suspendido}</td>
+                    <td>
+                        <button class="btn btn-primary btn-sm" onclick="editarUsuario(${usuario.IdUsuario})">Editar</button>
+                        <button class="btn btn-danger btn-sm" onclick="suspenderUsuario(${usuario.IdUsuario})">Suspender</button>
+                    </td>
+                `;
+                tablaUsuarios.appendChild(row);
+            });
         }
     } catch (error) {
-        console.error('Error al obtener usuarios:', error);
+        console.error('Error al cargar datos de usuarios:', error);
     }
 }
 
-// Función para mostrar usuarios en la tabla
-function mostrarUsuarios(usuarios) {
-    const tablaUsuarios = document.getElementById('tablaUsuarios'); // Asegúrate de tener esta tabla en tu HTML
-    tablaUsuarios.innerHTML = ''; // Limpiar tabla antes de agregar nuevos datos
+// Funciones para editar y suspender
 
-    usuarios.forEach(usuario => {
-        const fila = document.createElement('tr');
-        fila.innerHTML = `
-            <td>${usuario.idUsuario}</td>
-            <td>${usuario.emailUsuario}</td>
-            <td>${usuario.cedulaUsuario}</td>
-            <td>${usuario.nombreUsuario}</td>
-            <td>${usuario.apellidoUsuario}</td>
-        `;
-        tablaUsuarios.appendChild(fila);
-    });
+async function editarEmpresa(id) {
+    // Implementa la lógica para editar empresa usando el ID
+    // Podría abrir un formulario modal para la edición
+    console.log(`Editar empresa con ID: ${id}`);
 }
 
-// Llamar a las funciones para obtener y mostrar datos
-obtenerEmpresas();
-obtenerProductos();
-obtenerUsuarios();
+async function suspenderEmpresa(id) {
+    try {
+        const response = await fetch('../../index.php?controller=Empresa&action=suspenderEmpresa', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ idEmpresa: id })
+        });
+        const result = await response.json();
+        if (result.success) {
+            alert("Empresa suspendida correctamente.");
+            cargarDatosEmpresa();
+        } else {
+            alert("Error al suspender la empresa.");
+        }
+    } catch (error) {
+        console.error("Error al suspender la empresa:", error);
+    }
+}
+
+// Implementa las funciones suspenderProducto, suspenderUsuario, editarProducto, y editarUsuario de manera similar...
+
+// Llamadas a las funciones al cargar el DOM
+document.addEventListener('DOMContentLoaded', () => {
+    cargarDatosEmpresa();
+    cargarDatosProducto();
+    cargarDatosUsuarios();
+});

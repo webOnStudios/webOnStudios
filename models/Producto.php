@@ -168,10 +168,11 @@ class Producto {
         return $stmt->fetch(PDO::FETCH_ASSOC); // Devuelve el producto
     }
 
-    public function obtenerTodosLosProductos() {
-        $stmt = $this->db->prepare("SELECT idProducto, Precio, Nombre, Descripcion, Cantidad, Categoria FROM Producto");
+    public function obtenerProductos() {
+        $query = "SELECT * FROM producto";
+        $stmt = $this->db->prepare($query);
         $stmt->execute();
-        return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        return $stmt->fetchAll(PDO::FETCH_ASSOC); // Usar fetchAll en lugar de fetch_all
     }
     
 
@@ -239,7 +240,24 @@ class Producto {
         return $stmt->execute([$idProducto, $email]); // Devuelve true si la eliminación fue exitosa
     }
 
+    public function suspenderProducto($id) {
+        $query = "UPDATE producto SET suspendido = 'si' WHERE idProducto = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id, PDO::PARAM_INT);
+        return $stmt->execute();
+    }
 
+    public function actualizarProducto($id, $precio, $nombre, $descripcion, $cantidad, $categoria) {
+        $query = "UPDATE producto SET Precio = :precio, Nombre = :nombre, Descripcion = :descripcion, Cantidad = :cantidad, Categoria = :categoria WHERE idProducto = :id";
+        $stmt = $this->db->prepare($query);
+        $stmt->bindParam(':id', $id);
+        $stmt->bindParam(':precio', $precio);
+        $stmt->bindParam(':nombre', $nombre);
+        $stmt->bindParam(':descripcion', $descripcion);
+        $stmt->bindParam(':cantidad', $cantidad);
+        $stmt->bindParam(':categoria', $categoria);
+        return $stmt->execute();
+    }
 }
 ?>
 

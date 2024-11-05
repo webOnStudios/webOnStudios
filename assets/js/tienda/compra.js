@@ -2,11 +2,10 @@ document.addEventListener("DOMContentLoaded", () => {
     const emailUsuario = localStorage.getItem("emailUsuario");
     if (!emailUsuario) {
         alert("Debes iniciar sesión para realizar una compra.");
-        window.location.href = "login.html"; // Redirige al usuario a la página de inicio de sesión
+        window.location.href = "login.html";
         return;
     }
 
-    // Obtener los productos del carrito
     fetch(`../../index.php?controller=Carrito&action=verCarrito&email=${emailUsuario}`)
         .then(response => response.json())
         .then(data => {
@@ -73,7 +72,7 @@ function inicializarPayPal(productos) {
         onApprove: (data, actions) => {
             return actions.order.capture().then(details => {
                 alert("Pago realizado con éxito.");
-                window.location.href = "confirmacion.html"; // Redirige a la página de confirmación
+                window.location.href = "confirmacion.html"; 
             });
         },
         onError: (err) => {

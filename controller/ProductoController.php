@@ -120,18 +120,9 @@ class ProductoController {
         }
     }
 
-
     public function obtenerProductos() {
-        header('Content-Type: application/json');
-        
-        $producto = new Producto();
-        $productos = $producto->obtenerTodosLosProductos();
-    
-        if ($productos) {
-            echo json_encode(['success' => true, 'data' => $productos]);
-        } else {
-            echo json_encode(['success' => false, 'message' => 'No se encontraron productos']);
-        }
+        $productos = $this->producto->obtenerProductos();
+        echo json_encode(["success" => true, "data" => $productos]);
     }
     
     public function getByCategoria() {
@@ -214,6 +205,25 @@ class ProductoController {
             echo json_encode(['success' => false, 'message' => 'Error al eliminar el me gusta.']);
         }
     }
-    
+    public function suspenderProducto() {
+        $data = json_decode(file_get_contents("php://input"));
+        $idProducto = $data->idProducto;
+
+        $result = $this->producto->suspenderProducto($idProducto);
+        echo json_encode(["success" => $result]);
+    }
+
+    public function actualizarProducto() {
+        $data = json_decode(file_get_contents("php://input"));
+        $result = $this->producto->actualizarProducto(
+            $data->idProducto,
+            $data->Precio,
+            $data->Nombre,
+            $data->Descripcion,
+            $data->Cantidad,
+            $data->Categoria
+        );
+        echo json_encode(["success" => $result]);
+    }
 }
 ?>

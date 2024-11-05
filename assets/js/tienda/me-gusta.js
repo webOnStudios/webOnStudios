@@ -14,9 +14,7 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function mostrarProductosMeGusta(productos) {
-    
-    const email = localStorage.getItem('emailUsuario'); // Asegúrate de que el email se obtiene aquí
-
+    const email = localStorage.getItem('emailUsuario');
     const container = document.getElementById("productosMeGusta");
     container.innerHTML = "";
 
@@ -43,7 +41,6 @@ function mostrarProductosMeGusta(productos) {
         `;
         container.appendChild(productoCard);
 
-        // Añadir evento al botón "Quitar Me Gusta"
         const btnQuitar = productoCard.querySelector('.btn-quitar-megusta');
         btnQuitar.addEventListener('click', function() {
             quitarMeGusta(producto.idProducto, email);
@@ -52,11 +49,11 @@ function mostrarProductosMeGusta(productos) {
 }
 
 function quitarMeGusta(idProducto) {
-    const email = localStorage.getItem('emailUsuario'); // Asegúrate de que el email se obtiene aquí
+    const email = localStorage.getItem('emailUsuario'); 
 
     if (!email) {
         alert("Por favor, inicia sesión para quitar un 'me gusta'.");
-        return; // Salimos de la función si no hay email
+        return; 
     }
 
     fetch('../../index.php?controller=Producto&action=quitarMeGusta', {
@@ -64,13 +61,12 @@ function quitarMeGusta(idProducto) {
         headers: {
             'Content-Type': 'application/json'
         },
-        body: JSON.stringify({ idProducto, email }) // Asegúrate de que estás enviando ambos
+        body: JSON.stringify({ idProducto, email }) 
     })
     .then(response => response.json())
     .then(data => {
         if (data.success) {
             alert(data.message);
-            // Recargar los productos "me gusta" después de quitar uno
             mostrarProductosMeGusta();
         } else {
             alert(data.message);
@@ -80,11 +76,10 @@ function quitarMeGusta(idProducto) {
 }
 
 document.getElementById('busqueda-form').addEventListener('submit', function(event) {
-    event.preventDefault(); // Evitar el envío del formulario por defecto
+    event.preventDefault(); 
 
-    const nombre = this.buscar.value; // Obtener el valor del campo de búsqueda
+    const nombre = this.buscar.value; 
 
-    // Redirigir a la página de búsqueda
     window.location.href = `busqueda.html?nombre=${encodeURIComponent(nombre)}`;
 });
 
